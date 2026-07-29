@@ -1,0 +1,1370 @@
+{
+  "generatedAt": "2026-07-18",
+  "parentPlatform": {
+    "publicRoutes": [
+      "/",
+      "/apps",
+      "/about",
+      "/pricing",
+      "/login",
+      "/register",
+      "/forgot-password",
+      "/reset-password",
+      "/faq",
+      "/contact",
+      "/terms",
+      "/privacy",
+      "/network-issue",
+      "/server-error"
+    ],
+    "protectedRoutes": [
+      "/dashboard",
+      "/search",
+      "/profile",
+      "/settings",
+      "/subscription",
+      "/change-password"
+    ]
+  },
+  "apps": [
+    {
+      "slug": "quiz",
+      "overview": "/quiz",
+      "explore": "/quiz/play",
+      "routes": [
+        "/quiz",
+        "/quiz/play",
+        "/quiz/attempts",
+        "/quiz/results"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/quiz/index.tsx"
+    },
+    {
+      "slug": "research-assistant",
+      "overview": "/research-assistant",
+      "explore": "/research-assistant/topics",
+      "routes": [
+        "/research-assistant",
+        "/research-assistant/topics",
+        "/research-assistant/create",
+        "/research-assistant/topics/:id"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/research-assistant/index.tsx"
+    },
+    {
+      "slug": "ai-notes-summarizer",
+      "overview": "/ai-notes-summarizer",
+      "explore": "/ai-notes-summarizer/summarize",
+      "routes": [
+        "/ai-notes-summarizer",
+        "/ai-notes-summarizer/summarize",
+        "/ai-notes-summarizer/history",
+        "/ai-notes-summarizer/documents",
+        "/ai-notes-summarizer/documents/:id"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/ai-notes-summarizer/index.tsx"
+    },
+    {
+      "slug": "concept-explainer",
+      "overview": "/concept-explainer",
+      "explore": "/concept-explainer/concepts",
+      "routes": [
+        "/concept-explainer",
+        "/concept-explainer/concepts",
+        "/concept-explainer/create",
+        "/concept-explainer/concepts/:id"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/concept-explainer/index.tsx"
+    },
+    {
+      "slug": "study-planner",
+      "overview": "/study-planner",
+      "explore": "/study-planner/plan",
+      "routes": [
+        "/study-planner",
+        "/study-planner/plan",
+        "/study-planner/tasks",
+        "/study-planner/logs",
+        "/study-planner/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/study-planner/index.tsx"
+    },
+    {
+      "slug": "course-tracker",
+      "overview": "/course-tracker",
+      "explore": "/course-tracker/courses",
+      "routes": [
+        "/course-tracker",
+        "/course-tracker/courses",
+        "/course-tracker/modules",
+        "/course-tracker/progress",
+        "/course-tracker/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/course-tracker/index.tsx"
+    },
+    {
+      "slug": "dictionary-plus",
+      "overview": "/dictionary-plus",
+      "explore": "/dictionary-plus/look-up",
+      "routes": [
+        "/dictionary-plus",
+        "/dictionary-plus/look-up",
+        "/dictionary-plus/saved-words",
+        "/dictionary-plus/word-lists",
+        "/dictionary-plus/history",
+        "/dictionary-plus/favorites"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/dictionary-plus/index.tsx"
+    },
+    {
+      "slug": "formula-finder",
+      "overview": "/formula-finder",
+      "explore": "/formula-finder/finder",
+      "routes": [
+        "/formula-finder",
+        "/formula-finder/finder"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/formula-finder/index.tsx"
+    },
+    {
+      "slug": "lesson-builder",
+      "overview": "/lesson-builder",
+      "explore": "/lesson-builder/create",
+      "routes": [
+        "/lesson-builder",
+        "/lesson-builder/create",
+        "/lesson-builder/lessons",
+        "/lesson-builder/library"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/lesson-builder/index.tsx"
+    },
+    {
+      "slug": "memory-trainer",
+      "overview": "/memory-trainer",
+      "explore": "/memory-trainer/practice",
+      "routes": [
+        "/memory-trainer",
+        "/memory-trainer/practice",
+        "/memory-trainer/games",
+        "/memory-trainer/progress",
+        "/memory-trainer/train",
+        "/memory-trainer/sessions"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/memory-trainer/index.tsx"
+    },
+    {
+      "slug": "daily-word-challenge",
+      "overview": "/daily-word-challenge",
+      "explore": "/daily-word-challenge/challenge",
+      "routes": [
+        "/daily-word-challenge",
+        "/daily-word-challenge/challenge"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/daily-word-challenge/index.tsx"
+    },
+    {
+      "slug": "smart-textbook-scanner",
+      "overview": "/smart-textbook-scanner",
+      "explore": "/smart-textbook-scanner/scan",
+      "routes": [
+        "/smart-textbook-scanner",
+        "/smart-textbook-scanner/scan",
+        "/smart-textbook-scanner/organize",
+        "/smart-textbook-scanner/extract",
+        "/smart-textbook-scanner/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/smart-textbook-scanner/index.tsx"
+    },
+    {
+      "slug": "resume-builder",
+      "overview": "/resume-builder",
+      "explore": "/resume-builder/projects",
+      "routes": [
+        "/resume-builder",
+        "/resume-builder/projects",
+        "/resume-builder/sections",
+        "/resume-builder/items",
+        "/resume-builder/preview",
+        "/resume-builder/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/resume-builder/index.tsx"
+    },
+    {
+      "slug": "visiting-card-maker",
+      "overview": "/visiting-card-maker",
+      "explore": "/visiting-card-maker/create",
+      "routes": [
+        "/visiting-card-maker",
+        "/visiting-card-maker/create",
+        "/visiting-card-maker/creations",
+        "/visiting-card-maker/settings"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/visiting-card-maker/index.tsx"
+    },
+    {
+      "slug": "interview-coach",
+      "overview": "/interview-coach",
+      "explore": "/interview-coach/sessions",
+      "routes": [
+        "/interview-coach",
+        "/interview-coach/sessions",
+        "/interview-coach/questions",
+        "/interview-coach/practice",
+        "/interview-coach/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/interview-coach/index.tsx"
+    },
+    {
+      "slug": "job-description-analyzer",
+      "overview": "/job-description-analyzer",
+      "explore": "/job-description-analyzer/jobs",
+      "routes": [
+        "/job-description-analyzer",
+        "/job-description-analyzer/jobs",
+        "/job-description-analyzer/analysis",
+        "/job-description-analyzer/skills",
+        "/job-description-analyzer/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/job-description-analyzer/index.tsx"
+    },
+    {
+      "slug": "portfolio-creator",
+      "overview": "/portfolio-creator",
+      "explore": "/portfolio-creator/profiles",
+      "routes": [
+        "/portfolio-creator",
+        "/portfolio-creator/profiles",
+        "/portfolio-creator/projects",
+        "/portfolio-creator/skills",
+        "/portfolio-creator/publish"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/portfolio-creator/index.tsx"
+    },
+    {
+      "slug": "meeting-minutes-ai",
+      "overview": "/meeting-minutes-ai",
+      "explore": "/meeting-minutes-ai/meetings",
+      "routes": [
+        "/meeting-minutes-ai",
+        "/meeting-minutes-ai/meetings",
+        "/meeting-minutes-ai/notes",
+        "/meeting-minutes-ai/action-items",
+        "/meeting-minutes-ai/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/meeting-minutes-ai/index.tsx"
+    },
+    {
+      "slug": "proposal-writer",
+      "overview": "/proposal-writer",
+      "explore": "/proposal-writer/projects",
+      "routes": [
+        "/proposal-writer",
+        "/proposal-writer/projects",
+        "/proposal-writer/sections",
+        "/proposal-writer/drafts",
+        "/proposal-writer/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/proposal-writer/index.tsx"
+    },
+    {
+      "slug": "invoice-receipt-maker",
+      "overview": "/invoice-receipt-maker",
+      "explore": "/invoice-receipt-maker/projects",
+      "routes": [
+        "/invoice-receipt-maker",
+        "/invoice-receipt-maker/projects",
+        "/invoice-receipt-maker/documents",
+        "/invoice-receipt-maker/items",
+        "/invoice-receipt-maker/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/invoice-receipt-maker/index.tsx"
+    },
+    {
+      "slug": "contract-generator",
+      "overview": "/contract-generator",
+      "explore": "/contract-generator/projects",
+      "routes": [
+        "/contract-generator",
+        "/contract-generator/projects",
+        "/contract-generator/documents",
+        "/contract-generator/clauses",
+        "/contract-generator/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/contract-generator/index.tsx"
+    },
+    {
+      "slug": "presentation-designer",
+      "overview": "/presentation-designer",
+      "explore": "/presentation-designer/projects",
+      "routes": [
+        "/presentation-designer",
+        "/presentation-designer/projects",
+        "/presentation-designer/slides",
+        "/presentation-designer/assets",
+        "/presentation-designer/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/presentation-designer/index.tsx"
+    },
+    {
+      "slug": "career-planner",
+      "overview": "/career-planner",
+      "explore": "/career-planner/goals",
+      "routes": [
+        "/career-planner",
+        "/career-planner/goals",
+        "/career-planner/roadmaps",
+        "/career-planner/milestones",
+        "/career-planner/review"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/career-planner/index.tsx"
+    },
+    {
+      "slug": "linkedin-bio-optimizer",
+      "overview": "/linkedin-bio-optimizer",
+      "explore": "/linkedin-bio-optimizer/bios",
+      "routes": [
+        "/linkedin-bio-optimizer",
+        "/linkedin-bio-optimizer/bios",
+        "/linkedin-bio-optimizer/templates",
+        "/linkedin-bio-optimizer/versions"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/linkedin-bio-optimizer/index.tsx"
+    },
+    {
+      "slug": "client-feedback-analyzer",
+      "overview": "/client-feedback-analyzer",
+      "explore": "/client-feedback-analyzer/clients",
+      "routes": [
+        "/client-feedback-analyzer",
+        "/client-feedback-analyzer/clients",
+        "/client-feedback-analyzer/feedback",
+        "/client-feedback-analyzer/insights",
+        "/client-feedback-analyzer/reports"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/client-feedback-analyzer/index.tsx"
+    },
+    {
+      "slug": "book-summary-generator",
+      "overview": "/book-summary-generator",
+      "explore": "/book-summary-generator/books",
+      "routes": [
+        "/book-summary-generator",
+        "/book-summary-generator/books",
+        "/book-summary-generator/summaries",
+        "/book-summary-generator/notes",
+        "/book-summary-generator/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/book-summary-generator/index.tsx"
+    },
+    {
+      "slug": "social-caption-generator",
+      "overview": "/social-caption-generator",
+      "explore": "/social-caption-generator/projects",
+      "routes": [
+        "/social-caption-generator",
+        "/social-caption-generator/projects",
+        "/social-caption-generator/captions",
+        "/social-caption-generator/templates",
+        "/social-caption-generator/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/social-caption-generator/index.tsx"
+    },
+    {
+      "slug": "prompt-builder",
+      "overview": "/prompt-builder",
+      "explore": "/prompt-builder/projects",
+      "routes": [
+        "/prompt-builder",
+        "/prompt-builder/projects",
+        "/prompt-builder/prompts",
+        "/prompt-builder/templates",
+        "/prompt-builder/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/prompt-builder/index.tsx"
+    },
+    {
+      "slug": "speech-writer",
+      "overview": "/speech-writer",
+      "explore": "/speech-writer/projects",
+      "routes": [
+        "/speech-writer",
+        "/speech-writer/projects",
+        "/speech-writer/speeches",
+        "/speech-writer/templates",
+        "/speech-writer/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/speech-writer/index.tsx"
+    },
+    {
+      "slug": "ai-translator-and-tone-fixer",
+      "overview": "/ai-translator-and-tone-fixer",
+      "explore": "/ai-translator-and-tone-fixer/projects",
+      "routes": [
+        "/ai-translator-and-tone-fixer",
+        "/ai-translator-and-tone-fixer/projects",
+        "/ai-translator-and-tone-fixer/translations",
+        "/ai-translator-and-tone-fixer/templates",
+        "/ai-translator-and-tone-fixer/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/ai-translator-and-tone-fixer/index.tsx"
+    },
+    {
+      "slug": "snippet-generator",
+      "overview": "/snippet-generator",
+      "explore": "/snippet-generator/projects",
+      "routes": [
+        "/snippet-generator",
+        "/snippet-generator/projects",
+        "/snippet-generator/snippets",
+        "/snippet-generator/categories",
+        "/snippet-generator/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/snippet-generator/index.tsx"
+    },
+    {
+      "slug": "price-checker",
+      "overview": "/price-checker",
+      "explore": "/price-checker/analyze",
+      "routes": [
+        "/price-checker",
+        "/price-checker/analyze",
+        "/price-checker/analyses",
+        "/price-checker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/price-checker/index.tsx"
+    },
+    {
+      "slug": "qr-code-creator",
+      "overview": "/qr-code-creator",
+      "explore": "/qr-code-creator/generator",
+      "routes": [
+        "/qr-code-creator",
+        "/qr-code-creator/generator"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/qr-code-creator/index.tsx"
+    },
+    {
+      "slug": "clipboard-manager",
+      "overview": "/clipboard-manager",
+      "explore": "/clipboard-manager/workspace",
+      "routes": [
+        "/clipboard-manager",
+        "/clipboard-manager/workspace",
+        "/clipboard-manager/history",
+        "/clipboard-manager/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/clipboard-manager/index.tsx"
+    },
+    {
+      "slug": "password-generator",
+      "overview": "/password-generator",
+      "explore": "/password-generator/generator",
+      "routes": [
+        "/password-generator",
+        "/password-generator/generator"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/password-generator/index.tsx"
+    },
+    {
+      "slug": "api-tester",
+      "overview": "/api-tester",
+      "explore": "/api-tester/workspace",
+      "routes": [
+        "/api-tester",
+        "/api-tester/workspace",
+        "/api-tester/collections",
+        "/api-tester/history",
+        "/api-tester/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/api-tester/index.tsx"
+    },
+    {
+      "slug": "json-formatter",
+      "overview": "/json-formatter",
+      "explore": "/json-formatter/formatter",
+      "routes": [
+        "/json-formatter",
+        "/json-formatter/formatter"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/json-formatter/index.tsx"
+    },
+    {
+      "slug": "markdown-editor",
+      "overview": "/markdown-editor",
+      "explore": "/markdown-editor/overview",
+      "routes": [
+        "/markdown-editor",
+        "/markdown-editor/overview",
+        "/markdown-editor/editor"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/markdown-editor/index.tsx"
+    },
+    {
+      "slug": "time-zone-scheduler",
+      "overview": "/time-zone-scheduler",
+      "explore": "/time-zone-scheduler/scheduler",
+      "routes": [
+        "/time-zone-scheduler",
+        "/time-zone-scheduler/scheduler",
+        "/time-zone-scheduler/schedules",
+        "/time-zone-scheduler/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/time-zone-scheduler/index.tsx"
+    },
+    {
+      "slug": "browser-pdf-reader",
+      "overview": "/browser-pdf-reader",
+      "explore": "/browser-pdf-reader/workspace",
+      "routes": [
+        "/browser-pdf-reader",
+        "/browser-pdf-reader/workspace",
+        "/browser-pdf-reader/history",
+        "/browser-pdf-reader/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/browser-pdf-reader/index.tsx"
+    },
+    {
+      "slug": "wellness-and-goal-planner",
+      "overview": "/wellness-and-goal-planner",
+      "explore": "/wellness-and-goal-planner/areas",
+      "routes": [
+        "/wellness-and-goal-planner",
+        "/wellness-and-goal-planner/areas",
+        "/wellness-and-goal-planner/goals",
+        "/wellness-and-goal-planner/reflections"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/wellness-and-goal-planner/index.tsx"
+    },
+    {
+      "slug": "meal-planner",
+      "overview": "/meal-planner",
+      "explore": "/meal-planner/recipes",
+      "routes": [
+        "/meal-planner",
+        "/meal-planner/recipes",
+        "/meal-planner/meal-plans",
+        "/meal-planner/calendar"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/meal-planner/index.tsx"
+    },
+    {
+      "slug": "fitness-tracker",
+      "overview": "/fitness-tracker",
+      "explore": "/fitness-tracker/activities",
+      "routes": [
+        "/fitness-tracker",
+        "/fitness-tracker/activities",
+        "/fitness-tracker/logs",
+        "/fitness-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/fitness-tracker/index.tsx"
+    },
+    {
+      "slug": "mood-journal",
+      "overview": "/mood-journal",
+      "explore": "/mood-journal/journal",
+      "routes": [
+        "/mood-journal",
+        "/mood-journal/journal"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/mood-journal/index.tsx"
+    },
+    {
+      "slug": "expense-tracker",
+      "overview": "/expense-tracker",
+      "explore": "/expense-tracker/expenses",
+      "routes": [
+        "/expense-tracker",
+        "/expense-tracker/expenses",
+        "/expense-tracker/categories",
+        "/expense-tracker/history",
+        "/expense-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/expense-tracker/index.tsx"
+    },
+    {
+      "slug": "travel-itinerary-builder",
+      "overview": "/travel-itinerary-builder",
+      "explore": "/travel-itinerary-builder/plan",
+      "routes": [
+        "/travel-itinerary-builder",
+        "/travel-itinerary-builder/plan",
+        "/travel-itinerary-builder/itineraries",
+        "/travel-itinerary-builder/itineraries/:itineraryId",
+        "/travel-itinerary-builder/categories",
+        "/travel-itinerary-builder/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/travel-itinerary-builder/index.tsx"
+    },
+    {
+      "slug": "language-learning-buddy",
+      "overview": "/language-learning-buddy",
+      "explore": "/language-learning-buddy/vocabulary",
+      "routes": [
+        "/language-learning-buddy",
+        "/language-learning-buddy/vocabulary",
+        "/language-learning-buddy/practice",
+        "/language-learning-buddy/progress"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/language-learning-buddy/index.tsx"
+    },
+    {
+      "slug": "eco-habit-tracker",
+      "overview": "/eco-habit-tracker",
+      "explore": "/eco-habit-tracker/tracker",
+      "routes": [
+        "/eco-habit-tracker",
+        "/eco-habit-tracker/tracker"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/eco-habit-tracker/index.tsx"
+    },
+    {
+      "slug": "interview-scheduler",
+      "overview": "/interview-scheduler",
+      "explore": "/interview-scheduler/schedule",
+      "routes": [
+        "/interview-scheduler",
+        "/interview-scheduler/schedule",
+        "/interview-scheduler/interviews",
+        "/interview-scheduler/calendar"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/interview-scheduler/index.tsx"
+    },
+    {
+      "slug": "job-tracker",
+      "overview": "/job-tracker",
+      "explore": "/job-tracker/jobs",
+      "routes": [
+        "/job-tracker",
+        "/job-tracker/jobs",
+        "/job-tracker/applications",
+        "/job-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/job-tracker/index.tsx"
+    },
+    {
+      "slug": "ai-job-interviewer",
+      "overview": "/ai-job-interviewer",
+      "explore": "/ai-job-interviewer/sessions",
+      "routes": [
+        "/ai-job-interviewer",
+        "/ai-job-interviewer/sessions",
+        "/ai-job-interviewer/questions",
+        "/ai-job-interviewer/answers",
+        "/ai-job-interviewer/results"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/ai-job-interviewer/index.tsx"
+    },
+    {
+      "slug": "email-assistant",
+      "overview": "/email-assistant",
+      "explore": "/email-assistant/projects",
+      "routes": [
+        "/email-assistant",
+        "/email-assistant/projects",
+        "/email-assistant/drafts",
+        "/email-assistant/templates",
+        "/email-assistant/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/email-assistant/index.tsx"
+    },
+    {
+      "slug": "grammar-and-paraphrasing-assistant",
+      "overview": "/grammar-and-paraphrasing-assistant",
+      "explore": "/grammar-and-paraphrasing-assistant/projects",
+      "routes": [
+        "/grammar-and-paraphrasing-assistant",
+        "/grammar-and-paraphrasing-assistant/projects",
+        "/grammar-and-paraphrasing-assistant/editor",
+        "/grammar-and-paraphrasing-assistant/results",
+        "/grammar-and-paraphrasing-assistant/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/grammar-and-paraphrasing-assistant/index.tsx"
+    },
+    {
+      "slug": "creative-title-generator",
+      "overview": "/creative-title-generator",
+      "explore": "/creative-title-generator/overview",
+      "routes": [
+        "/creative-title-generator",
+        "/creative-title-generator/overview",
+        "/creative-title-generator/projects",
+        "/creative-title-generator/generator",
+        "/creative-title-generator/results",
+        "/creative-title-generator/history"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/creative-title-generator/index.tsx"
+    },
+    {
+      "slug": "file-optimizer",
+      "overview": "/file-optimizer",
+      "explore": "/file-optimizer/compressor",
+      "routes": [
+        "/file-optimizer",
+        "/file-optimizer/compressor",
+        "/file-optimizer/history",
+        "/file-optimizer/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/file-optimizer/index.tsx"
+    },
+    {
+      "slug": "voice-converter",
+      "overview": "/voice-converter",
+      "explore": "/voice-converter/workspace",
+      "routes": [
+        "/voice-converter",
+        "/voice-converter/workspace",
+        "/voice-converter/history",
+        "/voice-converter/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/voice-converter/index.tsx"
+    },
+    {
+      "slug": "project-tracker",
+      "overview": "/project-tracker",
+      "explore": "/project-tracker/projects",
+      "routes": [
+        "/project-tracker",
+        "/project-tracker/projects",
+        "/project-tracker/tasks",
+        "/project-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/project-tracker/index.tsx"
+    },
+    {
+      "slug": "task-prioritizer",
+      "overview": "/task-prioritizer",
+      "explore": "/task-prioritizer/prioritize",
+      "routes": [
+        "/task-prioritizer",
+        "/task-prioritizer/prioritize",
+        "/task-prioritizer/tasks",
+        "/task-prioritizer/history",
+        "/task-prioritizer/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/task-prioritizer/index.tsx"
+    },
+    {
+      "slug": "goal-tracker",
+      "overview": "/goal-tracker",
+      "explore": "/goal-tracker/goals",
+      "routes": [
+        "/goal-tracker",
+        "/goal-tracker/goals",
+        "/goal-tracker/progress",
+        "/goal-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/goal-tracker/index.tsx"
+    },
+    {
+      "slug": "medicine-reminder",
+      "overview": "/medicine-reminder",
+      "explore": "/medicine-reminder/medicines",
+      "routes": [
+        "/medicine-reminder",
+        "/medicine-reminder/medicines",
+        "/medicine-reminder/schedules",
+        "/medicine-reminder/history",
+        "/medicine-reminder/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/medicine-reminder/index.tsx"
+    },
+    {
+      "slug": "health-report-organizer",
+      "overview": "/health-report-organizer",
+      "explore": "/health-report-organizer/reports",
+      "routes": [
+        "/health-report-organizer",
+        "/health-report-organizer/reports",
+        "/health-report-organizer/categories",
+        "/health-report-organizer/documents",
+        "/health-report-organizer/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/health-report-organizer/index.tsx"
+    },
+    {
+      "slug": "family-task-planner",
+      "overview": "/family-task-planner",
+      "explore": "/family-task-planner/dashboard",
+      "routes": [
+        "/family-task-planner",
+        "/family-task-planner/dashboard",
+        "/family-task-planner/tasks",
+        "/family-task-planner/family-members",
+        "/family-task-planner/categories",
+        "/family-task-planner/calendar",
+        "/family-task-planner/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/family-task-planner/index.tsx"
+    },
+    {
+      "slug": "rent-a-car",
+      "overview": "/rent-a-car",
+      "explore": "/rent-a-car/searches",
+      "routes": [
+        "/rent-a-car",
+        "/rent-a-car/searches",
+        "/rent-a-car/vehicles",
+        "/rent-a-car/bookings",
+        "/rent-a-car/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/rent-a-car/index.tsx"
+    },
+    {
+      "slug": "car-pool",
+      "overview": "/car-pool",
+      "explore": "/car-pool/rides",
+      "routes": [
+        "/car-pool",
+        "/car-pool/rides",
+        "/car-pool/my-trips",
+        "/car-pool/requests",
+        "/car-pool/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/car-pool/index.tsx"
+    },
+    {
+      "slug": "vehicle-maintenance-tracker",
+      "overview": "/vehicle-maintenance-tracker",
+      "explore": "/vehicle-maintenance-tracker/vehicles",
+      "routes": [
+        "/vehicle-maintenance-tracker",
+        "/vehicle-maintenance-tracker/vehicles",
+        "/vehicle-maintenance-tracker/maintenance",
+        "/vehicle-maintenance-tracker/reminders",
+        "/vehicle-maintenance-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/vehicle-maintenance-tracker/index.tsx"
+    },
+    {
+      "slug": "parking-expense-tracker",
+      "overview": "/parking-expense-tracker",
+      "explore": "/parking-expense-tracker/expenses",
+      "routes": [
+        "/parking-expense-tracker",
+        "/parking-expense-tracker/expenses",
+        "/parking-expense-tracker/locations",
+        "/parking-expense-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/parking-expense-tracker/index.tsx"
+    },
+    {
+      "slug": "trip-cost-calculator",
+      "overview": "/trip-cost-calculator",
+      "explore": "/trip-cost-calculator/trips",
+      "routes": [
+        "/trip-cost-calculator",
+        "/trip-cost-calculator/trips",
+        "/trip-cost-calculator/expenses",
+        "/trip-cost-calculator/comparison",
+        "/trip-cost-calculator/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/trip-cost-calculator/index.tsx"
+    },
+    {
+      "slug": "corporate-tax-uae",
+      "overview": "/corporate-tax-uae",
+      "explore": "/corporate-tax-uae/tax-periods",
+      "routes": [
+        "/corporate-tax-uae",
+        "/corporate-tax-uae/tax-periods",
+        "/corporate-tax-uae/adjustments",
+        "/corporate-tax-uae/obligations",
+        "/corporate-tax-uae/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/corporate-tax-uae/index.tsx"
+    },
+    {
+      "slug": "vat-assistant-uae",
+      "overview": "/vat-assistant-uae",
+      "explore": "/vat-assistant-uae/registrations",
+      "routes": [
+        "/vat-assistant-uae",
+        "/vat-assistant-uae/registrations",
+        "/vat-assistant-uae/returns",
+        "/vat-assistant-uae/transactions",
+        "/vat-assistant-uae/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/vat-assistant-uae/index.tsx"
+    },
+    {
+      "slug": "school-administration",
+      "overview": "/school-administration",
+      "explore": "/school-administration/students",
+      "routes": [
+        "/school-administration",
+        "/school-administration/students",
+        "/school-administration/classes",
+        "/school-administration/attendance",
+        "/school-administration/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/school-administration/index.tsx"
+    },
+    {
+      "slug": "subscription-manager",
+      "overview": "/subscription-manager",
+      "explore": "/subscription-manager/subscriptions",
+      "routes": [
+        "/subscription-manager",
+        "/subscription-manager/subscriptions",
+        "/subscription-manager/categories",
+        "/subscription-manager/renewals",
+        "/subscription-manager/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/subscription-manager/index.tsx"
+    },
+    {
+      "slug": "emi-loan-calculator",
+      "overview": "/emi-loan-calculator",
+      "explore": "/emi-loan-calculator/calculator",
+      "routes": [
+        "/emi-loan-calculator",
+        "/emi-loan-calculator/calculator",
+        "/emi-loan-calculator/saved-loans",
+        "/emi-loan-calculator/compare",
+        "/emi-loan-calculator/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/emi-loan-calculator/index.tsx"
+    },
+    {
+      "slug": "document-expiry-tracker",
+      "overview": "/document-expiry-tracker",
+      "explore": "/document-expiry-tracker/documents",
+      "routes": [
+        "/document-expiry-tracker",
+        "/document-expiry-tracker/documents",
+        "/document-expiry-tracker/expiry-dashboard",
+        "/document-expiry-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/document-expiry-tracker/index.tsx"
+    },
+    {
+      "slug": "digital-document-vault",
+      "overview": "/digital-document-vault",
+      "explore": "/digital-document-vault/documents",
+      "routes": [
+        "/digital-document-vault",
+        "/digital-document-vault/documents",
+        "/digital-document-vault/categories",
+        "/digital-document-vault/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/digital-document-vault/index.tsx"
+    },
+    {
+      "slug": "home-inventory-manager",
+      "overview": "/home-inventory-manager",
+      "explore": "/home-inventory-manager/items",
+      "routes": [
+        "/home-inventory-manager",
+        "/home-inventory-manager/items",
+        "/home-inventory-manager/categories",
+        "/home-inventory-manager/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/home-inventory-manager/index.tsx"
+    },
+    {
+      "slug": "household-expense-splitter",
+      "overview": "/household-expense-splitter",
+      "explore": "/household-expense-splitter/members",
+      "routes": [
+        "/household-expense-splitter",
+        "/household-expense-splitter/members",
+        "/household-expense-splitter/expenses",
+        "/household-expense-splitter/settlements",
+        "/household-expense-splitter/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/household-expense-splitter/index.tsx"
+    },
+    {
+      "slug": "emergency-contacts-organizer",
+      "overview": "/emergency-contacts-organizer",
+      "explore": "/emergency-contacts-organizer/contacts",
+      "routes": [
+        "/emergency-contacts-organizer",
+        "/emergency-contacts-organizer/contacts",
+        "/emergency-contacts-organizer/categories",
+        "/emergency-contacts-organizer/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/emergency-contacts-organizer/index.tsx"
+    },
+    {
+      "slug": "packing-checklist",
+      "overview": "/packing-checklist",
+      "explore": "/packing-checklist/checklists",
+      "routes": [
+        "/packing-checklist",
+        "/packing-checklist/checklists",
+        "/packing-checklist/categories",
+        "/packing-checklist/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/packing-checklist/index.tsx"
+    },
+    {
+      "slug": "birthday-and-anniversary-reminder",
+      "overview": "/birthday-and-anniversary-reminder",
+      "explore": "/birthday-and-anniversary-reminder/reminders",
+      "routes": [
+        "/birthday-and-anniversary-reminder",
+        "/birthday-and-anniversary-reminder/reminders",
+        "/birthday-and-anniversary-reminder/types",
+        "/birthday-and-anniversary-reminder/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/birthday-and-anniversary-reminder/index.tsx"
+    },
+    {
+      "slug": "home-maintenance-planner",
+      "overview": "/home-maintenance-planner",
+      "explore": "/home-maintenance-planner/tasks",
+      "routes": [
+        "/home-maintenance-planner",
+        "/home-maintenance-planner/tasks",
+        "/home-maintenance-planner/areas",
+        "/home-maintenance-planner/categories",
+        "/home-maintenance-planner/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/home-maintenance-planner/index.tsx"
+    },
+    {
+      "slug": "doctor-visit-tracker",
+      "overview": "/doctor-visit-tracker",
+      "explore": "/doctor-visit-tracker/visits",
+      "routes": [
+        "/doctor-visit-tracker",
+        "/doctor-visit-tracker/visits",
+        "/doctor-visit-tracker/specialties",
+        "/doctor-visit-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/doctor-visit-tracker/index.tsx"
+    },
+    {
+      "slug": "water-intake-tracker",
+      "overview": "/water-intake-tracker",
+      "explore": "/water-intake-tracker/entries",
+      "routes": [
+        "/water-intake-tracker",
+        "/water-intake-tracker/entries",
+        "/water-intake-tracker/goals",
+        "/water-intake-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/water-intake-tracker/index.tsx"
+    },
+    {
+      "slug": "vaccination-tracker",
+      "overview": "/vaccination-tracker",
+      "explore": "/vaccination-tracker/records",
+      "routes": [
+        "/vaccination-tracker",
+        "/vaccination-tracker/records",
+        "/vaccination-tracker/profiles",
+        "/vaccination-tracker/vaccines",
+        "/vaccination-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/vaccination-tracker/index.tsx"
+    },
+    {
+      "slug": "symptom-journal",
+      "overview": "/symptom-journal",
+      "explore": "/symptom-journal/entries",
+      "routes": [
+        "/symptom-journal",
+        "/symptom-journal/entries",
+        "/symptom-journal/categories",
+        "/symptom-journal/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/symptom-journal/index.tsx"
+    },
+    {
+      "slug": "first-aid-guide",
+      "overview": "/first-aid-guide",
+      "explore": "/first-aid-guide/guides",
+      "routes": [
+        "/first-aid-guide",
+        "/first-aid-guide/guides",
+        "/first-aid-guide/categories",
+        "/first-aid-guide/bookmarks",
+        "/first-aid-guide/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/first-aid-guide/index.tsx"
+    },
+    {
+      "slug": "fuel-expense-tracker",
+      "overview": "/fuel-expense-tracker",
+      "explore": "/fuel-expense-tracker/vehicles",
+      "routes": [
+        "/fuel-expense-tracker",
+        "/fuel-expense-tracker/vehicles",
+        "/fuel-expense-tracker/entries",
+        "/fuel-expense-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/fuel-expense-tracker/index.tsx"
+    },
+    {
+      "slug": "driver-logbook",
+      "overview": "/driver-logbook",
+      "explore": "/driver-logbook/trips",
+      "routes": [
+        "/driver-logbook",
+        "/driver-logbook/trips",
+        "/driver-logbook/vehicles",
+        "/driver-logbook/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/driver-logbook/index.tsx"
+    },
+    {
+      "slug": "vehicle-document-tracker",
+      "overview": "/vehicle-document-tracker",
+      "explore": "/vehicle-document-tracker/documents",
+      "routes": [
+        "/vehicle-document-tracker",
+        "/vehicle-document-tracker/documents",
+        "/vehicle-document-tracker/vehicles",
+        "/vehicle-document-tracker/document-types",
+        "/vehicle-document-tracker/insights"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/vehicle-document-tracker/index.tsx"
+    },
+    {
+      "slug": "meeting-scheduler",
+      "overview": "/meeting-scheduler",
+      "explore": "/meeting-scheduler/meetings",
+      "routes": [
+        "/meeting-scheduler",
+        "/meeting-scheduler/meetings",
+        "/meeting-scheduler/meetings/:meetingId"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/meeting-scheduler/index.tsx"
+    },
+    {
+      "slug": "leave-planner",
+      "overview": "/leave-planner",
+      "explore": "/leave-planner/leaves",
+      "routes": [
+        "/leave-planner",
+        "/leave-planner/leaves",
+        "/leave-planner/leaves/:leaveId",
+        "/leave-planner/types"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/leave-planner/index.tsx"
+    },
+    {
+      "slug": "shift-planner",
+      "overview": "/shift-planner",
+      "explore": "/shift-planner/shifts",
+      "routes": [
+        "/shift-planner",
+        "/shift-planner/shifts",
+        "/shift-planner/shifts/:shiftId",
+        "/shift-planner/types",
+        "/shift-planner/members"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/shift-planner/index.tsx"
+    },
+    {
+      "slug": "work-log-tracker",
+      "overview": "/work-log-tracker",
+      "explore": "/work-log-tracker/logs",
+      "routes": [
+        "/work-log-tracker",
+        "/work-log-tracker/logs",
+        "/work-log-tracker/logs/:workLogId",
+        "/work-log-tracker/projects"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/work-log-tracker/index.tsx"
+    },
+    {
+      "slug": "bill-splitter",
+      "overview": "/bill-splitter",
+      "explore": "/bill-splitter/bills",
+      "routes": [
+        "/bill-splitter",
+        "/bill-splitter/bills",
+        "/bill-splitter/bills/:billId"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/bill-splitter/index.tsx"
+    },
+    {
+      "slug": "savings-goal-planner",
+      "overview": "/savings-goal-planner",
+      "explore": "/savings-goal-planner/goals",
+      "routes": [
+        "/savings-goal-planner",
+        "/savings-goal-planner/goals",
+        "/savings-goal-planner/goals/:goalId"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/savings-goal-planner/index.tsx"
+    },
+    {
+      "slug": "salary-breakdown-calculator",
+      "overview": "/salary-breakdown-calculator",
+      "explore": "/salary-breakdown-calculator/scenarios",
+      "routes": [
+        "/salary-breakdown-calculator",
+        "/salary-breakdown-calculator/scenarios",
+        "/salary-breakdown-calculator/scenarios/:scenarioId",
+        "/salary-breakdown-calculator/compare"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/salary-breakdown-calculator/index.tsx"
+    },
+    {
+      "slug": "net-worth-tracker",
+      "overview": "/net-worth-tracker",
+      "explore": "/net-worth-tracker/accounts",
+      "routes": [
+        "/net-worth-tracker",
+        "/net-worth-tracker/accounts",
+        "/net-worth-tracker/accounts/:id",
+        "/net-worth-tracker/snapshots",
+        "/net-worth-tracker/snapshots/:id",
+        "/net-worth-tracker/compare"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/net-worth-tracker/index.tsx"
+    },
+    {
+      "slug": "decision-maker",
+      "overview": "/decision-maker",
+      "explore": "/decision-maker/decisions",
+      "routes": [
+        "/decision-maker",
+        "/decision-maker/decisions",
+        "/decision-maker/decisions/:id"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/decision-maker/index.tsx"
+    },
+    {
+      "slug": "errand-planner",
+      "overview": "/errand-planner",
+      "explore": "/errand-planner/errands",
+      "routes": [
+        "/errand-planner",
+        "/errand-planner/errands",
+        "/errand-planner/errands/:id",
+        "/errand-planner/categories"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/errand-planner/index.tsx"
+    },
+    {
+      "slug": "local-services-finder",
+      "overview": "/local-services-finder",
+      "explore": "/local-services-finder/providers",
+      "routes": [
+        "/local-services-finder",
+        "/local-services-finder/providers",
+        "/local-services-finder/providers/:id",
+        "/local-services-finder/categories"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/local-services-finder/index.tsx"
+    },
+    {
+      "slug": "emergency-checklist",
+      "overview": "/emergency-checklist",
+      "explore": "/emergency-checklist/checklists",
+      "routes": [
+        "/emergency-checklist",
+        "/emergency-checklist/checklists",
+        "/emergency-checklist/checklists/:id",
+        "/emergency-checklist/categories"
+      ],
+      "protected": true,
+      "source": "ansiversa/src/modules/emergency-checklist/index.tsx"
+    }
+  ]
+}

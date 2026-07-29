@@ -1,0 +1,3343 @@
+{
+  "generatedAt": "2026-07-18",
+  "note": "Contains variable names and structural identifiers only. No database URLs or secrets are stored.",
+  "platform": {
+    "databaseEnv": "DATABASE_URL",
+    "alembicConfig": "ansiversa-api/migrations/parent/env.py",
+    "versionTable": null
+  },
+  "apps": [
+    {
+      "slug": "quiz",
+      "backendModule": "quiz",
+      "databaseEnv": "QUIZ_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/quiz/env.py",
+      "migrationHead": "20260628_0001_add_quiz_history_indexes",
+      "versionTable": null,
+      "tables": [
+        "Platform",
+        "Subject",
+        "Topic",
+        "Roadmap",
+        "Question",
+        "Result",
+        "QuizAttempt",
+        "QuizAttemptQuestion"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Result.id",
+          "onDelete": null
+        },
+        {
+          "target": "QuizAttempt.id",
+          "onDelete": null
+        },
+        {
+          "target": "Question.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Result.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "QuizAttempt.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Question.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "research-assistant",
+      "backendModule": "research_assistant",
+      "databaseEnv": "RESEARCH_ASSISTANT_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/research-assistant/env.py",
+      "migrationHead": "20260628_0001_add_research_assistant_indexes",
+      "versionTable": null,
+      "tables": [
+        "ResearchTopics",
+        "ResearchNotes",
+        "ResearchReferences",
+        "ResearchJobs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ResearchTopics.id",
+          "onDelete": null
+        },
+        {
+          "target": "ResearchTopics.id",
+          "onDelete": null
+        },
+        {
+          "target": "ResearchTopics.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ResearchTopics.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ResearchTopics.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ResearchTopics.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "ai-notes-summarizer",
+      "backendModule": "ai_notes_summarizer",
+      "databaseEnv": "AI_NOTES_SUMMARIZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/ai-notes-summarizer/env.py",
+      "migrationHead": "20260628_0001_add_ai_notes_summarizer_indexes",
+      "versionTable": null,
+      "tables": [
+        "NotesDocuments",
+        "NoteSummaries",
+        "SummaryJobs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "NotesDocuments.id",
+          "onDelete": null
+        },
+        {
+          "target": "NotesDocuments.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "NotesDocuments.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "NotesDocuments.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "concept-explainer",
+      "backendModule": "concept_explainer",
+      "databaseEnv": "CONCEPT_EXPLAINER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/concept-explainer/env.py",
+      "migrationHead": "20260628_0001_add_concept_explainer_indexes",
+      "versionTable": null,
+      "tables": [
+        "Concepts",
+        "ConceptSteps",
+        "ConceptChecks",
+        "ConceptJobs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Concepts.id",
+          "onDelete": null
+        },
+        {
+          "target": "Concepts.id",
+          "onDelete": null
+        },
+        {
+          "target": "Concepts.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Concepts.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Concepts.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Concepts.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "study-planner",
+      "backendModule": "study_planner",
+      "databaseEnv": "STUDY_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/study-planner/env.py",
+      "migrationHead": "20260628_0001_add_study_planner_indexes",
+      "versionTable": null,
+      "tables": [
+        "StudyPlans",
+        "StudyPlanTasks",
+        "StudyLogs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "StudyPlans.id",
+          "onDelete": null
+        },
+        {
+          "target": "StudyPlans.id",
+          "onDelete": null
+        },
+        {
+          "target": "StudyPlanTasks.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "StudyPlans.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "StudyPlans.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "StudyPlanTasks.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "course-tracker",
+      "backendModule": "course_tracker",
+      "databaseEnv": "COURSE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/course-tracker/env.py",
+      "migrationHead": "20260628_0001_add_course_tracker_indexes",
+      "versionTable": null,
+      "tables": [
+        "Courses",
+        "CourseModules",
+        "CourseProgressLogs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Courses.id",
+          "onDelete": null
+        },
+        {
+          "target": "Courses.id",
+          "onDelete": null
+        },
+        {
+          "target": "CourseModules.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Courses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Courses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CourseModules.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "dictionary-plus",
+      "backendModule": "dictionary_plus",
+      "databaseEnv": "DICTIONARY_PLUS_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/dictionary-plus/env.py",
+      "migrationHead": "20260628_0001_add_dictionary_plus_indexes",
+      "versionTable": null,
+      "tables": [
+        "DictionaryLookups",
+        "SavedWords",
+        "WordLists"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "DictionaryLookups.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "DictionaryLookups.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "formula-finder",
+      "backendModule": "formula_finder",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "lesson-builder",
+      "backendModule": "lesson_builder",
+      "databaseEnv": "LESSON_BUILDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/lesson-builder/env.py",
+      "migrationHead": "20260628_0001_add_lesson_builder_indexes",
+      "versionTable": null,
+      "tables": [
+        "LessonPlans",
+        "LessonSections"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "LessonPlans.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "LessonPlans.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "memory-trainer",
+      "backendModule": "memory_trainer",
+      "databaseEnv": "MEMORY_TRAINER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/memory-trainer/env.py",
+      "migrationHead": "20260628_0001_add_memory_trainer_indexes",
+      "versionTable": null,
+      "tables": [
+        "MemoryGames",
+        "MemorySessions",
+        "MemoryRounds",
+        "MemoryPerformance"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "MemoryGames.id",
+          "onDelete": null
+        },
+        {
+          "target": "MemorySessions.id",
+          "onDelete": null
+        },
+        {
+          "target": "MemoryGames.id",
+          "onDelete": null
+        },
+        {
+          "target": "MemorySessions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "MemoryGames.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MemorySessions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MemoryGames.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MemorySessions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "daily-word-challenge",
+      "backendModule": "daily_word_challenge",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "smart-textbook-scanner",
+      "backendModule": "smart_textbook_scanner",
+      "databaseEnv": "SMART_TEXTBOOK_SCANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/smart-textbook-scanner/env.py",
+      "migrationHead": "20260628_0001_add_smart_textbook_scanner_indexes",
+      "versionTable": null,
+      "tables": [
+        "TextbookScans",
+        "TextbookPages",
+        "ExtractedNotes"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "TextbookScans.id",
+          "onDelete": null
+        },
+        {
+          "target": "TextbookScans.id",
+          "onDelete": null
+        },
+        {
+          "target": "TextbookPages.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TextbookScans.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "TextbookScans.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "TextbookPages.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "resume-builder",
+      "backendModule": "resume_builder",
+      "databaseEnv": "RESUME_BUILDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/resume-builder/env.py",
+      "migrationHead": "20260628_0001_add_resume_builder_indexes",
+      "versionTable": null,
+      "tables": [
+        "ResumeProject",
+        "ResumeSection",
+        "ResumeItem"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ResumeProject.id",
+          "onDelete": null
+        },
+        {
+          "target": "ResumeSection.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ResumeProject.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ResumeSection.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "visiting-card-maker",
+      "backendModule": "visiting_card_maker",
+      "databaseEnv": "VISITING_CARD_MAKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/visiting-card-maker/env.py",
+      "migrationHead": "20260628_0001_add_visiting_card_maker_indexes",
+      "versionTable": null,
+      "tables": [
+        "CardProfiles",
+        "CardDesigns"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "CardProfiles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "CardProfiles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "interview-coach",
+      "backendModule": "interview_coach",
+      "databaseEnv": "INTERVIEW_COACH_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/interview-coach/env.py",
+      "migrationHead": "20260628_0001_add_interview_coach_indexes",
+      "versionTable": null,
+      "tables": [
+        "InterviewSessions",
+        "InterviewQuestions",
+        "InterviewAnswers",
+        "InterviewReviews"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "InterviewSessions.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewSessions.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewQuestions.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewSessions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "InterviewSessions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewSessions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewQuestions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewSessions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "job-description-analyzer",
+      "backendModule": "job_description_analyzer",
+      "databaseEnv": "JOB_DESCRIPTION_ANALYZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/job-description-analyzer/env.py",
+      "migrationHead": "20260630_0001_add_job_description_analyzer_tables",
+      "versionTable": "job_description_analyzer_alembic_version",
+      "tables": [
+        "JobDescriptions",
+        "JobAnalyses",
+        "SkillMatches",
+        "AnalysisHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "JobDescriptions.id",
+          "onDelete": null
+        },
+        {
+          "target": "JobAnalyses.id",
+          "onDelete": null
+        },
+        {
+          "target": "JobAnalyses.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "JobDescriptions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "JobAnalyses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "JobAnalyses.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "portfolio-creator",
+      "backendModule": "portfolio_creator",
+      "databaseEnv": "PORTFOLIO_CREATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/portfolio-creator/env.py",
+      "migrationHead": "20260628_0001_add_portfolio_creator_indexes",
+      "versionTable": null,
+      "tables": [
+        "PortfolioProfiles",
+        "PortfolioProjects",
+        "PortfolioSkills",
+        "PortfolioPublishSettings"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "PortfolioProfiles.id",
+          "onDelete": null
+        },
+        {
+          "target": "PortfolioProfiles.id",
+          "onDelete": null
+        },
+        {
+          "target": "PortfolioProfiles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "PortfolioProfiles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PortfolioProfiles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PortfolioProfiles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "meeting-minutes-ai",
+      "backendModule": "meeting_minutes_ai",
+      "databaseEnv": "MEETING_MINUTES_AI_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/meeting-minutes-ai/env.py",
+      "migrationHead": "20260628_0001_add_meeting_minutes_ai_indexes",
+      "versionTable": null,
+      "tables": [
+        "MeetingMinutesMeetings",
+        "MeetingMinutesNotes",
+        "MeetingMinutesActionItems",
+        "MeetingMinutesSummaries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "onDelete": null
+        },
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "onDelete": null
+        },
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MeetingMinutesMeetings.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "proposal-writer",
+      "backendModule": "proposal_writer",
+      "databaseEnv": "PROPOSAL_WRITER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/proposal-writer/env.py",
+      "migrationHead": "20260628_0001_add_proposal_writer_tables",
+      "versionTable": null,
+      "tables": [
+        "ProposalWriterProjects",
+        "ProposalWriterSections",
+        "ProposalWriterDrafts",
+        "ProposalWriterHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ProposalWriterProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "ProposalWriterProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "ProposalWriterProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "ProposalWriterDrafts.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ProposalWriterProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ProposalWriterProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ProposalWriterProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ProposalWriterDrafts.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "invoice-receipt-maker",
+      "backendModule": "invoice_receipt_maker",
+      "databaseEnv": "INVOICE_RECEIPT_MAKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/invoice-receipt-maker/env.py",
+      "migrationHead": "20260629_0001_add_invoice_receipt_maker_tables",
+      "versionTable": null,
+      "tables": [
+        "InvoiceReceiptProjects",
+        "InvoiceReceiptDocuments",
+        "InvoiceReceiptItems",
+        "InvoiceReceiptHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "InvoiceReceiptProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "InvoiceReceiptDocuments.id",
+          "onDelete": null
+        },
+        {
+          "target": "InvoiceReceiptProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "InvoiceReceiptDocuments.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "InvoiceReceiptProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InvoiceReceiptDocuments.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InvoiceReceiptProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InvoiceReceiptDocuments.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "contract-generator",
+      "backendModule": "contract_generator",
+      "databaseEnv": "CONTRACT_GENERATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/contract-generator/env.py",
+      "migrationHead": "20260629_0001_add_contract_generator_tables",
+      "versionTable": null,
+      "tables": [
+        "ContractProjects",
+        "ContractDocuments",
+        "ContractClauses",
+        "ContractHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ContractProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "ContractDocuments.id",
+          "onDelete": null
+        },
+        {
+          "target": "ContractProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "ContractDocuments.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ContractProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ContractDocuments.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ContractProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ContractDocuments.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "presentation-designer",
+      "backendModule": "presentation_designer",
+      "databaseEnv": "PRESENTATION_DESIGNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/presentation-designer/env.py",
+      "migrationHead": "20260629_0001_add_presentation_designer_tables",
+      "versionTable": null,
+      "tables": [
+        "PresentationProjects",
+        "PresentationSlides",
+        "PresentationAssets",
+        "PresentationReviewHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "PresentationProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "PresentationProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "PresentationProjects.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "PresentationProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PresentationProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PresentationProjects.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "career-planner",
+      "backendModule": "career_planner",
+      "databaseEnv": "CAREER_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/career-planner/env.py",
+      "migrationHead": "20260629_0001_add_career_planner_tables",
+      "versionTable": null,
+      "tables": [
+        "CareerGoals",
+        "CareerRoadmaps",
+        "CareerMilestones",
+        "CareerReviewHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "CareerGoals.id",
+          "onDelete": null
+        },
+        {
+          "target": "CareerRoadmaps.id",
+          "onDelete": null
+        },
+        {
+          "target": "CareerGoals.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "CareerGoals.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CareerRoadmaps.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CareerGoals.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "linkedin-bio-optimizer",
+      "backendModule": "linkedin_bio_optimizer",
+      "databaseEnv": "LINKEDIN_BIO_OPTIMIZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/linkedin-bio-optimizer/env.py",
+      "migrationHead": "20260630_0001_add_linkedin_bio_optimizer_tables",
+      "versionTable": null,
+      "tables": [
+        "LinkedInProfiles",
+        "BioTemplates",
+        "BioVersions"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "LinkedInProfiles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "LinkedInProfiles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "client-feedback-analyzer",
+      "backendModule": "client_feedback_analyzer",
+      "databaseEnv": "CLIENT_FEEDBACK_ANALYZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/client-feedback-analyzer/env.py",
+      "migrationHead": "20260630_0001_add_client_feedback_analyzer_tables",
+      "versionTable": null,
+      "tables": [
+        "ClientProfiles",
+        "ClientFeedback",
+        "FeedbackInsights",
+        "FeedbackReports"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ClientProfiles.id",
+          "onDelete": null
+        },
+        {
+          "target": "ClientProfiles.id",
+          "onDelete": null
+        },
+        {
+          "target": "ClientFeedback.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ClientProfiles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ClientProfiles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ClientFeedback.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "book-summary-generator",
+      "backendModule": "book_summary_generator",
+      "databaseEnv": "BOOK_SUMMARY_GENERATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/book-summary-generator/env.py",
+      "migrationHead": "20260630_0001_add_book_summary_generator_tables",
+      "versionTable": "book_summary_generator_alembic_version",
+      "tables": [
+        "BookCollections",
+        "BookSummaries",
+        "SummaryNotes",
+        "SummaryHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "BookCollections.id",
+          "onDelete": null
+        },
+        {
+          "target": "BookSummaries.id",
+          "onDelete": null
+        },
+        {
+          "target": "BookSummaries.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "BookCollections.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "BookSummaries.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "BookSummaries.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "social-caption-generator",
+      "backendModule": "social_caption_generator",
+      "databaseEnv": "SOCIAL_CAPTION_GENERATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/social-caption-generator/env.py",
+      "migrationHead": "20260630_0002_correct_caption_templates_table",
+      "versionTable": "social_caption_generator_alembic_version",
+      "tables": [
+        "CaptionProjects",
+        "SocialCaptions",
+        "CaptionTemplates",
+        "CaptionHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "CaptionProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "CaptionProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "SocialCaptions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "CaptionProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CaptionProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SocialCaptions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "prompt-builder",
+      "backendModule": "prompt_builder",
+      "databaseEnv": "PROMPT_BUILDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/prompt-builder/env.py",
+      "migrationHead": "20260630_0001_add_prompt_builder_tables",
+      "versionTable": "prompt_builder_alembic_version",
+      "tables": [
+        "PromptProjects",
+        "PromptLibrary",
+        "PromptTemplates",
+        "PromptHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "PromptProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "PromptProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "PromptLibrary.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "PromptProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PromptProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "PromptLibrary.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "speech-writer",
+      "backendModule": "speech_writer",
+      "databaseEnv": "SPEECH_WRITER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/speech-writer/env.py",
+      "migrationHead": "20260630_0001_add_speech_writer_tables",
+      "versionTable": "speech_writer_alembic_version",
+      "tables": [
+        "SpeechProjects",
+        "Speeches",
+        "SpeechTemplates",
+        "SpeechHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SpeechProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "SpeechProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "Speeches.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SpeechProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SpeechProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Speeches.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "ai-translator-and-tone-fixer",
+      "backendModule": "ai_translator_and_tone_fixer",
+      "databaseEnv": "AI_TRANSLATOR_AND_TONE_FIXER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/ai-translator-and-tone-fixer/env.py",
+      "migrationHead": "20260701_0001_add_ai_translator_and_tone_fixer_tables",
+      "versionTable": "ai_translator_and_tone_fixer_alembic_version",
+      "tables": [
+        "TranslationProjects",
+        "Translations",
+        "TranslationTemplates",
+        "TranslationHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "TranslationProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "TranslationProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "Translations.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TranslationProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "TranslationProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Translations.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "snippet-generator",
+      "backendModule": "snippet_generator",
+      "databaseEnv": "SNIPPET_GENERATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/snippet-generator/env.py",
+      "migrationHead": "20260630_0001_add_snippet_generator_tables",
+      "versionTable": "snippet_generator_alembic_version",
+      "tables": [
+        "SnippetProjects",
+        "SnippetCategories",
+        "SnippetLibrary",
+        "SnippetHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SnippetProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "SnippetProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "SnippetCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "SnippetLibrary.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SnippetProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SnippetProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SnippetCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SnippetLibrary.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "price-checker",
+      "backendModule": "price_checker",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "qr-code-creator",
+      "backendModule": "qr_code_creator",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "clipboard-manager",
+      "backendModule": "clipboard_manager",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "password-generator",
+      "backendModule": "password_generator",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "api-tester",
+      "backendModule": "api_tester",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "json-formatter",
+      "backendModule": "json_formatter",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "markdown-editor",
+      "backendModule": "markdown_editor",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "time-zone-scheduler",
+      "backendModule": "time_zone_scheduler",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "browser-pdf-reader",
+      "backendModule": "browser_pdf_reader",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "wellness-and-goal-planner",
+      "backendModule": "wellness_and_goal_planner",
+      "databaseEnv": "WELLNESS_AND_GOAL_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/wellness-and-goal-planner/env.py",
+      "migrationHead": "20260705_0002_add_wellness_reflection_body",
+      "versionTable": "wellness_and_goal_planner_alembic_version",
+      "tables": [
+        "WellnessAreas",
+        "WellnessGoals",
+        "WellnessReflections"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "WellnessAreas.id",
+          "onDelete": null
+        },
+        {
+          "target": "WellnessAreas.id",
+          "onDelete": null
+        },
+        {
+          "target": "WellnessGoals.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "WellnessAreas.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "WellnessAreas.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "WellnessGoals.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "meal-planner",
+      "backendModule": "meal_planner",
+      "databaseEnv": "MEAL_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/meal-planner/env.py",
+      "migrationHead": "20260710_0004",
+      "versionTable": "meal_planner_alembic_version",
+      "tables": [
+        "Recipes",
+        "MealPlans",
+        "MealPlanEntries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "MealPlans.id",
+          "onDelete": null
+        },
+        {
+          "target": "Recipes.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "MealPlans.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Recipes.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "fitness-tracker",
+      "backendModule": "fitness_tracker",
+      "databaseEnv": "FITNESS_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/fitness-tracker/env.py",
+      "migrationHead": "20260710_0001",
+      "versionTable": "fitness_tracker_alembic_version",
+      "tables": [
+        "FitnessActivities",
+        "FitnessLogs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "FitnessActivities.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "FitnessActivities.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "mood-journal",
+      "backendModule": "mood_journal",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "expense-tracker",
+      "backendModule": "expense_tracker",
+      "databaseEnv": "EXPENSE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/expense-tracker/env.py",
+      "migrationHead": "20260704_0001_add_expense_tracker_tables",
+      "versionTable": "expense_tracker_alembic_version",
+      "tables": [
+        "ExpenseTrackerCategories",
+        "ExpenseTrackerExpenses",
+        "ExpenseTrackerHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ExpenseTrackerCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "ExpenseTrackerExpenses.id",
+          "onDelete": null
+        },
+        {
+          "target": "ExpenseTrackerCategories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ExpenseTrackerCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ExpenseTrackerExpenses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ExpenseTrackerCategories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "travel-itinerary-builder",
+      "backendModule": "travel_itinerary_builder",
+      "databaseEnv": "TRAVEL_ITINERARY_BUILDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/travel-itinerary-builder/env.py",
+      "migrationHead": "20260718_0001_travel_itinerary_builder",
+      "versionTable": "travel_itinerary_builder_alembic_version",
+      "tables": [
+        "TravelItineraries",
+        "TravelItineraryDays",
+        "TravelActivities",
+        "TravelActivityCategories"
+      ],
+      "importantForeignKeys": [
+        {
+          "source": "TravelItineraryDays.itineraryId",
+          "target": "TravelItineraries.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "source": "TravelActivities.dayId",
+          "target": "TravelItineraryDays.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "source": "TravelActivities.categoryId",
+          "target": "TravelActivityCategories.id",
+          "onDelete": "SET NULL"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TravelItineraries.id",
+          "rule": "delete cascades to itinerary days and activities"
+        },
+        {
+          "target": "TravelItineraryDays.id",
+          "rule": "delete cascades to activities"
+        },
+        {
+          "target": "TravelActivityCategories.id",
+          "rule": "service restricts deletion while activities reference category"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "language-learning-buddy",
+      "backendModule": "language_learning_buddy",
+      "databaseEnv": "LANGUAGE_LEARNING_BUDDY_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/language-learning-buddy/env.py",
+      "migrationHead": "20260710_0001",
+      "versionTable": "language_learning_buddy_alembic_version",
+      "tables": [
+        "LanguageVocabulary",
+        "LanguagePracticeSessions"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "LanguageVocabulary.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "LanguageVocabulary.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "eco-habit-tracker",
+      "backendModule": "eco_habit_tracker",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "interview-scheduler",
+      "backendModule": "interview_scheduler",
+      "databaseEnv": "INTERVIEW_SCHEDULER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/interview-scheduler/env.py",
+      "migrationHead": "20260630_0001_add_interview_scheduler_tables",
+      "versionTable": null,
+      "tables": [
+        "InterviewSchedules",
+        "InterviewRounds",
+        "InterviewCalendarEvents",
+        "InterviewHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "InterviewSchedules.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewSchedules.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewRounds.id",
+          "onDelete": null
+        },
+        {
+          "target": "InterviewSchedules.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "InterviewSchedules.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewSchedules.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewRounds.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "InterviewSchedules.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "job-tracker",
+      "backendModule": "job_tracker",
+      "databaseEnv": "JOB_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/job-tracker/env.py",
+      "migrationHead": "20260630_0001_add_job_tracker_tables",
+      "versionTable": "job_tracker_alembic_version",
+      "tables": [
+        "JobListings",
+        "JobApplications",
+        "ApplicationInsights",
+        "ApplicationHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "JobListings.id",
+          "onDelete": null
+        },
+        {
+          "target": "JobApplications.id",
+          "onDelete": null
+        },
+        {
+          "target": "JobApplications.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "JobListings.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "JobApplications.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "JobApplications.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "ai-job-interviewer",
+      "backendModule": "ai_job_interviewer",
+      "databaseEnv": "AI_JOB_INTERVIEWER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/ai-job-interviewer/env.py",
+      "migrationHead": "20260628_0001_add_ai_job_interviewer_indexes",
+      "versionTable": null,
+      "tables": [
+        "AiJobInterviewSessions",
+        "AiJobInterviewQuestions",
+        "AiJobInterviewAnswers",
+        "AiJobInterviewResults"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "AiJobInterviewSessions.id",
+          "onDelete": null
+        },
+        {
+          "target": "AiJobInterviewSessions.id",
+          "onDelete": null
+        },
+        {
+          "target": "AiJobInterviewQuestions.id",
+          "onDelete": null
+        },
+        {
+          "target": "AiJobInterviewSessions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "AiJobInterviewSessions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "AiJobInterviewSessions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "AiJobInterviewQuestions.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "AiJobInterviewSessions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "email-assistant",
+      "backendModule": "email_assistant",
+      "databaseEnv": "EMAIL_ASSISTANT_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/email-assistant/env.py",
+      "migrationHead": "20260628_0001_add_email_assistant_indexes",
+      "versionTable": null,
+      "tables": [
+        "EmailAssistantProjects",
+        "EmailAssistantDrafts",
+        "EmailAssistantTemplates",
+        "EmailAssistantHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "EmailAssistantProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "EmailAssistantTemplates.id",
+          "onDelete": null
+        },
+        {
+          "target": "EmailAssistantProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "EmailAssistantDrafts.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "EmailAssistantProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "EmailAssistantTemplates.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "EmailAssistantProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "EmailAssistantDrafts.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "grammar-and-paraphrasing-assistant",
+      "backendModule": "grammar_and_paraphrasing_assistant",
+      "databaseEnv": "GRAMMAR_AND_PARAPHRASING_ASSISTANT_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/grammar-and-paraphrasing-assistant/env.py",
+      "migrationHead": "20260702_0001_add_grammar_and_paraphrasing_assistant_tables",
+      "versionTable": "grammar_and_paraphrasing_assistant_alembic_version",
+      "tables": [
+        "GrammarProjects",
+        "GrammarResults",
+        "GrammarJobs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "GrammarProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "GrammarProjects.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "GrammarProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "GrammarProjects.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "creative-title-generator",
+      "backendModule": "creative_title_generator",
+      "databaseEnv": "CREATIVE_TITLE_GENERATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/creative-title-generator/env.py",
+      "migrationHead": "20260702_0002_add_creative_title_generator_tables",
+      "versionTable": "creative_title_generator_alembic_version",
+      "tables": [
+        "TitleProjects",
+        "GeneratedTitles",
+        "TitleJobs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "TitleProjects.id",
+          "onDelete": null
+        },
+        {
+          "target": "TitleProjects.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TitleProjects.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "TitleProjects.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "file-optimizer",
+      "backendModule": "file_optimizer",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "voice-converter",
+      "backendModule": "voice_converter",
+      "databaseEnv": null,
+      "alembicConfig": null,
+      "migrationHead": null,
+      "versionTable": null,
+      "tables": [],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "project-tracker",
+      "backendModule": "project_tracker",
+      "databaseEnv": "PROJECT_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/project-tracker/env.py",
+      "migrationHead": "20260704_0001_add_project_tracker_tables",
+      "versionTable": "project_tracker_alembic_version",
+      "tables": [
+        "ProjectTrackerProjects",
+        "ProjectTrackerTasks"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ProjectTrackerProjects.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ProjectTrackerProjects.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "task-prioritizer",
+      "backendModule": "task_prioritizer",
+      "databaseEnv": "TASK_PRIORITIZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/task-prioritizer/env.py",
+      "migrationHead": "20260704_0001_add_task_prioritizer_tables",
+      "versionTable": "task_prioritizer_alembic_version",
+      "tables": [
+        "TaskPrioritizerTasks",
+        "TaskPrioritizerTaskPriorities",
+        "TaskPrioritizerPriorityRules",
+        "TaskPrioritizerPriorityHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "TaskPrioritizerTasks.id",
+          "onDelete": null
+        },
+        {
+          "target": "TaskPrioritizerTasks.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TaskPrioritizerTasks.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "TaskPrioritizerTasks.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "goal-tracker",
+      "backendModule": "goal_tracker",
+      "databaseEnv": "GOAL_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/goal-tracker/env.py",
+      "migrationHead": "20260705_0001_add_goal_tracker_tables",
+      "versionTable": "goal_tracker_alembic_version",
+      "tables": [
+        "GoalTrackerGoals",
+        "GoalTrackerMilestones",
+        "GoalTrackerCheckIns"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "GoalTrackerGoals.id",
+          "onDelete": null
+        },
+        {
+          "target": "GoalTrackerGoals.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "GoalTrackerGoals.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "GoalTrackerGoals.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "medicine-reminder",
+      "backendModule": "medicine_reminder",
+      "databaseEnv": "MEDICINE_REMINDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/medicine-reminder/env.py",
+      "migrationHead": "20260711_0001_add_medicine_reminder_tables",
+      "versionTable": "medicine_reminder_alembic_version",
+      "tables": [
+        "MedicineReminderMedicines",
+        "MedicineReminderSchedules",
+        "MedicineReminderDoseLogs",
+        "MedicineReminderNotes"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "MedicineReminderMedicines.id",
+          "onDelete": null
+        },
+        {
+          "target": "MedicineReminderMedicines.id",
+          "onDelete": null
+        },
+        {
+          "target": "MedicineReminderSchedules.id",
+          "onDelete": null
+        },
+        {
+          "target": "MedicineReminderMedicines.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "MedicineReminderMedicines.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MedicineReminderMedicines.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MedicineReminderSchedules.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MedicineReminderMedicines.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "health-report-organizer",
+      "backendModule": "health_report_organizer",
+      "databaseEnv": "HEALTH_REPORT_ORGANIZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/health-report-organizer/env.py",
+      "migrationHead": "20260711_0001_add_health_report_organizer_tables",
+      "versionTable": "health_report_organizer_alembic_version",
+      "tables": [
+        "HealthReportCategories",
+        "HealthReportFacilities",
+        "HealthReports",
+        "HealthReportAttachments",
+        "HealthReportNotes"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "HealthReportCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "HealthReportFacilities.id",
+          "onDelete": null
+        },
+        {
+          "target": "HealthReports.id",
+          "onDelete": null
+        },
+        {
+          "target": "HealthReports.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "HealthReportCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "HealthReportFacilities.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "HealthReports.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "HealthReports.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "family-task-planner",
+      "backendModule": "family_task_planner",
+      "databaseEnv": "FAMILY_TASK_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/family-task-planner/env.py",
+      "migrationHead": "20260711_0001_add_family_task_planner_tables",
+      "versionTable": "family_task_planner_alembic_version",
+      "tables": [
+        "FamilyTaskMembers",
+        "FamilyTaskCategories",
+        "FamilyTasks"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "FamilyTaskMembers.id",
+          "onDelete": null
+        },
+        {
+          "target": "FamilyTaskCategories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "FamilyTaskMembers.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "FamilyTaskCategories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "rent-a-car",
+      "backendModule": "rent_a_car",
+      "databaseEnv": "RENT_A_CAR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/rent-a-car/env.py",
+      "migrationHead": "20260711_0001_add_rent_a_car_tables",
+      "versionTable": "rent_a_car_alembic_version",
+      "tables": [
+        "RentACarSearches",
+        "RentACarVehicleOptions",
+        "RentACarBookings"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "RentACarSearches.id",
+          "onDelete": null
+        },
+        {
+          "target": "RentACarSearches.id",
+          "onDelete": null
+        },
+        {
+          "target": "RentACarVehicleOptions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "RentACarSearches.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "RentACarSearches.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "RentACarVehicleOptions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "car-pool",
+      "backendModule": "car_pool",
+      "databaseEnv": "CAR_POOL_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/car-pool/env.py",
+      "migrationHead": "20260712_0001_add_car_pool_tables",
+      "versionTable": "car_pool_alembic_version",
+      "tables": [
+        "CarPoolRides",
+        "CarPoolPassengers",
+        "CarPoolRequests"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "CarPoolRides.id",
+          "onDelete": null
+        },
+        {
+          "target": "CarPoolRides.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "CarPoolRides.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CarPoolRides.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "vehicle-maintenance-tracker",
+      "backendModule": "vehicle_maintenance_tracker",
+      "databaseEnv": "VEHICLE_MAINTENANCE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/vehicle-maintenance-tracker/env.py",
+      "migrationHead": "20260712_0001_add_vehicle_maintenance_tracker_tables",
+      "versionTable": "vehicle_maintenance_tracker_alembic_version",
+      "tables": [
+        "VehicleMaintenanceVehicles",
+        "VehicleMaintenanceRecords",
+        "VehicleMaintenanceReminders"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "VehicleMaintenanceVehicles.id",
+          "onDelete": null
+        },
+        {
+          "target": "VehicleMaintenanceVehicles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "VehicleMaintenanceVehicles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "VehicleMaintenanceVehicles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "parking-expense-tracker",
+      "backendModule": "parking_expense_tracker",
+      "databaseEnv": "PARKING_EXPENSE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/parking-expense-tracker/env.py",
+      "migrationHead": "20260712_0001_add_parking_expense_tracker_tables",
+      "versionTable": "parking_expense_tracker_alembic_version",
+      "tables": [
+        "ParkingExpenseLocations",
+        "ParkingExpenseEntries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ParkingExpenseLocations.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ParkingExpenseLocations.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "trip-cost-calculator",
+      "backendModule": "trip_cost_calculator",
+      "databaseEnv": "TRIP_COST_CALCULATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/trip-cost-calculator/env.py",
+      "migrationHead": "20260712_0001_add_trip_cost_calculator_tables",
+      "versionTable": "trip_cost_calculator_alembic_version",
+      "tables": [
+        "TripCostTrips",
+        "TripCostExpenses"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "TripCostTrips.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "TripCostTrips.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "corporate-tax-uae",
+      "backendModule": "corporate_tax_uae",
+      "databaseEnv": "CORPORATE_TAX_UAE_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/corporate-tax-uae/env.py",
+      "migrationHead": "20260712_0001_add_corporate_tax_uae_tables",
+      "versionTable": "corporate_tax_uae_alembic_version",
+      "tables": [
+        "CorporateTaxPeriods",
+        "CorporateTaxAdjustments",
+        "CorporateTaxObligations"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "CorporateTaxPeriods.id",
+          "onDelete": null
+        },
+        {
+          "target": "CorporateTaxPeriods.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "CorporateTaxPeriods.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "CorporateTaxPeriods.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "vat-assistant-uae",
+      "backendModule": "vat_assistant_uae",
+      "databaseEnv": "VAT_ASSISTANT_UAE_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/vat-assistant-uae/env.py",
+      "migrationHead": "20260712_0001_add_vat_assistant_uae_tables",
+      "versionTable": "vat_assistant_uae_alembic_version",
+      "tables": [
+        "VATRegistrations",
+        "VATReturns",
+        "VATTransactions"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "VATRegistrations.id",
+          "onDelete": null
+        },
+        {
+          "target": "VATRegistrations.id",
+          "onDelete": null
+        },
+        {
+          "target": "VATReturns.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "VATRegistrations.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "VATRegistrations.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "VATReturns.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "school-administration",
+      "backendModule": "school_administration",
+      "databaseEnv": "SCHOOL_ADMINISTRATION_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/school-administration/env.py",
+      "migrationHead": "20260713_0001_school_administration",
+      "versionTable": "school_administration_alembic_version",
+      "tables": [
+        "SchoolStudents",
+        "SchoolClasses",
+        "SchoolEnrollments",
+        "SchoolAttendance"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SchoolClasses.id",
+          "onDelete": null
+        },
+        {
+          "target": "SchoolStudents.id",
+          "onDelete": null
+        },
+        {
+          "target": "SchoolClasses.id",
+          "onDelete": null
+        },
+        {
+          "target": "SchoolStudents.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SchoolClasses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SchoolStudents.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SchoolClasses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SchoolStudents.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "subscription-manager",
+      "backendModule": "subscription_manager",
+      "databaseEnv": "SUBSCRIPTION_MANAGER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/subscription-manager/env.py",
+      "migrationHead": "20260713_0001_subscription_manager",
+      "versionTable": "subscription_manager_alembic_version",
+      "tables": [
+        "SubscriptionManagerCategories",
+        "SubscriptionManagerSubscriptions",
+        "SubscriptionManagerRenewals"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SubscriptionManagerCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "SubscriptionManagerSubscriptions.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SubscriptionManagerCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "SubscriptionManagerSubscriptions.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "emi-loan-calculator",
+      "backendModule": "emi_loan_calculator",
+      "databaseEnv": "EMI_LOAN_CALCULATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/emi-loan-calculator/env.py",
+      "migrationHead": "20260714_0001_emi_loan_calculator",
+      "versionTable": "emi_loan_calculator_alembic_version",
+      "tables": [
+        "LoanScenarios"
+      ],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "document-expiry-tracker",
+      "backendModule": "document_expiry_tracker",
+      "databaseEnv": "DOCUMENT_EXPIRY_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/document-expiry-tracker/env.py",
+      "migrationHead": "20260715_0001_document_expiry_tracker",
+      "versionTable": "document_expiry_tracker_alembic_version",
+      "tables": [
+        "Documents"
+      ],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "digital-document-vault",
+      "backendModule": "digital_document_vault",
+      "databaseEnv": "DIGITAL_DOCUMENT_VAULT_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/digital-document-vault/env.py",
+      "migrationHead": "20260715_0001_digital_document_vault",
+      "versionTable": "digital_document_vault_alembic_version",
+      "tables": [
+        "Categories",
+        "Documents"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Categories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Categories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "home-inventory-manager",
+      "backendModule": "home_inventory_manager",
+      "databaseEnv": "HOME_INVENTORY_MANAGER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/home-inventory-manager/env.py",
+      "migrationHead": "20260715_0001_home_inventory_manager",
+      "versionTable": "home_inventory_manager_alembic_version",
+      "tables": [
+        "Categories",
+        "Items"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Categories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Categories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "household-expense-splitter",
+      "backendModule": "household_expense_splitter",
+      "databaseEnv": "HOUSEHOLD_EXPENSE_SPLITTER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/household-expense-splitter/env.py",
+      "migrationHead": "20260715_0001_household_expense_splitter",
+      "versionTable": "household_expense_splitter_alembic_version",
+      "tables": [
+        "Members",
+        "Expenses",
+        "ExpenseParticipants",
+        "Settlements"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Members.id",
+          "onDelete": null
+        },
+        {
+          "target": "Expenses.id",
+          "onDelete": null
+        },
+        {
+          "target": "Members.id",
+          "onDelete": null
+        },
+        {
+          "target": "Members.id",
+          "onDelete": null
+        },
+        {
+          "target": "Members.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Members.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Expenses.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Members.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Members.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "Members.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "emergency-contacts-organizer",
+      "backendModule": "emergency_contacts_organizer",
+      "databaseEnv": "EMERGENCY_CONTACTS_ORGANIZER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/emergency-contacts-organizer/env.py",
+      "migrationHead": "20260715_0001_emergency_contacts_organizer",
+      "versionTable": "emergency_contacts_organizer_alembic_version",
+      "tables": [
+        "Categories",
+        "Contacts"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Categories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Categories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "packing-checklist",
+      "backendModule": "packing_checklist",
+      "databaseEnv": "PACKING_CHECKLIST_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/packing-checklist/env.py",
+      "migrationHead": "20260715_0001_packing_checklist",
+      "versionTable": "packing_checklist_alembic_version",
+      "tables": [
+        "PackingCategories",
+        "PackingChecklists",
+        "PackingItems"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "PackingChecklists.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "PackingCategories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "PackingChecklists.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "PackingCategories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "birthday-and-anniversary-reminder",
+      "backendModule": "birthday_and_anniversary_reminder",
+      "databaseEnv": "BIRTHDAY_AND_ANNIVERSARY_REMINDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/birthday-and-anniversary-reminder/env.py",
+      "migrationHead": "20260715_0001_birthday_and_anniversary_reminder",
+      "versionTable": "birthday_and_anniversary_reminder_alembic_version",
+      "tables": [
+        "ReminderTypes",
+        "ReminderContacts",
+        "ReminderAcknowledgements"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ReminderTypes.id",
+          "onDelete": null
+        },
+        {
+          "target": "ReminderContacts.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ReminderTypes.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ReminderContacts.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "home-maintenance-planner",
+      "backendModule": "home_maintenance_planner",
+      "databaseEnv": "HOME_MAINTENANCE_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/home-maintenance-planner/env.py",
+      "migrationHead": "20260715_0001_home_maintenance_planner",
+      "versionTable": "home_maintenance_planner_alembic_version",
+      "tables": [
+        "MaintenanceAreas",
+        "MaintenanceCategories",
+        "MaintenanceTasks",
+        "MaintenanceTaskCompletions"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "MaintenanceAreas.id",
+          "onDelete": null
+        },
+        {
+          "target": "MaintenanceCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "MaintenanceTasks.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "MaintenanceAreas.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MaintenanceCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "MaintenanceTasks.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "doctor-visit-tracker",
+      "backendModule": "doctor_visit_tracker",
+      "databaseEnv": "DOCTOR_VISIT_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/doctor-visit-tracker/env.py",
+      "migrationHead": "20260715_0001_doctor_visit_tracker",
+      "versionTable": "doctor_visit_tracker_alembic_version",
+      "tables": [
+        "DoctorSpecialties",
+        "DoctorVisits"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "DoctorSpecialties.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "DoctorSpecialties.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "water-intake-tracker",
+      "backendModule": "water_intake_tracker",
+      "databaseEnv": "WATER_INTAKE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/water-intake-tracker/env.py",
+      "migrationHead": "20260715_0001_water_intake_tracker",
+      "versionTable": "water_intake_tracker_alembic_version",
+      "tables": [
+        "WaterGoals",
+        "WaterEntries"
+      ],
+      "importantForeignKeys": [],
+      "cascadeRestrictRules": [],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "vaccination-tracker",
+      "backendModule": "vaccination_tracker",
+      "databaseEnv": "VACCINATION_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/vaccination-tracker/env.py",
+      "migrationHead": "20260715_0001_vaccination_tracker",
+      "versionTable": "vaccination_tracker_alembic_version",
+      "tables": [
+        "VaccinationProfiles",
+        "VaccineTypes",
+        "VaccinationRecords"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "VaccinationProfiles.id",
+          "onDelete": null
+        },
+        {
+          "target": "VaccineTypes.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "VaccinationProfiles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "VaccineTypes.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "symptom-journal",
+      "backendModule": "symptom_journal",
+      "databaseEnv": "SYMPTOM_JOURNAL_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/symptom-journal/env.py",
+      "migrationHead": "20260715_0001_symptom_journal",
+      "versionTable": "symptom_journal_alembic_version",
+      "tables": [
+        "SymptomCategories",
+        "SymptomEntries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SymptomCategories.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SymptomCategories.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "first-aid-guide",
+      "backendModule": "first_aid_guide",
+      "databaseEnv": "FIRST_AID_GUIDE_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/first-aid-guide/env.py",
+      "migrationHead": "20260715_0001_first_aid_guide",
+      "versionTable": "first_aid_guide_alembic_version",
+      "tables": [
+        "FirstAidCategories",
+        "FirstAidGuides",
+        "UserGuideBookmarks",
+        "UserGuideHistory"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "FirstAidCategories.id",
+          "onDelete": null
+        },
+        {
+          "target": "FirstAidGuides.id",
+          "onDelete": null
+        },
+        {
+          "target": "FirstAidGuides.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "FirstAidCategories.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "FirstAidGuides.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "FirstAidGuides.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "fuel-expense-tracker",
+      "backendModule": "fuel_expense_tracker",
+      "databaseEnv": "FUEL_EXPENSE_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/fuel-expense-tracker/env.py",
+      "migrationHead": "20260715_0001_fuel_expense_tracker",
+      "versionTable": "fuel_expense_tracker_alembic_version",
+      "tables": [
+        "FuelVehicles",
+        "FuelEntries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "FuelVehicles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "FuelVehicles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "driver-logbook",
+      "backendModule": "driver_logbook",
+      "databaseEnv": "DRIVER_LOGBOOK_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/driver-logbook/env.py",
+      "migrationHead": "20260715_0001_driver_logbook",
+      "versionTable": "driver_logbook_alembic_version",
+      "tables": [
+        "DriverVehicles",
+        "DriverTrips"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "DriverVehicles.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "DriverVehicles.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "vehicle-document-tracker",
+      "backendModule": "vehicle_document_tracker",
+      "databaseEnv": "VEHICLE_DOCUMENT_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/vehicle-document-tracker/env.py",
+      "migrationHead": "20260715_0001_vehicle_document_tracker",
+      "versionTable": "vehicle_document_tracker_alembic_version",
+      "tables": [
+        "VehicleDocumentsVehicles",
+        "VehicleDocumentTypes",
+        "VehicleDocuments"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "VehicleDocumentsVehicles.id",
+          "onDelete": null
+        },
+        {
+          "target": "VehicleDocumentTypes.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "VehicleDocumentsVehicles.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "VehicleDocumentTypes.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "meeting-scheduler",
+      "backendModule": "meeting_scheduler",
+      "databaseEnv": "MEETING_SCHEDULER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/meeting-scheduler/env.py",
+      "migrationHead": "20260716_0001_meeting_scheduler",
+      "versionTable": "meeting_scheduler_alembic_version",
+      "tables": [
+        "Meetings",
+        "MeetingParticipants",
+        "MeetingAgendaItems"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Meetings.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "Meetings.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Meetings.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "Meetings.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "leave-planner",
+      "backendModule": "leave_planner",
+      "databaseEnv": "LEAVE_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/leave-planner/env.py",
+      "migrationHead": "20260716_0002_leave_planner",
+      "versionTable": "leave_planner_alembic_version",
+      "tables": [
+        "LeaveTypes",
+        "LeaveEntries"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "LeaveTypes.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "LeaveTypes.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "promoted-live"
+    },
+    {
+      "slug": "shift-planner",
+      "backendModule": "shift_planner",
+      "databaseEnv": "SHIFT_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/shift-planner/env.py",
+      "migrationHead": "20260716_0003_shift_planner",
+      "versionTable": "shift_planner_alembic_version",
+      "tables": [
+        "ShiftTypes",
+        "ShiftMembers",
+        "Shifts"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ShiftTypes.id",
+          "onDelete": null
+        },
+        {
+          "target": "ShiftMembers.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ShiftTypes.id",
+          "rule": "default/restrict"
+        },
+        {
+          "target": "ShiftMembers.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "work-log-tracker",
+      "backendModule": "work_log_tracker",
+      "databaseEnv": "WORK_LOG_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/work-log-tracker/env.py",
+      "migrationHead": "20260716_0004_work_log_tracker",
+      "versionTable": "work_log_tracker_alembic_version",
+      "tables": [
+        "WorkProjects",
+        "WorkLogs"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "WorkProjects.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "WorkProjects.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "bill-splitter",
+      "backendModule": "bill_splitter",
+      "databaseEnv": "BILL_SPLITTER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/bill-splitter/env.py",
+      "migrationHead": "20260716_0005_bill_splitter",
+      "versionTable": "bill_splitter_alembic_version",
+      "tables": [
+        "Bills",
+        "BillParticipants",
+        "BillItems",
+        "BillItemAllocations"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Bills.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "Bills.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "BillItems.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "BillParticipants.id",
+          "onDelete": null
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Bills.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "Bills.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "BillItems.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "BillParticipants.id",
+          "rule": "default/restrict"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "savings-goal-planner",
+      "backendModule": "savings_goal_planner",
+      "databaseEnv": "SAVINGS_GOAL_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/savings-goal-planner/env.py",
+      "migrationHead": "20260716_0006_savings_goal_planner",
+      "versionTable": "savings_goal_planner_alembic_version",
+      "tables": [
+        "SavingsGoals",
+        "SavingsTransactions",
+        "SavingsMilestones"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SavingsGoals.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "SavingsGoals.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SavingsGoals.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "SavingsGoals.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "salary-breakdown-calculator",
+      "backendModule": "salary_breakdown_calculator",
+      "databaseEnv": "SALARY_BREAKDOWN_CALCULATOR_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/salary-breakdown-calculator/env.py",
+      "migrationHead": "20260716_0007_salary_breakdown_calculator",
+      "versionTable": "salary_breakdown_calculator_alembic_version",
+      "tables": [
+        "SalaryScenarios",
+        "SalaryEarnings",
+        "SalaryDeductions"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "SalaryScenarios.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "SalaryScenarios.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "SalaryScenarios.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "SalaryScenarios.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "net-worth-tracker",
+      "backendModule": "net_worth_tracker",
+      "databaseEnv": "NET_WORTH_TRACKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/net-worth-tracker/env.py",
+      "migrationHead": "20260716_0008_net_worth_tracker",
+      "versionTable": "net_worth_tracker_alembic_version",
+      "tables": [
+        "NetWorthAccounts",
+        "NetWorthBalanceEntries",
+        "NetWorthSnapshots",
+        "NetWorthSnapshotItems"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "NetWorthAccounts.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "NetWorthSnapshots.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "NetWorthAccounts.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "NetWorthSnapshots.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "decision-maker",
+      "backendModule": "decision_maker",
+      "databaseEnv": "DECISION_MAKER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/decision-maker/env.py",
+      "migrationHead": "20260716_0009_decision_maker",
+      "versionTable": "decision_maker_alembic_version",
+      "tables": [
+        "Decisions",
+        "DecisionOptions",
+        "DecisionCriteria",
+        "DecisionRatings"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "Decisions.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "Decisions.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "Decisions.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "DecisionOptions.id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "target": "DecisionCriteria.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "Decisions.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "Decisions.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "Decisions.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "DecisionOptions.id",
+          "rule": "CASCADE"
+        },
+        {
+          "target": "DecisionCriteria.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "errand-planner",
+      "backendModule": "errand_planner",
+      "databaseEnv": "ERRAND_PLANNER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/errand-planner/env.py",
+      "migrationHead": "20260716_0010_errand_planner",
+      "versionTable": "errand_planner_alembic_version",
+      "tables": [
+        "ErrandCategories",
+        "Errands"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ErrandCategories.id",
+          "onDelete": "SET NULL"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ErrandCategories.id",
+          "rule": "SET NULL"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "local-services-finder",
+      "backendModule": "local_services_finder",
+      "databaseEnv": "LOCAL_SERVICES_FINDER_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/local-services-finder/env.py",
+      "migrationHead": "20260716_0011_local_services_finder",
+      "versionTable": "local_services_finder_alembic_version",
+      "tables": [
+        "ServiceCategories",
+        "ServiceProviders"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ServiceCategories.id",
+          "onDelete": "SET NULL"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ServiceCategories.id",
+          "rule": "SET NULL"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    },
+    {
+      "slug": "emergency-checklist",
+      "backendModule": "emergency_checklist",
+      "databaseEnv": "EMERGENCY_CHECKLIST_DATABASE_URL",
+      "alembicConfig": "ansiversa-api/migrations/emergency-checklist/env.py",
+      "migrationHead": "20260716_0012_emergency_checklist",
+      "versionTable": "emergency_checklist_alembic_version",
+      "tables": [
+        "ChecklistCategories",
+        "EmergencyChecklists",
+        "ChecklistItems"
+      ],
+      "importantForeignKeys": [
+        {
+          "target": "ChecklistCategories.id",
+          "onDelete": "SET NULL"
+        },
+        {
+          "target": "EmergencyChecklists.id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "cascadeRestrictRules": [
+        {
+          "target": "ChecklistCategories.id",
+          "rule": "SET NULL"
+        },
+        {
+          "target": "EmergencyChecklists.id",
+          "rule": "CASCADE"
+        }
+      ],
+      "productionMigrationStatus": "migration-present-not-live"
+    }
+  ]
+}

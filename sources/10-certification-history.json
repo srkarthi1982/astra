@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-07-18",
+  "source": "Astra/Codex certification campaign reports and 09-ansiversa-certification-status.json",
+  "platform": {
+    "number": 0,
+    "slug": "platform",
+    "status": "passed",
+    "certifiedAt": null,
+    "manualApproval": "pending",
+    "notes": "Parent platform certification baseline is recorded as passed in the current certification campaign."
+  },
+  "summary": {
+    "totalProducts": 101,
+    "solutionApps": 100,
+    "reportedCertifiedProducts": 12,
+    "knownCertifiedSolutionAppsInThisFile": 10,
+    "remainingSolutionAppsByKnownHistory": 90,
+    "edgeDeferral": "Microsoft Edge is not installed on the current Mac, so Edge browser certification is deferred when requested."
+  },
+  "apps": [
+    {
+      "number": 46,
+      "slug": "travel-itinerary-builder",
+      "name": "Travel Itinerary Builder",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "passed",
+      "livePromotion": "complete",
+      "frontendCommit": "be1ae2e",
+      "backendCommit": "ec9ed8b",
+      "notes": "Certified locally and in production with Chromium and Chrome, manually accepted by Partner after UI alignment, and promoted live at version 1.0.0 on 2026-07-18. Edge remains environment-deferred because Microsoft Edge is not installed.",
+      "promotedAt": "2026-07-18"
+    },
+    {
+      "number": 90,
+      "slug": "leave-planner",
+      "name": "Leave Planner",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "passed",
+      "livePromotion": "complete",
+      "frontendCommit": "8438835",
+      "backendCommit": "939699a",
+      "promotedAt": "2026-07-18",
+      "notes": "Certified with permanent Playwright coverage, manually accepted by Partner after UI alignment, and promoted live at version 1.0.0 on 2026-07-18. Edge remains environment-deferred where unavailable."
+    },
+    {
+      "number": 92,
+      "slug": "work-log-tracker",
+      "name": "Work Log Tracker",
+      "status": "passed",
+      "certifiedAt": "2026-07-17",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": null,
+      "backendCommit": null,
+      "notes": "Certification pass recorded from campaign context; detailed commit metadata was not available in the source pack."
+    },
+    {
+      "number": 93,
+      "slug": "bill-splitter",
+      "name": "Bill Splitter",
+      "status": "passed",
+      "certifiedAt": "2026-07-17",
+      "manualApproval": "approved",
+      "livePromotion": "passed",
+      "frontendCommit": "653a60c",
+      "backendCommit": "fb817af",
+      "notes": "Certification pass recorded from campaign context; detailed commit metadata was not available in the source pack.",
+      "promotedAt": "2026-07-18"
+    },
+    {
+      "number": 94,
+      "slug": "savings-goal-planner",
+      "name": "Savings Goal Planner",
+      "status": "passed",
+      "certifiedAt": "2026-07-17",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": null,
+      "backendCommit": null,
+      "notes": "Certification pass recorded from campaign context; detailed commit metadata was not available in the source pack."
+    },
+    {
+      "number": 95,
+      "slug": "salary-breakdown-calculator",
+      "name": "Salary Breakdown Calculator",
+      "status": "passed",
+      "certifiedAt": "2026-07-17",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": null,
+      "backendCommit": null,
+      "notes": "Certification pass recorded from campaign context; detailed commit metadata was not available in the source pack."
+    },
+    {
+      "number": 96,
+      "slug": "net-worth-tracker",
+      "name": "Net Worth Tracker",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": "d095ac3",
+      "backendCommit": "697ef48",
+      "notes": "Certified locally and in production with Chromium and Chrome. Edge deferred because Microsoft Edge is not installed."
+    },
+    {
+      "number": 97,
+      "slug": "decision-maker",
+      "name": "Decision Maker",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "approved",
+      "livePromotion": "passed",
+      "frontendCommit": "33610c8",
+      "backendCommit": "bf89be3",
+      "notes": "Certified locally and in production with Chromium and Chrome, manually accepted by Partner after UI alignment, and promoted live at version 1.0.0 on 2026-07-19. Edge remains environment-deferred because Microsoft Edge is not installed.",
+      "promotedAt": "2026-07-19"
+    },
+    {
+      "number": 98,
+      "slug": "errand-planner",
+      "name": "Errand Planner",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": "40dce3d",
+      "backendCommit": "ce8665f",
+      "notes": "Certified locally and in production with Chromium and Chrome. Edge deferred because Microsoft Edge is not installed."
+    },
+    {
+      "number": 99,
+      "slug": "local-services-finder",
+      "name": "Local Services Finder",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": "0bc717f",
+      "backendCommit": "922e015",
+      "notes": "Certified locally and in production with Chromium and Chrome. Tablet and mobile responsive projects passed. Edge deferred because Microsoft Edge is not installed."
+    },
+    {
+      "number": 100,
+      "slug": "emergency-checklist",
+      "name": "Emergency Checklist",
+      "status": "passed",
+      "certifiedAt": "2026-07-18",
+      "manualApproval": "pending",
+      "livePromotion": "pending",
+      "frontendCommit": "e5ca43a",
+      "backendCommit": "79bb27f",
+      "notes": "Final app in the 100-app Astra certification program. Certified locally and in production with Chromium and Chrome. Tablet and mobile responsive projects passed. Edge deferred because Microsoft Edge is not installed. Await Astra Manual Review and Partner Manual Acceptance before any promotion phase."
+    }
+  ]
+}

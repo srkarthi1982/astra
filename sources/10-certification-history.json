@@ -17,6 +17,17 @@
     "remainingSolutionAppsByKnownHistory": 90,
     "edgeDeferral": "Microsoft Edge is not installed on the current Mac, so Edge browser certification is deferred when requested."
   },
+  "astraMilestones": [
+    {
+      "id": "ASTRA-READ-EXEC-001",
+      "title": "Governed Read Execution Bridge",
+      "status": "implemented",
+      "certifiedAt": null,
+      "manualApproval": "pending",
+      "backendCommit": null,
+      "notes": "Backend-only Runtime-owned bridge implemented for exact read authorization plus exact app-owned Subscription Manager read grants. Initial adapter is Subscription Manager only. ASTRA-APP-VAL-001 is not certified, ASTRA-CHAT-001 is not authorized, production authorization is not approved, and production is unchanged."
+    }
+  ],
   "apps": [
     {
       "number": 46,

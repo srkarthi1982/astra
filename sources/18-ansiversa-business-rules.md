@@ -53,3 +53,13 @@ This file summarizes cross-app rules that should not be guessed. It does not rep
 - Never mix currencies without an explicit conversion model.
 - Store only frontend-required fields in list/dashboard responses.
 - Use Decimal-safe backend calculations for money-like values.
+
+## Astra Read Execution
+
+- Astra may not read app data directly through SQL or app database sessions.
+- A governed read requires certified read authorization plus an exact
+  app-owned grant.
+- The first authorized adapter is Subscription Manager only.
+- Read execution is read-only; write and mutation operations remain prohibited.
+- Additional app adapters, ASTRA-APP-VAL-001, ASTRA-CHAT-001, provider/model
+  integration, and production read execution require separate authorization.

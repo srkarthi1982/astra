@@ -28,6 +28,7 @@ Generated or refreshed: 2026-07-18
 - `20-app-template.md`: canonical blueprint for new mini-app structure and required assets.
 - `21-ansiversa-repositories.md`: primary GitHub repository memory and repository ownership boundaries.
 - `22-current-repository-checkpoint.md`: recovery checkpoint for repository facts newer than the original source pack, including the certified Astra backend/API/UI stack and current catalog delta.
+- `23-astra-read-execution.md`: ASTRA-READ-EXEC-001 governed read execution bridge memory, current boundaries, adapter contract, validation evidence, and unresolved authorization boundaries.
 
 ## Exclusions
 

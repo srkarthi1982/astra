@@ -305,9 +305,58 @@ Production Authorization    Not approved
 Production                  Unchanged
 ```
 
-The certified Runtime cannot currently execute this app-owned adapter without a
-separately authorized read executor. The adapter is certified independently for
-future connection through an approved executor.
+ASTRA-READ-EXEC-001 was later separately authorized and implemented as the
+narrow Runtime-owned read execution bridge for this certified app-owned
+adapter. ASTRA-APP-001 itself remains frozen.
+
+## ASTRA-READ-EXEC-001 Memory
+
+The backend contains a new implemented governed read execution bridge under:
+
+```text
+ansiversa-api/app/modules/astra_ai/read_execution.py
+```
+
+It exposes Runtime-owned read execution through:
+
+```text
+runtime.read_execution.issue_request(...)
+runtime.read_execution.execute(...)
+```
+
+Current state:
+
+```text
+ASTRA-READ-EXEC-001          Implemented
+Implementation Scope         Governed Read Execution Bridge
+Initial Adapter              Subscription Manager only
+Astra Source Review          Pending
+Security Review              Pending
+Product Owner Approval       Pending
+Certification                Pending
+```
+
+The bridge requires exact Runtime-registered read authorization, exact
+Runtime-issued execution requests, exact Subscription Manager one-time read
+grants, authenticated subject match, app/capability/version/request/limit and
+execution-context match, explicit adapter registry resolution, and read-only
+operation. It returns bounded structured read results and records
+metadata-only execution evidence through existing Runtime evidence mechanisms.
+
+Still not authorized:
+
+```text
+ASTRA-APP-VAL-001
+ASTRA-CHAT-001
+frontend chat
+provider/model integration
+general tool execution
+additional app adapters
+write/mutation execution
+production read execution
+```
+
+Production authorization is not approved. Production remains unchanged.
 
 ## Other Newer Repository Memory
 
@@ -356,6 +405,7 @@ astra/sources/13-backend-contracts.md
 astra/sources/14-coding-standards.md
 astra/sources/21-ansiversa-repositories.md
 astra/sources/22-current-repository-checkpoint.md
+astra/sources/23-astra-read-execution.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

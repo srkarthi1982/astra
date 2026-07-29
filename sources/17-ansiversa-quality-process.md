@@ -47,3 +47,11 @@ Interactive controls require accessible labels where visual text is insufficient
 ## Certification Failure Conditions
 
 Fail certification for data loss, incorrect ownership, broken create/edit/delete workflow, invalid Explore CTA, missing protected workflow, production-only breakage, secret exposure, major responsive failure, or unhandled API errors in core flows.
+
+## Astra Read Execution Validation
+
+Governed read execution validation must prove exact Runtime request ownership,
+valid unexpired app-owned grants, grant reuse rejection, subject/app/capability
+and execution-context mismatch rejection, unsupported adapter rejection,
+read-only operation enforcement, adapter exception bounding, result-contract
+validation, privacy/redaction screening, and unchanged production behavior.

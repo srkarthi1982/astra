@@ -84,3 +84,16 @@ Persistent tables require Alembic migrations. Production migration verification 
 ## Security Contract
 
 Never store or log passwords, API keys, database URLs, JWTs, cookies, Stripe secrets, production user lists, or personal user data in docs, generated registries, test artifacts, or source-pack files.
+
+## Astra Governed Read Execution
+
+ASTRA-READ-EXEC-001 introduces a backend-only Runtime-owned read execution
+bridge. The bridge may execute only an explicitly registered app-owned adapter
+after a certified read authorization decision and exact app-owned read grant
+match the authenticated subject, app, capability, operation, request reference,
+result limit, and execution context.
+
+Initial scope is Subscription Manager only. Astra-owned SQL, direct Astra app
+database access, dynamic imports, cross-app execution, write/mutation
+execution, public API routes, frontend chat, provider/model calls, persistent
+memory, deployment, and production configuration remain outside the contract.

@@ -29,6 +29,7 @@ Generated or refreshed: 2026-07-18
 - `21-ansiversa-repositories.md`: primary GitHub repository memory and repository ownership boundaries.
 - `22-current-repository-checkpoint.md`: recovery checkpoint for repository facts newer than the original source pack, including the certified Astra backend/API/UI stack and current catalog delta.
 - `23-astra-read-execution.md`: ASTRA-READ-EXEC-001 governed read execution bridge memory, current boundaries, adapter contract, validation evidence, and unresolved authorization boundaries.
+- `24-astra-app-validation.md`: ASTRA-APP-VAL-001 Subscription Manager governed read execution validation memory, scenario coverage, database-session proof, and unresolved authorization boundaries.
 
 ## Exclusions
 

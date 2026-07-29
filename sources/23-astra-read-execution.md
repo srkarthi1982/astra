@@ -12,14 +12,13 @@ Astra read authorization into a certified app-owned read adapter.
 ```text
 ASTRA-READ-EXEC-001          Implemented
 Implementation Scope         Governed Read Execution Bridge
-Astra Source Review          Pending
-Security Review              Pending
+Implementation Review        Approved with follow-up findings
 Product Owner Approval       Pending
 Certification                Pending
 
 Initial Adapter              Subscription Manager only
 ASTRA-APP-001                Certified / Approved
-ASTRA-APP-VAL-001            Not certified
+ASTRA-APP-VAL-001            Implemented / pending review
 ASTRA-CHAT-001               Not authorized
 
 Production Authorization     Not approved

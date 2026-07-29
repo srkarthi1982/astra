@@ -330,8 +330,7 @@ Current state:
 ASTRA-READ-EXEC-001          Implemented
 Implementation Scope         Governed Read Execution Bridge
 Initial Adapter              Subscription Manager only
-Astra Source Review          Pending
-Security Review              Pending
+Implementation Review        Approved with follow-up findings
 Product Owner Approval       Pending
 Certification                Pending
 ```
@@ -357,6 +356,40 @@ production read execution
 ```
 
 Production authorization is not approved. Production remains unchanged.
+
+## ASTRA-APP-VAL-001 Memory
+
+The backend contains a new implemented validation package under:
+
+```text
+ansiversa-api/validation/astra_app_val_001/
+```
+
+It validates Subscription Manager governed read execution through
+ASTRA-READ-EXEC-001.
+
+Current state:
+
+```text
+ASTRA-APP-VAL-001            Implemented
+Implementation Scope         Subscription Manager Governed Read Execution Validation
+Astra Source Review          Pending
+Security Review              Pending
+Product Owner Approval       Pending
+Certification                Pending
+```
+
+The validation proves Runtime-owned execution request issuance, read
+authorization enforcement, explicit Subscription Manager adapter selection,
+app-owned read execution, bounded/redacted Runtime result contracts,
+fail-closed unauthorized/malformed request behavior, unchanged production
+boundaries, and the database-session boundary proof requested during
+ASTRA-READ-EXEC-001 review.
+
+The database-session proof uses a tracking SQLAlchemy session to verify central
+Astra performs no session method calls before adapter entry. The registered
+Subscription Manager adapter then performs the app-owned read, and the returned
+Runtime result excludes session, database, SQL, and private authority material.
 
 ## Other Newer Repository Memory
 
@@ -406,6 +439,7 @@ astra/sources/14-coding-standards.md
 astra/sources/21-ansiversa-repositories.md
 astra/sources/22-current-repository-checkpoint.md
 astra/sources/23-astra-read-execution.md
+astra/sources/24-astra-app-validation.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

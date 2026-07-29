@@ -299,7 +299,7 @@ ASTRA-APP-001 boundaries:
 Frontend / Chat             Not authorized
 Provider / Model            Not authorized
 ASTRA-APP-VAL-001           Certified / Approved
-ASTRA-READ-EXEC-001         Implemented / certification pending
+ASTRA-READ-EXEC-001         Certified / Approved
 ASTRA-CHAT-001              Not authorized
 Production Authorization    Not approved
 Production                  Unchanged
@@ -327,12 +327,15 @@ runtime.read_execution.execute(...)
 Current state:
 
 ```text
-ASTRA-READ-EXEC-001          Implemented
+ASTRA-READ-EXEC-001          Certified / Approved
 Implementation Scope         Governed Read Execution Bridge
 Initial Adapter              Subscription Manager only
-Implementation Review        Approved with follow-up findings
-Product Owner Approval       Pending
-Certification                Pending
+Implementation Review        Approved
+Validation                   ASTRA-APP-VAL-001 Certified / Approved
+Product Owner Approval       Approved
+Certification                Passed
+Implementation Commit        15c017b327635f29fe9ebc30132fb6a39a87d0ef
+Validation Commit            19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 ```
 
 The bridge requires exact Runtime-registered read authorization, exact

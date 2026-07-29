@@ -87,7 +87,7 @@ Never store or log passwords, API keys, database URLs, JWTs, cookies, Stripe sec
 
 ## Astra Governed Read Execution
 
-ASTRA-READ-EXEC-001 introduces a backend-only Runtime-owned read execution
+ASTRA-READ-EXEC-001 is certified/approved as a backend-only Runtime-owned read execution
 bridge. The bridge may execute only an explicitly registered app-owned adapter
 after a certified read authorization decision and exact app-owned read grant
 match the authenticated subject, app, capability, operation, request reference,
@@ -97,3 +97,6 @@ Initial scope is Subscription Manager only. Astra-owned SQL, direct Astra app
 database access, dynamic imports, cross-app execution, write/mutation
 execution, public API routes, frontend chat, provider/model calls, persistent
 memory, deployment, and production configuration remain outside the contract.
+
+The certified Subscription Manager path is validated by ASTRA-APP-VAL-001 at
+backend commit `19bc1e34feb4556f5dd7c4117536ba9d72ba8365`.

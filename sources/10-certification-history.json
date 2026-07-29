@@ -21,11 +21,11 @@
     {
       "id": "ASTRA-READ-EXEC-001",
       "title": "Governed Read Execution Bridge",
-      "status": "implemented",
-      "certifiedAt": null,
-      "manualApproval": "pending",
+      "status": "certified_approved",
+      "certifiedAt": "2026-07-29",
+      "manualApproval": "approved",
       "backendCommit": "15c017b327635f29fe9ebc30132fb6a39a87d0ef",
-      "notes": "Backend-only Runtime-owned bridge implemented for exact read authorization plus exact app-owned Subscription Manager read grants. Initial adapter is Subscription Manager only. ASTRA-APP-VAL-001 is certified/approved. ASTRA-CHAT-001 is not authorized, production authorization is not approved, and production is unchanged."
+      "notes": "Backend-only Runtime-owned bridge certified/approved for exact read authorization plus exact app-owned Subscription Manager read grants. Initial adapter is Subscription Manager only. Validated by ASTRA-APP-VAL-001 at backend commit 19bc1e34feb4556f5dd7c4117536ba9d72ba8365, including no SQL execution before registered Subscription Manager adapter entry and no session, SQL, database handle, or private authority material in Runtime results. ASTRA-CHAT-001 is not authorized, production authorization is not approved, and production is unchanged."
     },
     {
       "id": "ASTRA-APP-VAL-001",

@@ -10,11 +10,14 @@ Astra read authorization into a certified app-owned read adapter.
 ## Status
 
 ```text
-ASTRA-READ-EXEC-001          Implemented
+ASTRA-READ-EXEC-001          Certified / Approved
 Implementation Scope         Governed Read Execution Bridge
-Implementation Review        Approved with follow-up findings
-Product Owner Approval       Pending
-Certification                Pending
+Implementation Review        Approved
+Validated By                 ASTRA-APP-VAL-001
+Product Owner Approval       Approved
+Certification                Passed
+Implementation Commit        15c017b327635f29fe9ebc30132fb6a39a87d0ef
+Validation Commit            19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 
 Initial Adapter              Subscription Manager only
 ASTRA-APP-001                Certified / Approved
@@ -109,6 +112,11 @@ Focused backend tests cover:
 - invalid adapter output rejection;
 - redaction/privacy failure;
 - Runtime shutdown invalidation.
+
+ASTRA-APP-VAL-001 formally validates the Subscription Manager execution path.
+Its certified validation records prove no SQL execution occurs before
+registered Subscription Manager adapter entry, and Runtime results expose no
+session, SQL, database handle, or private authority material.
 
 ## Unresolved Authorization Boundaries
 

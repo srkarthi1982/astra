@@ -19,7 +19,7 @@ Product Owner Approval       Approved
 Certification                Passed
 Backend Commit               19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 
-Validated Parent             ASTRA-READ-EXEC-001 Implemented
+Validated Parent             ASTRA-READ-EXEC-001 Certified / Approved
 Validated App Adapter        ASTRA-APP-001 Certified / Approved
 Initial Adapter              Subscription Manager only
 

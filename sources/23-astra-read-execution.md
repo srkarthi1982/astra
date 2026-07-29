@@ -18,7 +18,7 @@ Certification                Pending
 
 Initial Adapter              Subscription Manager only
 ASTRA-APP-001                Certified / Approved
-ASTRA-APP-VAL-001            Implemented / pending review
+ASTRA-APP-VAL-001            Certified / Approved
 ASTRA-CHAT-001               Not authorized
 
 Production Authorization     Not approved
@@ -116,7 +116,6 @@ These remain outside the implemented and certified scope until separately
 authorized:
 
 ```text
-ASTRA-APP-VAL-001            Not certified
 ASTRA-CHAT-001               Not authorized
 Provider / Model             Not authorized
 General Tool Executor        Not authorized

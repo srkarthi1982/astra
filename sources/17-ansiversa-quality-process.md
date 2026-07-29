@@ -56,7 +56,7 @@ and execution-context mismatch rejection, unsupported adapter rejection,
 read-only operation enforcement, adapter exception bounding, result-contract
 validation, privacy/redaction screening, and unchanged production behavior.
 
-ASTRA-APP-VAL-001 adds a required database-session ownership proof: central
-Astra must not call database session methods before the registered app-owned
-adapter receives the session, and Runtime results must not expose session,
-database, SQL, or adapter authority material.
+ASTRA-APP-VAL-001 records the current automated database-session proof
+precisely: no SQL execution occurs before the registered app-owned adapter
+receives the session, and Runtime results must not expose session, database,
+SQL, or adapter authority material.

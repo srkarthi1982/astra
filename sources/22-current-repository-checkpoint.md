@@ -298,8 +298,8 @@ ASTRA-APP-001 boundaries:
 ```text
 Frontend / Chat             Not authorized
 Provider / Model            Not authorized
-ASTRA-APP-VAL-001           Not authorized
-ASTRA-READ-EXEC-001         Not authorized
+ASTRA-APP-VAL-001           Certified / Approved
+ASTRA-READ-EXEC-001         Implemented / certification pending
 ASTRA-CHAT-001              Not authorized
 Production Authorization    Not approved
 Production                  Unchanged
@@ -345,7 +345,6 @@ metadata-only execution evidence through existing Runtime evidence mechanisms.
 Still not authorized:
 
 ```text
-ASTRA-APP-VAL-001
 ASTRA-CHAT-001
 frontend chat
 provider/model integration
@@ -371,12 +370,14 @@ ASTRA-READ-EXEC-001.
 Current state:
 
 ```text
-ASTRA-APP-VAL-001            Implemented
+ASTRA-APP-VAL-001            Certified / Approved
 Implementation Scope         Subscription Manager Governed Read Execution Validation
-Astra Source Review          Pending
-Security Review              Pending
-Product Owner Approval       Pending
-Certification                Pending
+Astra Source Review          Approved
+Security Review              Approved
+Partner Review               Approved
+Product Owner Approval       Approved
+Certification                Passed
+Backend Commit               19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 ```
 
 The validation proves Runtime-owned execution request issuance, read
@@ -386,10 +387,10 @@ fail-closed unauthorized/malformed request behavior, unchanged production
 boundaries, and the database-session boundary proof requested during
 ASTRA-READ-EXEC-001 review.
 
-The database-session proof uses a tracking SQLAlchemy session to verify central
-Astra performs no session method calls before adapter entry. The registered
-Subscription Manager adapter then performs the app-owned read, and the returned
-Runtime result excludes session, database, SQL, and private authority material.
+The database-session proof uses a tracking SQLAlchemy session to verify no SQL
+execution occurs before registered adapter entry. The registered Subscription
+Manager adapter then performs the app-owned read, and the returned Runtime
+result excludes session, database, SQL, and private authority material.
 
 ## Other Newer Repository Memory
 

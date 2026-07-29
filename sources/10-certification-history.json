@@ -25,16 +25,16 @@
       "certifiedAt": null,
       "manualApproval": "pending",
       "backendCommit": "15c017b327635f29fe9ebc30132fb6a39a87d0ef",
-      "notes": "Backend-only Runtime-owned bridge implemented for exact read authorization plus exact app-owned Subscription Manager read grants. Initial adapter is Subscription Manager only. ASTRA-APP-VAL-001 is not certified, ASTRA-CHAT-001 is not authorized, production authorization is not approved, and production is unchanged."
+      "notes": "Backend-only Runtime-owned bridge implemented for exact read authorization plus exact app-owned Subscription Manager read grants. Initial adapter is Subscription Manager only. ASTRA-APP-VAL-001 is certified/approved. ASTRA-CHAT-001 is not authorized, production authorization is not approved, and production is unchanged."
     },
     {
       "id": "ASTRA-APP-VAL-001",
       "title": "Subscription Manager Governed Read Execution Validation",
-      "status": "implemented",
-      "certifiedAt": null,
-      "manualApproval": "pending",
-      "backendCommit": null,
-      "notes": "Validation-only runner implemented for Runtime-issued read execution requests, read authorization enforcement, explicit Subscription Manager adapter selection, app-owned reads, bounded/redacted results, fail-closed malformed and unauthorized requests, database-session opacity proof, and unchanged production boundaries. ASTRA-CHAT-001 and provider/model integration are not authorized."
+      "status": "certified_approved",
+      "certifiedAt": "2026-07-29",
+      "manualApproval": "approved",
+      "backendCommit": "19bc1e34feb4556f5dd7c4117536ba9d72ba8365",
+      "notes": "Validation-only runner certified/approved for Runtime-issued read execution requests, read authorization enforcement, explicit Subscription Manager adapter selection, app-owned reads, bounded/redacted results, fail-closed malformed and unauthorized requests, no SQL execution before registered adapter entry, and unchanged production boundaries. ASTRA-CHAT-001 and provider/model integration are not authorized."
     }
   ],
   "apps": [

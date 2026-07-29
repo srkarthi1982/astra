@@ -61,5 +61,7 @@ This file summarizes cross-app rules that should not be guessed. It does not rep
   app-owned grant.
 - The first authorized adapter is Subscription Manager only.
 - Read execution is read-only; write and mutation operations remain prohibited.
-- Additional app adapters, ASTRA-APP-VAL-001, ASTRA-CHAT-001, provider/model
-  integration, and production read execution require separate authorization.
+- ASTRA-APP-VAL-001 is certified/approved for Subscription Manager governed
+  read execution validation.
+- Additional app adapters, ASTRA-CHAT-001, provider/model integration, and
+  production read execution require separate authorization.

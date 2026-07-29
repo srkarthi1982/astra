@@ -10,12 +10,14 @@ Manager governed read execution through ASTRA-READ-EXEC-001.
 ## Status
 
 ```text
-ASTRA-APP-VAL-001            Implemented
+ASTRA-APP-VAL-001            Certified / Approved
 Implementation Scope         Subscription Manager Governed Read Execution Validation
-Astra Source Review          Pending
-Security Review              Pending
-Product Owner Approval       Pending
-Certification                Pending
+Astra Source Review          Approved
+Security Review              Approved
+Partner Review               Approved
+Product Owner Approval       Approved
+Certification                Passed
+Backend Commit               19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 
 Validated Parent             ASTRA-READ-EXEC-001 Implemented
 Validated App Adapter        ASTRA-APP-001 Certified / Approved
@@ -45,10 +47,10 @@ ASTRA-APP-VAL-001 validates:
 ## Database-Session Boundary Proof
 
 The validation runner uses a tracking SQLAlchemy session. The registered
-adapter wrapper observes that no central Astra code has called database session
-methods before adapter entry. The app-owned Subscription Manager adapter then
-uses the session for its own read. The Runtime result does not expose the
-session, database handle, SQL, or private adapter authority.
+adapter wrapper observes that no SQL execution has occurred before adapter
+entry. The app-owned Subscription Manager adapter then uses the session for its
+own read. The Runtime result does not expose the session, database handle, SQL,
+or private adapter authority.
 
 This records the current bridge as opaque session transport only. A future
 stronger design may replace this with an app-owned callable/service boundary,

@@ -23,7 +23,7 @@ Validated Parent             ASTRA-READ-EXEC-001 Certified / Approved
 Validated App Adapter        ASTRA-APP-001 Certified / Approved
 Initial Adapter              Subscription Manager only
 
-ASTRA-CHAT-001               Backend implemented / pending Astra review
+ASTRA-CHAT-001               Changes Required / pending Astra re-review
 Provider / Model             Not authorized
 Production Authorization     Not approved
 Production                   Unchanged

@@ -129,8 +129,21 @@ deterministic declared-intent chat gateway for certified Subscription Manager
 read capabilities only. It routes through Conversation Context, declared Intent
 Resolution, metadata-only Capability Discovery, ASTRA-READ-AUTH-BIND-001,
 ASTRA-IMP-010 Read Access Authorization, ASTRA-READ-EXEC-001, and the
-app-owned Subscription Manager adapter. ASTRA-CHAT-001 is implemented /
-pending Astra review and is not certified. Production authorization remains not
+app-owned Subscription Manager adapter. This first implementation was later
+reviewed as Changes Required. Production authorization remains not approved.
+
+On 2026-08-02, Astra review `4838627730` found ASTRA-CHAT-001 Changes Required
+at backend commit `d5c4c127c7c2fed254f7ee5463331306ca4d413b`. The correction
+was implemented at backend commit
+`681878d048c4b3229c312abfcaaa45b5e6a44459`. The correction removes ambient
+Subscription Manager private-read activation from generic metadata engines,
+binds activation-aware metadata context to the exact chat app/scope/capability
+request, carries the declared capability through the declared-intent binding,
+`AstraIntentRequest`, resolved intent capability lineage, Read Authority, and
+Read Execution, replaces keyword scanning of app-owned business values with
+structural allowlisted response projection, and adds real authenticated HTTP
+success/failure coverage. ASTRA-CHAT-001 remains Changes Required / pending
+Astra re-review and is not certified. Production authorization remains not
 approved.
 
 ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
@@ -196,9 +209,9 @@ schema/migration, writes, additional app adapters, production configuration, or
 deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
-ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 is implemented /
-pending Astra review. Production authorization remains not approved and
-production remains unchanged.
+ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 is Changes
+Required / pending Astra re-review. Production authorization remains not
+approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -382,7 +395,7 @@ Frontend / Chat             Not authorized
 Provider / Model            Not authorized
 ASTRA-APP-VAL-001           Certified / Approved
 ASTRA-READ-EXEC-001         Certified / Approved
-ASTRA-CHAT-001              Backend implemented / pending Astra review
+ASTRA-CHAT-001              Changes Required / pending Astra re-review
 Production Authorization    Not approved
 Production                  Unchanged
 ```
@@ -597,8 +610,9 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 is implemented /
-pending Astra review. Production authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 is Changes
+Required / pending Astra re-review. Production authorization remains not
+approved.
 
 ## Other Newer Repository Memory
 

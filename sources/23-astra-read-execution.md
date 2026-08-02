@@ -22,7 +22,7 @@ Validation Commit            19bc1e34feb4556f5dd7c4117536ba9d72ba8365
 Initial Adapter              Subscription Manager only
 ASTRA-APP-001                Certified / Approved
 ASTRA-APP-VAL-001            Certified / Approved
-ASTRA-CHAT-001               Backend implemented / pending Astra review
+ASTRA-CHAT-001               Changes Required / pending Astra re-review
 
 Production Authorization     Not approved
 Production                   Unchanged

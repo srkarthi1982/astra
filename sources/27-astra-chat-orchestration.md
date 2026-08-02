@@ -4,10 +4,16 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-CHAT-001 Implemented / Pending Astra Review.
+Implementation State: ASTRA-CHAT-001 Changes Required / Pending Astra Re-Review.
 
 Backend Implementation Commit:
 d5c4c127c7c2fed254f7ee5463331306ca4d413b.
+
+Backend Correction Commit:
+681878d048c4b3229c312abfcaaa45b5e6a44459.
+
+Astra Re-Review:
+4838627730.
 
 Certification:
 Pending Astra source/security/architecture review.
@@ -130,10 +136,27 @@ plan = None
 ```
 
 Capability Discovery remains metadata-only. It does not receive executable app
-read capabilities. Runtime-internal Capability Discovery and declared
-Subscription Manager `get_information` intent governance carry the certified
-`subscription_manager:private_read` activation context only so the governed
-chat read path can use the certified activation prerequisite.
+read capabilities. Generic Runtime-internal Capability Discovery no longer
+receives ambient Subscription Manager private-read activation merely because the
+caller is Runtime-owned. Chat supplies explicit per-request orchestration
+context for the exact app, capability scope, and declared Subscription Manager
+capability.
+
+Intent Resolution remains declared-intent only. It no longer infers
+Subscription Manager activation from `get_information` plus
+subscription-looking subject strings. Chat binds the declared Subscription
+Manager capability into:
+
+```text
+declared-intent binding target
+AstraIntentRequest declared_target
+AstraIntentRequest declared_capability_ids
+AstraIntentResolution.resolved_capability_ids
+Read Authority adapter_capability_id
+Read Execution adapter_capability_id
+```
+
+Mismatched, changed, or reused capability lineage fails closed.
 
 ## Security Boundary
 
@@ -147,10 +170,13 @@ call Subscription Manager repositories, or execute SQL. The API route passes the
 Subscription Manager database dependency only into the certified Read Execution
 bridge, where the app-owned adapter remains the first SQL boundary.
 
-The response contract is bounded and rejects private material such as bearer
-authorization strings, API keys, passwords, private keys, secrets, tokens,
-provider payloads, raw prompts, session material, SQL references, and
-tracebacks.
+The response contract is bounded through structural projection. Chat projects
+Subscription Manager summaries and records through allowlisted fields and
+rejects unsupported private metadata keys. It does not keyword-scan app-owned
+business values, so legitimate values such as `1Password` and `SQL Server`
+remain returnable when the governed capability authorizes those fields.
+Projection failures return bounded non-success chat responses rather than
+unhandled server errors.
 
 ## Explicit Non-Goals
 
@@ -176,28 +202,28 @@ merge
 
 ## Validation Evidence
 
-Latest backend validation for implementation commit
-`d5c4c127c7c2fed254f7ee5463331306ca4d413b`:
+Latest backend validation for correction commit
+`681878d048c4b3229c312abfcaaa45b5e6a44459`:
 
 ```text
 .venv/bin/python -m compileall app/modules/astra_ai/chat_gateway.py app/modules/astra_ai/api/chat.py app/main.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra_chat_gateway.py -q
-12 passed, 1 warning
+21 passed, 1 warning
 
 .venv/bin/python -m pytest tests/test_astra_intent_resolution_engine.py tests/test_astra_capability_discovery_engine.py -q
 48 passed
 
 .venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_conversation_context_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_capability_discovery_engine.py tests/test_astra_planning_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_chat_gateway.py -q
-261 passed, 1 warning, 11 subtests passed
+270 passed, 1 warning, 11 subtests passed
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_chat_gateway.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-417 passed, 147 warnings, 33 subtests passed in 438.66s
+426 passed, 147 warnings, 33 subtests passed in 463.16s
 ```
 
-ASTRA-CHAT-001 is implemented / pending Astra review. It is not certified.
-Production authorization remains not approved.
+ASTRA-CHAT-001 remains Changes Required / pending Astra re-review. It is not
+certified. Production authorization remains not approved.

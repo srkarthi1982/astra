@@ -65,4 +65,4 @@ This file summarizes cross-app rules that should not be guessed. It does not rep
   read execution validation.
 - Additional app adapters, frontend chat, provider/model integration, and
   production read execution require separate authorization. ASTRA-CHAT-001
-  backend orchestration is implemented / pending Astra review only.
+  backend orchestration is Changes Required / pending Astra re-review only.

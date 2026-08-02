@@ -16,6 +16,9 @@ f1af573917b93f0ebe15e133a46f49a33cf1541f.
 Backend Final Correction Commit:
 942fae7473be5267d7b5218ea8e3977f28fbd058.
 
+Backend Live Runtime Binding Correction Commit:
+9804b1db1956cd6d5bad5b670f0385a12bea2bbc.
+
 ## Purpose
 
 ASTRA-RUNTIME-ACT-001 exists because ASTRA-READ-AUTH-BIND-001 review exposed a
@@ -66,12 +69,16 @@ Runtime injects its own activation context into Governance evaluation and does
 not trust caller-supplied activation context in normal Runtime evaluation.
 
 Activation authority is exact-object Runtime ownership, not matching metadata.
-Runtime creates an activation issuer for the startup instance through a
-module-private Runtime activation issuer root-of-trust. Caller-created issuer
-construction with caller-owned `_runtime_authority=object()` is rejected. The
-issuer stores exact issuer identity and exact issued activation object identity
-in a Runtime-owned registry. Copied, reconstructed, tampered, foreign-Runtime,
-and post-shutdown activation objects cannot establish activation authority.
+Runtime creates an activation issuer for the startup instance using the exact
+opaque activation issuer authority owned by that `AstraRuntime` instance. The
+standalone trusted issuer factory was removed. Caller-created issuer
+construction with caller-owned `_runtime_authority=object()` is rejected, and
+direct issuer issuance without Runtime authority is rejected. Normal activation
+issuance remains behind `load_runtime_activation()` and the server-owned
+`ASTRA_NONPROD_READ_ENABLED` gate. The issuer stores exact issuer identity and
+exact issued activation object identity in a Runtime-owned registry. Copied,
+reconstructed, tampered, foreign-Runtime, server-flag-disabled, and
+post-shutdown activation objects cannot establish activation authority.
 
 The read-only Runtime projection is metadata-only:
 
@@ -116,6 +123,14 @@ Backend final correction commit `942fae7473be5267d7b5218ea8e3977f28fbd058`
 addresses the remaining Astra blocker from correction commit `f1af573...` by
 making issuer ownership itself Runtime-authoritative.
 
+Backend live Runtime binding correction commit
+`9804b1db1956cd6d5bad5b670f0385a12bea2bbc` addresses the follow-up Astra
+blocker in which the module-level trusted issuer factory remained callable by
+ordinary code. The trusted factory was removed, issuer construction now requires
+the exact opaque authority object owned by the supplied Runtime owner, direct
+issuer issuance also requires that authority, and validation requires the exact
+issuer to be registered on the live Runtime with a loaded activation.
+
 The required negative is enforced:
 
 ```text
@@ -136,9 +151,12 @@ real Governance Kernel. No governance monkeypatch is used.
 Focused tests prove:
 
 ```text
+standalone trusted issuer factory is not exposed
 directly constructed activation -> FAIL_CLOSED
 copied activation -> FAIL_CLOSED
 caller-created issuer activation -> construction rejected
+direct issuer issuance without Runtime authority -> rejected
+server-flag-disabled Runtime issuer activation -> FAIL_CLOSED
 foreign Runtime activation -> FAIL_CLOSED
 tampered activation reference -> FAIL_CLOSED
 tampered activation digest -> FAIL_CLOSED

@@ -4,14 +4,20 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-READ-AUTH-BIND-001 Changes Required / Pending
-Astra Re-Review.
+Implementation State: ASTRA-READ-AUTH-BIND-001 Certified / Approved.
 
 Backend Implementation Commit:
 b9dfceefc3352233e474eb91a04861431b4e5731.
 
 Backend Correction Commit:
 6bf9e9e983711dbe65b18c98e6c47a45e117b02c.
+
+Certification Review:
+4838496452.
+
+Certification closure records approval only. PR #1 remains open, draft,
+unmerged, and mergeable at certification time. No merge or production
+authorization is included.
 
 ## Purpose
 
@@ -23,8 +29,7 @@ application code could not yet bind app-owned read capability metadata and
 Runtime-owned proof issuers into ASTRA-IMP-010 without validation-only private
 mutation.
 
-ASTRA-CHAT-001 remains authorized but paused until this prerequisite is
-reviewed, approved, and certified.
+ASTRA-CHAT-001 remains authorized but paused until explicitly resumed.
 
 ## Implemented Boundary
 
@@ -194,5 +199,7 @@ passed
 405 passed, 147 warnings, 33 subtests passed
 ```
 
-ASTRA-READ-AUTH-BIND-001 remains pending Astra source/security/architecture
-review and is not certified. ASTRA-CHAT-001 remains authorized / paused.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved at backend commit
+`6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with certification review
+`4838496452`. ASTRA-CHAT-001 remains authorized / paused. Production
+authorization remains not approved.

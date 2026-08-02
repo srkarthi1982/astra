@@ -173,9 +173,10 @@ and Runtime-owned proof issuers into ASTRA-IMP-010 without validation fixture
 mutation.
 
 ASTRA-READ-AUTH-BIND-001 was implemented as the prerequisite, then resumed
-after ASTRA-RUNTIME-ACT-001 certification and corrected. It remains pending
-Astra re-review/certification. It adds a Runtime-owned read authority binding
-component under:
+after ASTRA-RUNTIME-ACT-001 certification, corrected, and Certified /
+Approved at backend commit `6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with
+certification review `4838496452`. It adds a Runtime-owned read authority
+binding component under:
 
 ```text
 ansiversa-api/app/modules/astra_ai/read_authority_binding.py
@@ -191,9 +192,9 @@ schema/migration, writes, additional app adapters, production configuration, or
 deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
-ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 must remain
-paused until ASTRA-READ-AUTH-BIND-001 is reviewed, approved, and certified.
-Production authorization remains not approved and production remains unchanged.
+ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 remains
+authorized / paused until explicitly resumed. Production authorization remains
+not approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -483,11 +484,12 @@ ansiversa-api/app/modules/astra_ai/read_authority_binding.py
 Current state:
 
 ```text
-ASTRA-READ-AUTH-BIND-001     Changes Required / Pending Astra Re-Review
+ASTRA-READ-AUTH-BIND-001     Certified / Approved
 Implementation Scope         Governed Read Authority & Capability Binding
 Initial App                  Subscription Manager only
 Initial Backend Commit       b9dfceefc3352233e474eb91a04861431b4e5731
 Correction Backend Commit    6bf9e9e983711dbe65b18c98e6c47a45e117b02c
+Certification Review         4838496452
 ```
 
 The binding exposes a narrow Runtime-owned surface through
@@ -549,8 +551,9 @@ passed
 405 passed, 147 warnings, 33 subtests passed
 ```
 
-ASTRA-READ-AUTH-BIND-001 remains pending Astra source/security/architecture
-review and is not certified.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved at backend commit
+`6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with certification review
+`4838496452`.
 
 ## ASTRA-RUNTIME-ACT-001 Memory
 
@@ -591,9 +594,9 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 has resumed and now has a corrected implementation,
-but remains Changes Required / Pending Astra Re-Review. ASTRA-CHAT-001 remains
-authorized / paused. Production authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 remains
+authorized / paused until explicitly resumed. Production authorization remains
+not approved.
 
 ## Other Newer Repository Memory
 

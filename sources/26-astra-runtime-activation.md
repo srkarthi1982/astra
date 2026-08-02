@@ -4,11 +4,14 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-RUNTIME-ACT-001 implemented / pending Astra review
-and certification.
+Implementation State: ASTRA-RUNTIME-ACT-001 implemented / changes required /
+pending Astra re-review and certification.
 
 Backend Implementation Commit:
 fd61ee1071227549500785e0c8a663cf5e2f8082.
+
+Backend Correction Commit:
+f1af573917b93f0ebe15e133a46f49a33cf1541f.
 
 ## Purpose
 
@@ -59,6 +62,12 @@ Runtime loads activation during startup and owns the immutable activation state.
 Runtime injects its own activation context into Governance evaluation and does
 not trust caller-supplied activation context in normal Runtime evaluation.
 
+Activation authority is exact-object Runtime ownership, not matching metadata.
+Runtime creates an activation issuer for the startup instance. The issuer stores
+the exact issued activation object in a Runtime-owned registry. Caller-created,
+copied, reconstructed, tampered, foreign-Runtime, and post-shutdown activation
+objects cannot establish activation authority.
+
 The read-only Runtime projection is metadata-only:
 
 ```text
@@ -76,6 +85,22 @@ When Stage-0 remains disabled, Governance can allow only if a Runtime-owned
 activation context covers the exact runtime instance, non-production
 environment, app, capability scope, authority class, safety class, and disabled
 provider/memory/adaptation/execution-handoff flags.
+
+Governance also requires safe activation provenance:
+
+```text
+activation_reference
+activation_digest
+```
+
+These are populated by Runtime from the exact activation object. The serialized
+Governance input and resulting evidence digest cover them, and evidence
+provenance records the activation reference. Private Runtime issuer authority is
+not serialized.
+
+Activation is lifecycle-bound to the Runtime startup instance. It does not use a
+short startup TTL. Runtime shutdown invalidates the issuer registry, making the
+previous activation unusable.
 
 All other Governance fail-closed, approval, consent, owner-authority,
 production, and constitutional checks remain active.

@@ -470,18 +470,26 @@ ansiversa-api/app/modules/astra_ai/activation.py
 Current state:
 
 ```text
-ASTRA-RUNTIME-ACT-001        Implemented / Pending Astra Review
+ASTRA-RUNTIME-ACT-001        Implemented / Changes Required
 Implementation Scope         Governed Non-Production Runtime Activation
 Initial App                  Subscription Manager only
 Initial Capability Scope     subscription_manager:private_read
-Backend Commit               fd61ee1071227549500785e0c8a663cf5e2f8082
+Initial Backend Commit        fd61ee1071227549500785e0c8a663cf5e2f8082
+Correction Backend Commit     f1af573917b93f0ebe15e133a46f49a33cf1541f
 ```
 
 The activation layer preserves Stage-0 `feature_enabled=False` semantics and
-adds a separate Runtime-owned activation contract loaded from server
+adds a separate exact Runtime-owned activation contract loaded from server
 configuration. The server setting defaults disabled, rejects malformed values,
 prohibits production, and only permits local/development/QA/staging
 Subscription Manager private-read advisory/read-only governance scope.
+
+Activation authority is established by a Runtime-owned activation issuer and
+exact-object registry. Matching metadata alone cannot activate Governance. Safe
+`activation_reference` and `activation_digest` are bound into Governance input
+and evidence provenance, while private Runtime issuer authority is not
+serialized. Activation is lifecycle-bound to the Runtime startup instance and is
+invalidated by Runtime shutdown.
 
 Activation is not read authorization, app owner acceptance, read execution,
 production approval, chat, provider/model integration, memory, adaptation,

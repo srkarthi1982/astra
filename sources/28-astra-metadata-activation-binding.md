@@ -21,6 +21,12 @@ Astra Review:
 Backend Correction Commit:
 ea8ff94d04dffd22c249de181c3145c2817f8e36.
 
+Second Astra Review:
+4839092431.
+
+Final Backend Correction Commit:
+c9d822a714e0d90f78e775096ddc737e4ed29f6e.
+
 Certification:
 Pending Astra source/security/architecture re-review.
 
@@ -97,6 +103,12 @@ stale turn/request values against the independently verified conversation
 snapshot current turn and request reference, not against values read from the
 context being validated.
 
+After review `4839092431`, raw `discover_capabilities(...)` and
+`get_capability(...)` reject governed metadata contexts because they do not
+receive a certified conversation snapshot. Governed metadata context is accepted
+only through `discover_for_conversation(...)` after conversation-bound
+validation.
+
 ## Runtime Issuance And Validation
 
 Only `AstraRuntime` creates the governed metadata context issuer. Issuer
@@ -126,7 +138,9 @@ Capability Discovery remains metadata-only. Generic internal requests without a
 governed metadata context continue to evaluate as public metadata and fail closed
 under Stage-0 disabled Governance. A valid context may scope Governance evidence
 to Subscription Manager private-read metadata only when it matches the actual
-current conversation turn and request reference.
+current conversation turn and request reference. Raw generic discovery and
+lookup entry points remain generic but fail closed when a governed context is
+supplied.
 
 Intent Resolution remains declared-intent only. It may resolve the exact
 capability from the trusted governed metadata context only when
@@ -164,24 +178,24 @@ ASTRA-READ-EXEC-001 behavior remains unchanged.
 
 ## Validation Evidence
 
-Latest backend validation for correction commit
-`ea8ff94d04dffd22c249de181c3145c2817f8e36`:
+Latest backend validation for final correction commit
+`c9d822a714e0d90f78e775096ddc737e4ed29f6e`:
 
 ```text
 .venv/bin/python -m compileall app/modules/astra_ai/metadata_activation_binding.py app/modules/astra_ai/capability_discovery.py app/modules/astra_ai/intent_resolution.py app/modules/astra_ai/runtime.py tests/test_astra_metadata_activation_binding.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py -q
-11 passed
+14 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py -q
-166 passed, 11 subtests passed
+169 passed, 11 subtests passed
 
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
 64 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_planning_engine.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
-260 passed, 11 subtests passed
+263 passed, 11 subtests passed
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_metadata_activation_binding.py
 passed
@@ -190,7 +204,7 @@ git diff --check
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-416 passed, 147 warnings, 33 subtests passed
+419 passed, 147 warnings, 33 subtests passed
 ```
 
 ASTRA-META-ACT-BIND-001 remains Changes Required / pending Astra re-review. It

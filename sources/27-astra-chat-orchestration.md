@@ -19,7 +19,8 @@ Second Astra Re-Review:
 4838708303.
 
 Certification:
-Paused pending ASTRA-META-ACT-BIND-001 review and certification.
+Paused pending explicit Product Owner/Astra resume and branch reconciliation
+onto certified ASTRA-META-ACT-BIND-001.
 
 Production Authorization:
 Not approved.
@@ -27,8 +28,8 @@ Not approved.
 ## Purpose
 
 ASTRA-CHAT-001 adds the first backend-only governed chat orchestration path.
-It remains paused because the prerequisite chain now includes
-ASTRA-META-ACT-BIND-001, which is implemented but not yet certified:
+It remains paused pending explicit Product Owner/Astra resume and branch
+reconciliation onto certified ASTRA-META-ACT-BIND-001:
 
 ```text
 ASTRA-RUNTIME-ACT-001
@@ -230,6 +231,6 @@ passed
 426 passed, 147 warnings, 33 subtests passed in 463.16s
 ```
 
-ASTRA-CHAT-001 remains Changes Required / paused on
-ASTRA-META-ACT-BIND-001. It is not certified. Production authorization remains
-not approved.
+ASTRA-CHAT-001 remains Changes Required / paused pending explicit Product
+Owner/Astra resume and branch reconciliation onto certified
+ASTRA-META-ACT-BIND-001. Production authorization remains not approved.

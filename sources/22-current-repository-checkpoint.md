@@ -437,7 +437,7 @@ ansiversa-api/app/modules/astra_ai/read_authority_binding.py
 Current state:
 
 ```text
-ASTRA-READ-AUTH-BIND-001     Implemented / Pending Astra Review
+ASTRA-READ-AUTH-BIND-001     Changes Required / Paused
 Implementation Scope         Governed Read Authority & Capability Binding
 Initial App                  Subscription Manager only
 Backend Commit               b9dfceefc3352233e474eb91a04861431b4e5731
@@ -452,8 +452,45 @@ adding chat, frontend, provider/model integration, natural-language inference,
 SQL/database execution, schema changes, migrations, production configuration,
 or additional app adapters.
 
-ASTRA-CHAT-001 remains paused until this prerequisite is reviewed, approved,
-and certified. Production authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 review found that real Governance could not return
+`ALLOW` while the Stage-0 configuration remains globally disabled. This is a
+real prerequisite blocker, not a binding-only defect. Existing binding
+corrections are preserved separately and should not be completed until
+ASTRA-RUNTIME-ACT-001 is reviewed and certified.
+
+## ASTRA-RUNTIME-ACT-001 Memory
+
+The backend contains a new implemented governed non-production activation layer
+under:
+
+```text
+ansiversa-api/app/modules/astra_ai/activation.py
+```
+
+Current state:
+
+```text
+ASTRA-RUNTIME-ACT-001        Implemented / Pending Astra Review
+Implementation Scope         Governed Non-Production Runtime Activation
+Initial App                  Subscription Manager only
+Initial Capability Scope     subscription_manager:private_read
+Backend Commit               fd61ee1071227549500785e0c8a663cf5e2f8082
+```
+
+The activation layer preserves Stage-0 `feature_enabled=False` semantics and
+adds a separate Runtime-owned activation contract loaded from server
+configuration. The server setting defaults disabled, rejects malformed values,
+prohibits production, and only permits local/development/QA/staging
+Subscription Manager private-read advisory/read-only governance scope.
+
+Activation is not read authorization, app owner acceptance, read execution,
+production approval, chat, provider/model integration, memory, adaptation,
+writes, general tool execution, frontend behavior, persistence, migration, or
+deployment.
+
+ASTRA-READ-AUTH-BIND-001 remains paused pending this activation review and
+certification. ASTRA-CHAT-001 remains authorized / paused. Production
+authorization remains not approved.
 
 ## Other Newer Repository Memory
 
@@ -505,6 +542,7 @@ astra/sources/22-current-repository-checkpoint.md
 astra/sources/23-astra-read-execution.md
 astra/sources/24-astra-app-validation.md
 astra/sources/25-astra-read-authority-binding.md
+astra/sources/26-astra-runtime-activation.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

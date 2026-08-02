@@ -23,7 +23,7 @@ Validated Parent             ASTRA-READ-EXEC-001 Certified / Approved
 Validated App Adapter        ASTRA-APP-001 Certified / Approved
 Initial Adapter              Subscription Manager only
 
-ASTRA-CHAT-001               Not authorized
+ASTRA-CHAT-001               Backend implemented / pending Astra review
 Provider / Model             Not authorized
 Production Authorization     Not approved
 Production                   Unchanged
@@ -59,7 +59,7 @@ but that is outside ASTRA-APP-VAL-001.
 ## Not Authorized
 
 ```text
-Frontend / Chat
+Frontend chat
 Provider / Model
 General Tool Executor
 Additional app adapters

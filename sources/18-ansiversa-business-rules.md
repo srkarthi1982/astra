@@ -63,5 +63,6 @@ This file summarizes cross-app rules that should not be guessed. It does not rep
 - Read execution is read-only; write and mutation operations remain prohibited.
 - ASTRA-APP-VAL-001 is certified/approved for Subscription Manager governed
   read execution validation.
-- Additional app adapters, ASTRA-CHAT-001, provider/model integration, and
-  production read execution require separate authorization.
+- Additional app adapters, frontend chat, provider/model integration, and
+  production read execution require separate authorization. ASTRA-CHAT-001
+  backend orchestration is implemented / pending Astra review only.

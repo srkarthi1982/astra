@@ -29,7 +29,7 @@ application code could not yet bind app-owned read capability metadata and
 Runtime-owned proof issuers into ASTRA-IMP-010 without validation-only private
 mutation.
 
-ASTRA-CHAT-001 remains authorized but paused until explicitly resumed.
+ASTRA-CHAT-001 is now implemented / pending Astra review.
 
 ## Implemented Boundary
 
@@ -201,5 +201,6 @@ passed
 
 ASTRA-READ-AUTH-BIND-001 is Certified / Approved at backend commit
 `6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with certification review
-`4838496452`. ASTRA-CHAT-001 remains authorized / paused. Production
-authorization remains not approved.
+`4838496452`. ASTRA-CHAT-001 is implemented / pending Astra review at backend
+commit `d5c4c127c7c2fed254f7ee5463331306ca4d413b`. Production authorization
+remains not approved.

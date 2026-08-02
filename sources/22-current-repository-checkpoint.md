@@ -121,19 +121,23 @@ read_authority_binding.py
 
 ## ASTRA-CHAT-001 And Read Authority Binding Update
 
-On 2026-08-02, ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
+On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
+`d5c4c127c7c2fed254f7ee5463331306ca4d413b` after Product Owner/Astra
+authorization to resume chat on top of the certified prerequisite chain. The
+implementation adds a backend-only authenticated `/api/v1/astra/chat` route and
+deterministic declared-intent chat gateway for certified Subscription Manager
+read capabilities only. It routes through Conversation Context, declared Intent
+Resolution, metadata-only Capability Discovery, ASTRA-READ-AUTH-BIND-001,
+ASTRA-IMP-010 Read Access Authorization, ASTRA-READ-EXEC-001, and the
+app-owned Subscription Manager adapter. ASTRA-CHAT-001 is implemented /
+pending Astra review and is not certified. Production authorization remains not
+approved.
+
+ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
 `a15b3192572cd5a1f3e265652e4778967755b787` after final Astra re-review approval
-in PR #2 review `4837966223`. PR #2 remained open, draft, unmerged, and
-mergeable at certification. The certified activation prerequisite preserves
-nominal `AstraRuntime` owner binding, matching startup instance ID, exact
-Runtime-owned activation authority, exact issuer/activation identity,
-server-flag gating, reference/digest binding, Governance evidence provenance,
-shutdown invalidation, Subscription Manager private-read scope only, Stage-0
-disabled semantics, production prohibition, and provider/memory/adaptation/write
-prohibition. ASTRA-READ-AUTH-BIND-001 has now resumed from the preserved stash
-and has a corrected backend implementation pending Astra re-review and
-certification. ASTRA-CHAT-001 remains authorized / paused until read-binding
-certification. Production authorization remains not approved.
+in PR #2 review `4837966223`. ASTRA-READ-AUTH-BIND-001 was Certified /
+Approved at backend commit `6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with
+certification review `4838496452`. These prerequisites remain frozen.
 
 On 2026-08-02, ASTRA-RUNTIME-ACT-001 final Astra review correction was
 implemented at backend commit `942fae7473be5267d7b5218ea8e3977f28fbd058`.
@@ -192,9 +196,9 @@ schema/migration, writes, additional app adapters, production configuration, or
 deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
-ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 remains
-authorized / paused until explicitly resumed. Production authorization remains
-not approved and production remains unchanged.
+ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 is implemented /
+pending Astra review. Production authorization remains not approved and
+production remains unchanged.
 
 The diagnostics API is under:
 
@@ -378,7 +382,7 @@ Frontend / Chat             Not authorized
 Provider / Model            Not authorized
 ASTRA-APP-VAL-001           Certified / Approved
 ASTRA-READ-EXEC-001         Certified / Approved
-ASTRA-CHAT-001              Not authorized
+ASTRA-CHAT-001              Backend implemented / pending Astra review
 Production Authorization    Not approved
 Production                  Unchanged
 ```
@@ -423,10 +427,9 @@ execution-context match, explicit adapter registry resolution, and read-only
 operation. It returns bounded structured read results and records
 metadata-only execution evidence through existing Runtime evidence mechanisms.
 
-Still not authorized:
+Still not authorized beyond the backend ASTRA-CHAT-001 orchestration route:
 
 ```text
-ASTRA-CHAT-001
 frontend chat
 provider/model integration
 general tool execution
@@ -594,9 +597,8 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 remains
-authorized / paused until explicitly resumed. Production authorization remains
-not approved.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 is implemented /
+pending Astra review. Production authorization remains not approved.
 
 ## Other Newer Repository Memory
 

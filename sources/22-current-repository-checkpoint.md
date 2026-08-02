@@ -483,11 +483,11 @@ ansiversa-api/app/modules/astra_ai/read_authority_binding.py
 Current state:
 
 ```text
-ASTRA-READ-AUTH-BIND-001     Corrected / Pending Astra Re-Review
+ASTRA-READ-AUTH-BIND-001     Changes Required / Pending Astra Re-Review
 Implementation Scope         Governed Read Authority & Capability Binding
 Initial App                  Subscription Manager only
 Initial Backend Commit       b9dfceefc3352233e474eb91a04861431b4e5731
-Correction Backend Commit    583e63e658577b4811c65ca6c3d564f179badc44
+Correction Backend Commit    9659d49ab9b0d7c8d4271968e163b04f1e400888
 ```
 
 The binding exposes a narrow Runtime-owned surface through
@@ -496,20 +496,25 @@ The binding exposes a narrow Runtime-owned surface through
 Subscription Manager app-owned read declarations, Runtime-owned proof issuers,
 app-owned Subscription Manager owner acceptance, real ASTRA-IMP-010 Read Access
 Authorization, and a post-authorization app-owned execution grant containing
-the actual Governance authorization decision identity. It does not predict or
-manufacture Governance decision IDs.
+the actual read authorization decision identity and the actual Governance
+decision reference. It does not predict or manufacture Governance decision IDs.
 
 Read authorization now binds the certified ASTRA-RUNTIME-ACT-001 activation
 scope into Governance through `requested_app_id=subscription_manager`,
 `requested_capability_scope=subscription_manager:private_read`, and verified
 owner authority from the app-owned acceptance.
 
-The corrected implementation requires an actual active authenticated backend
-`User`, rejects owner-shaped fake user objects, copied/expired/foreign/tampered
-owner acceptance, app/record/field/purpose/parameter escalation, and private
-fixture mutation. It follows the existing Subscription Manager authenticated
-owner semantics and does not invent tenant, organization, role, or ownership
-facts.
+The corrected implementation requires a sealed backend-auth-owned
+`AuthenticatedUserContext` issued by the existing auth service for the
+persistent DB-loaded user returned by `get_current_user`. It rejects transient
+caller-created `User(...)` objects, owner-shaped fake context objects,
+copied/expired/foreign/tampered owner acceptance, different request
+reference/capability/version/parameters/result limit, app/record/field/purpose
+escalation, copied/tampered read decisions, and private fixture mutation.
+
+Subscription Manager has no tenant or organization authority model in this
+repository. Read capability tenant scope is represented explicitly as
+`tenant:not_applicable`, not as a fabricated platform tenant.
 
 It adds no chat, frontend, provider/model integration, natural-language
 inference, RAG, embeddings, memory, adaptation, writes, SQL/database execution
@@ -517,23 +522,23 @@ in the binding component, schema changes, migrations, production configuration,
 generic Tool Executor, or additional app adapters.
 
 Latest backend validation for correction commit
-`583e63e658577b4811c65ca6c3d564f179badc44`:
+`9659d49ab9b0d7c8d4271968e163b04f1e400888`:
 
 ```text
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py -q
-14 passed
+20 passed
 
-.venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_read_execution_bridge.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_configuration_foundation.py tests/test_astra_evidence_sink.py -q
-161 passed, 25 subtests passed
+.venv/bin/python -m pytest tests/test_subscription_manager_astra_read_capabilities.py -q
+20 passed
 
-.venv/bin/python -m pytest tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_read_authority_binding.py -q
-34 passed
+.venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_read_execution_bridge.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_configuration_foundation.py tests/test_astra_evidence_sink.py tests/test_astra_conversation_context_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_planning_engine.py -q
+256 passed, 25 subtests passed
 
-.venv/bin/python -m compileall app/modules/astra_ai app/modules/subscription_manager tests/test_astra_read_authority_binding.py
+.venv/bin/python -m compileall app/modules/auth app/modules/astra_ai app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_read_authority_binding.py tests/test_astra_runtime_activation.py tests/test_astra_read_execution_bridge.py tests/test_subscription_manager_astra_read_capabilities.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-396 passed, 147 warnings, 33 subtests passed
+402 passed, 147 warnings, 33 subtests passed
 ```
 
 ASTRA-READ-AUTH-BIND-001 remains pending Astra source/security/architecture
@@ -578,9 +583,9 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 has resumed and now has a corrected implementation
-pending Astra re-review. ASTRA-CHAT-001 remains authorized / paused. Production
-authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 has resumed and now has a corrected implementation,
+but remains Changes Required / Pending Astra Re-Review. ASTRA-CHAT-001 remains
+authorized / paused. Production authorization remains not approved.
 
 ## Other Newer Repository Memory
 

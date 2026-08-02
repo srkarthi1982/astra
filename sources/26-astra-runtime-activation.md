@@ -191,7 +191,7 @@ exact live Runtime activation -> ALLOW when all governed scope checks match
 
 ```text
 ASTRA-RUNTIME-ACT-001        Certified / Approved
-ASTRA-READ-AUTH-BIND-001    Corrected / Pending Astra Re-Review
+ASTRA-READ-AUTH-BIND-001    Changes Required / Pending Astra Re-Review
 ASTRA-CHAT-001              Authorized / Paused
 Production                  NOT APPROVED
 ```

@@ -4,7 +4,7 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-META-ACT-BIND-001 Implemented / Pending Astra Review.
+Implementation State: ASTRA-META-ACT-BIND-001 Changes Required / Pending Astra Re-Review.
 
 Backend Branch:
 feature/astra-meta-act-bind-001.
@@ -15,8 +15,14 @@ e6ba6a662d4cc8b88ff237a993efed59495baa7a.
 Backend Implementation Commit:
 7af01bb81a7bfa96d0e3b2d208ea9b4392b54517.
 
+Astra Review:
+4839027629.
+
+Backend Correction Commit:
+ea8ff94d04dffd22c249de181c3145c2817f8e36.
+
 Certification:
-Pending Astra source/security/architecture review.
+Pending Astra source/security/architecture re-review.
 
 Production Authorization:
 Not approved.
@@ -86,6 +92,11 @@ Caller-created, copied, tampered, expired, wrong Runtime, wrong conversation,
 wrong turn, wrong request, wrong app, wrong scope, wrong capability, and wrong
 version contexts fail closed.
 
+After review `4839027629`, governed Capability Discovery validates wrong or
+stale turn/request values against the independently verified conversation
+snapshot current turn and request reference, not against values read from the
+context being validated.
+
 ## Runtime Issuance And Validation
 
 Only `AstraRuntime` creates the governed metadata context issuer. Issuer
@@ -114,12 +125,14 @@ to the issuer registry and exact request identity checks.
 Capability Discovery remains metadata-only. Generic internal requests without a
 governed metadata context continue to evaluate as public metadata and fail closed
 under Stage-0 disabled Governance. A valid context may scope Governance evidence
-to Subscription Manager private-read metadata only.
+to Subscription Manager private-read metadata only when it matches the actual
+current conversation turn and request reference.
 
 Intent Resolution remains declared-intent only. It may resolve the exact
 capability from the trusted governed metadata context only when
-`declared_target` exactly matches the context capability ID. Structural request
-tuples are not capability authority.
+`declared_target` exactly matches the context capability ID and the Capability
+Discovery requester context carries the same exact Runtime-issued context
+object. Structural request tuples are not capability authority.
 
 ## Boundaries
 
@@ -151,24 +164,24 @@ ASTRA-READ-EXEC-001 behavior remains unchanged.
 
 ## Validation Evidence
 
-Latest backend validation for implementation commit
-`7af01bb81a7bfa96d0e3b2d208ea9b4392b54517`:
+Latest backend validation for correction commit
+`ea8ff94d04dffd22c249de181c3145c2817f8e36`:
 
 ```text
 .venv/bin/python -m compileall app/modules/astra_ai/metadata_activation_binding.py app/modules/astra_ai/capability_discovery.py app/modules/astra_ai/intent_resolution.py app/modules/astra_ai/runtime.py tests/test_astra_metadata_activation_binding.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py -q
-9 passed
+11 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py -q
-164 passed, 11 subtests passed
+166 passed, 11 subtests passed
 
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
 64 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_planning_engine.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
-258 passed, 11 subtests passed
+260 passed, 11 subtests passed
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_metadata_activation_binding.py
 passed
@@ -177,9 +190,9 @@ git diff --check
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-414 passed, 147 warnings, 33 subtests passed
+416 passed, 147 warnings, 33 subtests passed
 ```
 
-ASTRA-META-ACT-BIND-001 remains implemented / pending Astra review. It is not
-certified. ASTRA-CHAT-001 remains paused. Production authorization remains not
-approved.
+ASTRA-META-ACT-BIND-001 remains Changes Required / pending Astra re-review. It
+is not certified. ASTRA-CHAT-001 remains paused. Production authorization
+remains not approved.

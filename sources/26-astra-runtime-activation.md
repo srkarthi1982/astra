@@ -19,6 +19,9 @@ Backend Final Correction Commit:
 Backend Live Runtime Binding Correction Commit:
 9804b1db1956cd6d5bad5b670f0385a12bea2bbc.
 
+Backend Exact Runtime Owner Binding Correction Commit:
+a15b3192572cd5a1f3e265652e4778967755b787.
+
 ## Purpose
 
 ASTRA-RUNTIME-ACT-001 exists because ASTRA-READ-AUTH-BIND-001 review exposed a
@@ -69,9 +72,11 @@ Runtime injects its own activation context into Governance evaluation and does
 not trust caller-supplied activation context in normal Runtime evaluation.
 
 Activation authority is exact-object Runtime ownership, not matching metadata.
-Runtime creates an activation issuer for the startup instance using the exact
-opaque activation issuer authority owned by that `AstraRuntime` instance. The
-standalone trusted issuer factory was removed. Caller-created issuer
+Runtime creates an activation issuer for the startup instance using a nominal
+`AstraRuntime` owner, the matching Runtime startup instance id, and the exact
+opaque activation issuer authority owned by that `AstraRuntime` instance.
+Owner-shaped caller objects with matching attributes or callbacks are rejected.
+The standalone trusted issuer factory was removed. Caller-created issuer
 construction with caller-owned `_runtime_authority=object()` is rejected, and
 direct issuer issuance without Runtime authority is rejected. Normal activation
 issuance remains behind `load_runtime_activation()` and the server-owned
@@ -131,6 +136,13 @@ the exact opaque authority object owned by the supplied Runtime owner, direct
 issuer issuance also requires that authority, and validation requires the exact
 issuer to be registered on the live Runtime with a loaded activation.
 
+Backend exact Runtime owner binding correction commit
+`a15b3192572cd5a1f3e265652e4778967755b787` addresses the fake-owner blocker.
+Activation issuer ownership is bound to an actual nominal `AstraRuntime` trust
+root and cannot be satisfied by an owner-shaped caller object or callback.
+Issuer construction validates the Runtime owner type, matching startup instance
+id, and exact Runtime-owned activation issuer authority before registration.
+
 The required negative is enforced:
 
 ```text
@@ -155,6 +167,7 @@ standalone trusted issuer factory is not exposed
 directly constructed activation -> FAIL_CLOSED
 copied activation -> FAIL_CLOSED
 caller-created issuer activation -> construction rejected
+owner-shaped fake Runtime object with matching authority/callback -> construction rejected
 direct issuer issuance without Runtime authority -> rejected
 server-flag-disabled Runtime issuer activation -> FAIL_CLOSED
 foreign Runtime activation -> FAIL_CLOSED

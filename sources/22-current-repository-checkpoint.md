@@ -21,7 +21,7 @@ Frontend repository         ansiversa
 Frontend HEAD               8786453d9d67416669d149614df0e179e47b88b2
 
 Backend repository          ansiversa-api
-Backend HEAD                9804b1db1956cd6d5bad5b670f0385a12bea2bbc
+Backend HEAD                a15b3192572cd5a1f3e265652e4778967755b787
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -139,6 +139,17 @@ issuer validation requires the exact issuer to be registered on the live Runtime
 with a loaded activation. This preserves the server-owned
 `ASTRA_NONPROD_READ_ENABLED` gate as an effective prerequisite; server-flag
 disabled issuer minting cannot produce an activation accepted by Governance.
+ASTRA-RUNTIME-ACT-001 remains Implemented / Changes Required pending Astra
+re-review and certification.
+
+On 2026-08-02, ASTRA-RUNTIME-ACT-001 exact Runtime owner binding correction was
+implemented at backend commit `a15b3192572cd5a1f3e265652e4778967755b787`.
+Activation issuer ownership is now bound to an actual nominal `AstraRuntime`
+trust root and cannot be satisfied by an owner-shaped caller object or callback.
+Issuer construction validates the Runtime owner type, matching startup instance
+id, and exact Runtime-owned activation issuer authority before registration.
+The explicit fake-owner negative proves matching `_activation_issuer_authority`
+and `_validates_activation_issuer(...)` attributes are insufficient.
 ASTRA-RUNTIME-ACT-001 remains Implemented / Changes Required pending Astra
 re-review and certification.
 

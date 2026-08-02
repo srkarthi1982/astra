@@ -21,7 +21,7 @@ Frontend repository         ansiversa
 Frontend HEAD               8786453d9d67416669d149614df0e179e47b88b2
 
 Backend repository          ansiversa-api
-Backend HEAD                c9d822a714e0d90f78e775096ddc737e4ed29f6e
+Backend HEAD                0715483147d5a1a0ba6180d5a63e489f3b6fd982
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -178,6 +178,16 @@ Governance only through `discover_for_conversation(...)` after exact Runtime,
 certified Conversation Context Engine, active current snapshot, current turn,
 request reference, and exact Runtime-issued context validation. Generic
 app-agnostic Capability Discovery without a governed context remains unchanged.
+
+On 2026-08-02, Astra review `4839144244` found one remaining lifecycle-state
+blocker at backend commit `c9d822a714e0d90f78e775096ddc737e4ed29f6e`. The final
+lifecycle correction was implemented at backend commit
+`0715483147d5a1a0ba6180d5a63e489f3b6fd982`. Governed conversation-bound
+Capability Discovery now requires the independently verified owned conversation
+snapshot lifecycle to be exactly ACTIVE before entering activation-backed
+PRIVATE_READ metadata Governance. Still-unexpired governed contexts fail closed
+after IDLE or CLOSING transitions. Generic non-governed Capability Discovery
+lifecycle behavior remains unchanged.
 
 ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
 `a15b3192572cd5a1f3e265652e4778967755b787` after final Astra re-review approval
@@ -626,6 +636,8 @@ First Astra Review          4839027629
 Correction Backend Commit   ea8ff94d04dffd22c249de181c3145c2817f8e36
 Second Astra Review         4839092431
 Final Correction Commit     c9d822a714e0d90f78e775096ddc737e4ed29f6e
+Third Astra Review          4839144244
+Lifecycle Correction Commit 0715483147d5a1a0ba6180d5a63e489f3b6fd982
 ```
 
 The binding creates a Runtime-owned, exact-object governed metadata context that
@@ -642,7 +654,9 @@ valid context may authorize only the exact Subscription Manager private-read
 metadata evaluation it was issued for, after Capability Discovery checks the
 context against the independently verified current turn and request reference
 from the certified conversation snapshot. Raw generic discovery and lookup entry
-points fail closed when a governed metadata context is supplied.
+points fail closed when a governed metadata context is supplied. Governed
+conversation-bound discovery also requires the owned conversation snapshot
+lifecycle to be exactly ACTIVE.
 
 Intent Resolution remains declared-intent only. It may resolve an exact
 Subscription Manager capability from the trusted governed metadata context only
@@ -657,24 +671,24 @@ schema changes, migrations, production configuration, deployment, production
 authorization, or merge. ASTRA-READ-AUTH-BIND-001 executable contract and tests
 remain unchanged.
 
-Latest backend validation for final correction commit
-`c9d822a714e0d90f78e775096ddc737e4ed29f6e`:
+Latest backend validation for lifecycle correction commit
+`0715483147d5a1a0ba6180d5a63e489f3b6fd982`:
 
 ```text
 .venv/bin/python -m compileall app/modules/astra_ai/metadata_activation_binding.py app/modules/astra_ai/capability_discovery.py app/modules/astra_ai/intent_resolution.py app/modules/astra_ai/runtime.py tests/test_astra_metadata_activation_binding.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py -q
-14 passed
+18 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py -q
-169 passed, 11 subtests passed
+173 passed, 11 subtests passed
 
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
 64 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_planning_engine.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
-263 passed, 11 subtests passed
+267 passed, 11 subtests passed
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_metadata_activation_binding.py
 passed
@@ -683,7 +697,7 @@ git diff --check
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-419 passed, 147 warnings, 33 subtests passed
+423 passed, 147 warnings, 33 subtests passed
 ```
 
 ## ASTRA-RUNTIME-ACT-001 Memory

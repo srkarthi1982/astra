@@ -27,6 +27,12 @@ Second Astra Review:
 Final Backend Correction Commit:
 c9d822a714e0d90f78e775096ddc737e4ed29f6e.
 
+Third Astra Review:
+4839144244.
+
+Lifecycle Backend Correction Commit:
+0715483147d5a1a0ba6180d5a63e489f3b6fd982.
+
 Certification:
 Pending Astra source/security/architecture re-review.
 
@@ -109,6 +115,11 @@ receive a certified conversation snapshot. Governed metadata context is accepted
 only through `discover_for_conversation(...)` after conversation-bound
 validation.
 
+After review `4839144244`, governed conversation-bound discovery requires the
+independently verified owned conversation snapshot lifecycle to be exactly
+ACTIVE. IDLE and CLOSING states fail closed for governed contexts while generic
+non-governed discovery keeps its existing lifecycle behavior.
+
 ## Runtime Issuance And Validation
 
 Only `AstraRuntime` creates the governed metadata context issuer. Issuer
@@ -140,7 +151,8 @@ under Stage-0 disabled Governance. A valid context may scope Governance evidence
 to Subscription Manager private-read metadata only when it matches the actual
 current conversation turn and request reference. Raw generic discovery and
 lookup entry points remain generic but fail closed when a governed context is
-supplied.
+supplied. Governed conversation-bound discovery additionally requires an ACTIVE
+owned conversation snapshot.
 
 Intent Resolution remains declared-intent only. It may resolve the exact
 capability from the trusted governed metadata context only when
@@ -178,24 +190,24 @@ ASTRA-READ-EXEC-001 behavior remains unchanged.
 
 ## Validation Evidence
 
-Latest backend validation for final correction commit
-`c9d822a714e0d90f78e775096ddc737e4ed29f6e`:
+Latest backend validation for lifecycle correction commit
+`0715483147d5a1a0ba6180d5a63e489f3b6fd982`:
 
 ```text
 .venv/bin/python -m compileall app/modules/astra_ai/metadata_activation_binding.py app/modules/astra_ai/capability_discovery.py app/modules/astra_ai/intent_resolution.py app/modules/astra_ai/runtime.py tests/test_astra_metadata_activation_binding.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py -q
-14 passed
+18 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py -q
-169 passed, 11 subtests passed
+173 passed, 11 subtests passed
 
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
 64 passed
 
 .venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_planning_engine.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
-263 passed, 11 subtests passed
+267 passed, 11 subtests passed
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_metadata_activation_binding.py
 passed
@@ -204,7 +216,7 @@ git diff --check
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-419 passed, 147 warnings, 33 subtests passed
+423 passed, 147 warnings, 33 subtests passed
 ```
 
 ASTRA-META-ACT-BIND-001 remains Changes Required / pending Astra re-review. It

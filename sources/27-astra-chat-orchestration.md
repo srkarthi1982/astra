@@ -4,7 +4,7 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-CHAT-001 Changes Required / Pending Astra Re-Review.
+Implementation State: ASTRA-CHAT-001 Changes Required / Paused On Prerequisite.
 
 Backend Implementation Commit:
 d5c4c127c7c2fed254f7ee5463331306ca4d413b.
@@ -15,8 +15,11 @@ Backend Correction Commit:
 Astra Re-Review:
 4838627730.
 
+Second Astra Re-Review:
+4838708303.
+
 Certification:
-Pending Astra source/security/architecture review.
+Paused pending ASTRA-META-ACT-BIND-001 review and certification.
 
 Production Authorization:
 Not approved.
@@ -24,11 +27,13 @@ Not approved.
 ## Purpose
 
 ASTRA-CHAT-001 adds the first backend-only governed chat orchestration path.
-It exists only after the certified prerequisite chain was completed:
+It remains paused because the prerequisite chain now includes
+ASTRA-META-ACT-BIND-001, which is implemented but not yet certified:
 
 ```text
 ASTRA-RUNTIME-ACT-001
     -> ASTRA-READ-AUTH-BIND-001
+    -> ASTRA-META-ACT-BIND-001
     -> ASTRA-READ-EXEC-001
     -> ASTRA-APP-001 Subscription Manager read adapter
 ```
@@ -136,16 +141,16 @@ plan = None
 ```
 
 Capability Discovery remains metadata-only. It does not receive executable app
-read capabilities. Generic Runtime-internal Capability Discovery no longer
-receives ambient Subscription Manager private-read activation merely because the
-caller is Runtime-owned. Chat supplies explicit per-request orchestration
-context for the exact app, capability scope, and declared Subscription Manager
-capability.
+read capabilities. Astra re-review found that exact per-request app, scope, and
+capability metadata activation context must be certified as a separate
+prerequisite rather than hidden inside ASTRA-CHAT-001. That prerequisite is
+ASTRA-META-ACT-BIND-001.
 
-Intent Resolution remains declared-intent only. It no longer infers
-Subscription Manager activation from `get_information` plus
-subscription-looking subject strings. Chat binds the declared Subscription
-Manager capability into:
+Intent Resolution remains declared-intent only. It must not infer Subscription
+Manager activation from `get_information` plus subscription-looking subject
+strings. Exact resolved capability lineage is paused pending the certified
+ASTRA-META-ACT-BIND-001 context contract. The intended chat chain will bind the
+declared Subscription Manager capability into:
 
 ```text
 declared-intent binding target
@@ -225,5 +230,6 @@ passed
 426 passed, 147 warnings, 33 subtests passed in 463.16s
 ```
 
-ASTRA-CHAT-001 remains Changes Required / pending Astra re-review. It is not
-certified. Production authorization remains not approved.
+ASTRA-CHAT-001 remains Changes Required / paused on
+ASTRA-META-ACT-BIND-001. It is not certified. Production authorization remains
+not approved.

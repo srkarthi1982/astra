@@ -21,7 +21,7 @@ Frontend repository         ansiversa
 Frontend HEAD               8786453d9d67416669d149614df0e179e47b88b2
 
 Backend repository          ansiversa-api
-Backend HEAD                a15b3192572cd5a1f3e265652e4778967755b787
+Backend HEAD                7af01bb81a7bfa96d0e3b2d208ea9b4392b54517
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -119,7 +119,7 @@ diagnostic_projection.py
 read_authority_binding.py
 ```
 
-## ASTRA-CHAT-001 And Read Authority Binding Update
+## ASTRA-CHAT-001, Read Authority Binding, And Metadata Activation Binding Update
 
 On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
 `d5c4c127c7c2fed254f7ee5463331306ca4d413b` after Product Owner/Astra
@@ -133,18 +133,26 @@ app-owned Subscription Manager adapter. This first implementation was later
 reviewed as Changes Required. Production authorization remains not approved.
 
 On 2026-08-02, Astra review `4838627730` found ASTRA-CHAT-001 Changes Required
-at backend commit `d5c4c127c7c2fed254f7ee5463331306ca4d413b`. The correction
-was implemented at backend commit
-`681878d048c4b3229c312abfcaaa45b5e6a44459`. The correction removes ambient
-Subscription Manager private-read activation from generic metadata engines,
-binds activation-aware metadata context to the exact chat app/scope/capability
-request, carries the declared capability through the declared-intent binding,
-`AstraIntentRequest`, resolved intent capability lineage, Read Authority, and
-Read Execution, replaces keyword scanning of app-owned business values with
-structural allowlisted response projection, and adds real authenticated HTTP
-success/failure coverage. ASTRA-CHAT-001 remains Changes Required / pending
-Astra re-review and is not certified. Production authorization remains not
-approved.
+at backend commit `d5c4c127c7c2fed254f7ee5463331306ca4d413b`. The first
+correction was implemented at backend commit
+`681878d048c4b3229c312abfcaaa45b5e6a44459`, but Astra re-review `4838708303`
+found that it changed certified/frozen metadata parent contracts inside the chat
+branch. ASTRA-CHAT-001 is paused on a new prerequisite and is not certified.
+Production authorization remains not approved.
+
+On 2026-08-02, Product Owner/Astra authorized ASTRA-META-ACT-BIND-001 as the
+narrow prerequisite for exact governed metadata activation and capability
+context binding. The backend implementation commit is
+`7af01bb81a7bfa96d0e3b2d208ea9b4392b54517` on
+`feature/astra-meta-act-bind-001`. It adds a Runtime-owned governed metadata
+context issuer and exact context contract for
+`app -> capability scope -> exact certified capability -> Conversation/Intent
+metadata governance`, using certified ASTRA-RUNTIME-ACT-001 activation and
+sealed Subscription Manager read-authority capability summaries as provenance.
+It intentionally leaves ASTRA-READ-AUTH-BIND-001 executable behavior unchanged.
+ASTRA-META-ACT-BIND-001 is implemented / pending Astra review and is not
+certified. ASTRA-CHAT-001 remains paused until this prerequisite is reviewed and
+certified.
 
 ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
 `a15b3192572cd5a1f3e265652e4778967755b787` after final Astra re-review approval
@@ -209,9 +217,10 @@ schema/migration, writes, additional app adapters, production configuration, or
 deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
-ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 is Changes
-Required / pending Astra re-review. Production authorization remains not
-approved and production remains unchanged.
+ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-META-ACT-BIND-001 is
+implemented / pending Astra review. ASTRA-CHAT-001 is Changes Required / paused
+on the metadata activation binding prerequisite. Production authorization
+remains not approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -571,6 +580,79 @@ ASTRA-READ-AUTH-BIND-001 is Certified / Approved at backend commit
 `6bf9e9e983711dbe65b18c98e6c47a45e117b02c` with certification review
 `4838496452`.
 
+## ASTRA-META-ACT-BIND-001 Memory
+
+The backend contains a new implemented governed metadata activation binding
+under:
+
+```text
+ansiversa-api/app/modules/astra_ai/metadata_activation_binding.py
+```
+
+Current state:
+
+```text
+ASTRA-META-ACT-BIND-001     Implemented / Pending Astra Review
+Implementation Scope        Governed Metadata Activation & Capability Context Binding
+Initial App                 Subscription Manager only
+Initial Capability Scope    subscription_manager:private_read
+Backend Commit              7af01bb81a7bfa96d0e3b2d208ea9b4392b54517
+```
+
+The binding creates a Runtime-owned, exact-object governed metadata context that
+binds Runtime startup identity, Runtime-owned issuer authority, certified
+non-production activation reference/digest, conversation ID, current turn
+reference, request reference, Subscription Manager app ID, private-read
+capability scope, exact certified adapter capability ID/version, bounded
+expiration, and production-not-approved state.
+
+Capability Discovery remains generic metadata-only and app-agnostic by default.
+Without a valid Runtime-owned governed metadata context, internal metadata
+governance remains public and fails closed under Stage-0 disabled Governance. A
+valid context may authorize only the exact Subscription Manager private-read
+metadata evaluation it was issued for.
+
+Intent Resolution remains declared-intent only. It may resolve an exact
+Subscription Manager capability from the trusted governed metadata context only
+when the declared target exactly matches that context. Request-declared
+capability tuples are not treated as authority.
+
+ASTRA-META-ACT-BIND-001 adds no chat endpoint, frontend, provider/model
+integration, natural-language inference, RAG, embeddings, memory, adaptation,
+writes, SQL/database execution, generic Tool Executor, additional app adapters,
+schema changes, migrations, production configuration, deployment, production
+authorization, or merge. ASTRA-READ-AUTH-BIND-001 executable contract and tests
+remain unchanged.
+
+Latest backend validation for implementation commit
+`7af01bb81a7bfa96d0e3b2d208ea9b4392b54517`:
+
+```text
+.venv/bin/python -m compileall app/modules/astra_ai/metadata_activation_binding.py app/modules/astra_ai/capability_discovery.py app/modules/astra_ai/intent_resolution.py app/modules/astra_ai/runtime.py tests/test_astra_metadata_activation_binding.py
+passed
+
+.venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py -q
+9 passed
+
+.venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py -q
+164 passed, 11 subtests passed
+
+.venv/bin/python -m pytest tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
+64 passed
+
+.venv/bin/python -m pytest tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_planning_engine.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
+258 passed, 11 subtests passed
+
+.venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_metadata_activation_binding.py
+passed
+
+git diff --check
+passed
+
+.venv/bin/python -m pytest tests/test_astra*.py -q
+414 passed, 147 warnings, 33 subtests passed
+```
+
 ## ASTRA-RUNTIME-ACT-001 Memory
 
 The backend contains a new implemented governed non-production activation layer
@@ -610,9 +692,10 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-CHAT-001 is Changes
-Required / pending Astra re-review. Production authorization remains not
-approved.
+ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-META-ACT-BIND-001 is
+implemented / pending Astra review. ASTRA-CHAT-001 is Changes Required / paused
+on the metadata activation binding prerequisite. Production authorization
+remains not approved.
 
 ## Other Newer Repository Memory
 

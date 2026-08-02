@@ -21,7 +21,7 @@ Frontend repository         ansiversa
 Frontend HEAD               8786453d9d67416669d149614df0e179e47b88b2
 
 Backend repository          ansiversa-api
-Backend HEAD                4800e72d65aa592c6294be24e98492c9295db1b7
+Backend HEAD                942fae7473be5267d7b5218ea8e3977f28fbd058
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -120,6 +120,18 @@ read_authority_binding.py
 ```
 
 ## ASTRA-CHAT-001 And Read Authority Binding Update
+
+On 2026-08-02, ASTRA-RUNTIME-ACT-001 final Astra review correction was
+implemented at backend commit `942fae7473be5267d7b5218ea8e3977f28fbd058`.
+Activation issuer ownership is now Runtime-authoritative through a
+module-private Runtime activation issuer root-of-trust and Runtime factory.
+Caller-created issuer construction with caller-owned `_runtime_authority`
+objects is rejected. Direct Governance still requires the exact live
+Runtime-issued activation object, activation reference, activation digest, and
+matching governed Subscription Manager private-read scope. Copied,
+reconstructed, tampered, foreign-Runtime, and post-shutdown activations fail
+closed. ASTRA-RUNTIME-ACT-001 remains Implemented / Changes Required pending
+Astra re-review and certification.
 
 On 2026-08-02, ASTRA-CHAT-001 remained authorized but paused after preflight
 confirmed a prerequisite gap: normal Runtime-owned application code did not yet

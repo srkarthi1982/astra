@@ -116,7 +116,38 @@ planning.py
 intent_resolution.py
 read_access_authorization.py
 diagnostic_projection.py
+read_authority_binding.py
 ```
+
+## ASTRA-CHAT-001 And Read Authority Binding Update
+
+On 2026-08-02, ASTRA-CHAT-001 remained authorized but paused after preflight
+confirmed a prerequisite gap: normal Runtime-owned application code did not yet
+have a certified way to bind Subscription Manager read capability declarations
+and Runtime-owned proof issuers into ASTRA-IMP-010 without validation fixture
+mutation.
+
+ASTRA-READ-AUTH-BIND-001 was implemented as the prerequisite and remains
+pending Astra review/certification. It adds a Runtime-owned read authority
+binding component under:
+
+```text
+ansiversa-api/app/modules/astra_ai/read_authority_binding.py
+```
+
+The implemented scope is backend-only. It binds the app-owned certified
+Subscription Manager read declarations into a sealed Runtime-owned read
+capability registry, creates Runtime-owned proof issuers for ASTRA-IMP-010, and
+supports normal Runtime-owned Subscription Manager metadata-only read
+authorization without chat, frontend, provider/model integration,
+natural-language inference, SQL/database execution in the binding component,
+schema/migration, writes, additional app adapters, production configuration, or
+deployment.
+
+Capability Discovery remains metadata-only. Planning remains metadata-only.
+ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-CHAT-001 must remain
+paused until ASTRA-READ-AUTH-BIND-001 is reviewed, approved, and certified.
+Production authorization remains not approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -395,6 +426,35 @@ execution occurs before registered adapter entry. The registered Subscription
 Manager adapter then performs the app-owned read, and the returned Runtime
 result excludes session, database, SQL, and private authority material.
 
+## ASTRA-READ-AUTH-BIND-001 Memory
+
+The backend contains a new implemented governed read authority binding under:
+
+```text
+ansiversa-api/app/modules/astra_ai/read_authority_binding.py
+```
+
+Current state:
+
+```text
+ASTRA-READ-AUTH-BIND-001     Implemented / Pending Astra Review
+Implementation Scope         Governed Read Authority & Capability Binding
+Initial App                  Subscription Manager only
+Backend Commit               b9dfceefc3352233e474eb91a04861431b4e5731
+```
+
+The binding exposes a narrow Runtime-owned surface through
+`runtime.read_authority.capabilities()` and
+`runtime.read_authority.authorize_subscription_manager_read(...)`. It binds
+Subscription Manager app-owned read declarations, Runtime-owned proof issuers,
+exact app-owned grants, and ASTRA-IMP-010 Read Access Authorization without
+adding chat, frontend, provider/model integration, natural-language inference,
+SQL/database execution, schema changes, migrations, production configuration,
+or additional app adapters.
+
+ASTRA-CHAT-001 remains paused until this prerequisite is reviewed, approved,
+and certified. Production authorization remains not approved.
+
 ## Other Newer Repository Memory
 
 The frontend repository contains post-source-pack platform work, including:
@@ -444,6 +504,7 @@ astra/sources/21-ansiversa-repositories.md
 astra/sources/22-current-repository-checkpoint.md
 astra/sources/23-astra-read-execution.md
 astra/sources/24-astra-app-validation.md
+astra/sources/25-astra-read-authority-binding.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

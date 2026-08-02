@@ -130,10 +130,10 @@ Runtime-owned activation authority, exact issuer/activation identity,
 server-flag gating, reference/digest binding, Governance evidence provenance,
 shutdown invalidation, Subscription Manager private-read scope only, Stage-0
 disabled semantics, production prohibition, and provider/memory/adaptation/write
-prohibition. ASTRA-READ-AUTH-BIND-001 may now resume from the preserved stash
-but remains paused until explicitly resumed. ASTRA-CHAT-001 remains authorized /
-paused until read-binding certification. Production authorization remains not
-approved.
+prohibition. ASTRA-READ-AUTH-BIND-001 has now resumed from the preserved stash
+and has a corrected backend implementation pending Astra re-review and
+certification. ASTRA-CHAT-001 remains authorized / paused until read-binding
+certification. Production authorization remains not approved.
 
 On 2026-08-02, ASTRA-RUNTIME-ACT-001 final Astra review correction was
 implemented at backend commit `942fae7473be5267d7b5218ea8e3977f28fbd058`.
@@ -172,9 +172,10 @@ have a certified way to bind Subscription Manager read capability declarations
 and Runtime-owned proof issuers into ASTRA-IMP-010 without validation fixture
 mutation.
 
-ASTRA-READ-AUTH-BIND-001 was implemented as the prerequisite and remains
-pending Astra review/certification. It adds a Runtime-owned read authority
-binding component under:
+ASTRA-READ-AUTH-BIND-001 was implemented as the prerequisite, then resumed
+after ASTRA-RUNTIME-ACT-001 certification and corrected. It remains pending
+Astra re-review/certification. It adds a Runtime-owned read authority binding
+component under:
 
 ```text
 ansiversa-api/app/modules/astra_ai/read_authority_binding.py
@@ -482,26 +483,61 @@ ansiversa-api/app/modules/astra_ai/read_authority_binding.py
 Current state:
 
 ```text
-ASTRA-READ-AUTH-BIND-001     Changes Required / Paused
+ASTRA-READ-AUTH-BIND-001     Corrected / Pending Astra Re-Review
 Implementation Scope         Governed Read Authority & Capability Binding
 Initial App                  Subscription Manager only
-Backend Commit               b9dfceefc3352233e474eb91a04861431b4e5731
+Initial Backend Commit       b9dfceefc3352233e474eb91a04861431b4e5731
+Correction Backend Commit    583e63e658577b4811c65ca6c3d564f179badc44
 ```
 
 The binding exposes a narrow Runtime-owned surface through
 `runtime.read_authority.capabilities()` and
 `runtime.read_authority.authorize_subscription_manager_read(...)`. It binds
 Subscription Manager app-owned read declarations, Runtime-owned proof issuers,
-exact app-owned grants, and ASTRA-IMP-010 Read Access Authorization without
-adding chat, frontend, provider/model integration, natural-language inference,
-SQL/database execution, schema changes, migrations, production configuration,
-or additional app adapters.
+app-owned Subscription Manager owner acceptance, real ASTRA-IMP-010 Read Access
+Authorization, and a post-authorization app-owned execution grant containing
+the actual Governance authorization decision identity. It does not predict or
+manufacture Governance decision IDs.
 
-ASTRA-READ-AUTH-BIND-001 review found that real Governance could not return
-`ALLOW` while the Stage-0 configuration remains globally disabled. This is a
-real prerequisite blocker, not a binding-only defect. Existing binding
-corrections are preserved separately and should not be completed until
-ASTRA-RUNTIME-ACT-001 is reviewed and certified.
+Read authorization now binds the certified ASTRA-RUNTIME-ACT-001 activation
+scope into Governance through `requested_app_id=subscription_manager`,
+`requested_capability_scope=subscription_manager:private_read`, and verified
+owner authority from the app-owned acceptance.
+
+The corrected implementation requires an actual active authenticated backend
+`User`, rejects owner-shaped fake user objects, copied/expired/foreign/tampered
+owner acceptance, app/record/field/purpose/parameter escalation, and private
+fixture mutation. It follows the existing Subscription Manager authenticated
+owner semantics and does not invent tenant, organization, role, or ownership
+facts.
+
+It adds no chat, frontend, provider/model integration, natural-language
+inference, RAG, embeddings, memory, adaptation, writes, SQL/database execution
+in the binding component, schema changes, migrations, production configuration,
+generic Tool Executor, or additional app adapters.
+
+Latest backend validation for correction commit
+`583e63e658577b4811c65ca6c3d564f179badc44`:
+
+```text
+.venv/bin/python -m pytest tests/test_astra_read_authority_binding.py -q
+14 passed
+
+.venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_read_execution_bridge.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_configuration_foundation.py tests/test_astra_evidence_sink.py -q
+161 passed, 25 subtests passed
+
+.venv/bin/python -m pytest tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_read_authority_binding.py -q
+34 passed
+
+.venv/bin/python -m compileall app/modules/astra_ai app/modules/subscription_manager tests/test_astra_read_authority_binding.py
+passed
+
+.venv/bin/python -m pytest tests/test_astra*.py -q
+396 passed, 147 warnings, 33 subtests passed
+```
+
+ASTRA-READ-AUTH-BIND-001 remains pending Astra source/security/architecture
+review and is not certified.
 
 ## ASTRA-RUNTIME-ACT-001 Memory
 
@@ -542,9 +578,9 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 may now resume from the preserved stash but remains
-paused until explicitly resumed. ASTRA-CHAT-001 remains authorized / paused.
-Production authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 has resumed and now has a corrected implementation
+pending Astra re-review. ASTRA-CHAT-001 remains authorized / paused. Production
+authorization remains not approved.
 
 ## Other Newer Repository Memory
 

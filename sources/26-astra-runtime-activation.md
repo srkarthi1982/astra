@@ -4,8 +4,7 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-RUNTIME-ACT-001 implemented / changes required /
-pending Astra re-review and certification.
+Implementation State: ASTRA-RUNTIME-ACT-001 Certified / Approved.
 
 Backend Implementation Commit:
 fd61ee1071227549500785e0c8a663cf5e2f8082.
@@ -21,6 +20,12 @@ Backend Live Runtime Binding Correction Commit:
 
 Backend Exact Runtime Owner Binding Correction Commit:
 a15b3192572cd5a1f3e265652e4778967755b787.
+
+Certification Review:
+PR #2 Astra review 4837966223.
+
+Certification State:
+PR #2 open, draft, unmerged, and mergeable at certification.
 
 ## Purpose
 
@@ -84,6 +89,11 @@ issuance remains behind `load_runtime_activation()` and the server-owned
 exact issued activation object identity in a Runtime-owned registry. Copied,
 reconstructed, tampered, foreign-Runtime, server-flag-disabled, and
 post-shutdown activation objects cannot establish activation authority.
+
+Final Astra certification approved this boundary at backend commit
+`a15b3192572cd5a1f3e265652e4778967755b787`: activation issuer ownership is
+bound to an actual exact live `AstraRuntime` trust root and cannot be satisfied
+by an owner-shaped caller object or callback.
 
 The read-only Runtime projection is metadata-only:
 
@@ -180,7 +190,8 @@ exact live Runtime activation -> ALLOW when all governed scope checks match
 ## Downstream State
 
 ```text
-ASTRA-READ-AUTH-BIND-001    Changes Required / Paused
+ASTRA-RUNTIME-ACT-001        Certified / Approved
+ASTRA-READ-AUTH-BIND-001    May resume from preserved stash / Paused
 ASTRA-CHAT-001              Authorized / Paused
 Production                  NOT APPROVED
 ```

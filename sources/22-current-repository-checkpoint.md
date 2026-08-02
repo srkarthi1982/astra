@@ -121,6 +121,20 @@ read_authority_binding.py
 
 ## ASTRA-CHAT-001 And Read Authority Binding Update
 
+On 2026-08-02, ASTRA-RUNTIME-ACT-001 was Certified / Approved at backend commit
+`a15b3192572cd5a1f3e265652e4778967755b787` after final Astra re-review approval
+in PR #2 review `4837966223`. PR #2 remained open, draft, unmerged, and
+mergeable at certification. The certified activation prerequisite preserves
+nominal `AstraRuntime` owner binding, matching startup instance ID, exact
+Runtime-owned activation authority, exact issuer/activation identity,
+server-flag gating, reference/digest binding, Governance evidence provenance,
+shutdown invalidation, Subscription Manager private-read scope only, Stage-0
+disabled semantics, production prohibition, and provider/memory/adaptation/write
+prohibition. ASTRA-READ-AUTH-BIND-001 may now resume from the preserved stash
+but remains paused until explicitly resumed. ASTRA-CHAT-001 remains authorized /
+paused until read-binding certification. Production authorization remains not
+approved.
+
 On 2026-08-02, ASTRA-RUNTIME-ACT-001 final Astra review correction was
 implemented at backend commit `942fae7473be5267d7b5218ea8e3977f28fbd058`.
 Activation issuer ownership is now Runtime-authoritative through a
@@ -139,8 +153,8 @@ issuer validation requires the exact issuer to be registered on the live Runtime
 with a loaded activation. This preserves the server-owned
 `ASTRA_NONPROD_READ_ENABLED` gate as an effective prerequisite; server-flag
 disabled issuer minting cannot produce an activation accepted by Governance.
-ASTRA-RUNTIME-ACT-001 remains Implemented / Changes Required pending Astra
-re-review and certification.
+This correction was superseded by the later exact Runtime owner binding
+correction and certification.
 
 On 2026-08-02, ASTRA-RUNTIME-ACT-001 exact Runtime owner binding correction was
 implemented at backend commit `a15b3192572cd5a1f3e265652e4778967755b787`.
@@ -150,8 +164,7 @@ Issuer construction validates the Runtime owner type, matching startup instance
 id, and exact Runtime-owned activation issuer authority before registration.
 The explicit fake-owner negative proves matching `_activation_issuer_authority`
 and `_validates_activation_issuer(...)` attributes are insufficient.
-ASTRA-RUNTIME-ACT-001 remains Implemented / Changes Required pending Astra
-re-review and certification.
+ASTRA-RUNTIME-ACT-001 was later Certified / Approved at this backend commit.
 
 On 2026-08-02, ASTRA-CHAT-001 remained authorized but paused after preflight
 confirmed a prerequisite gap: normal Runtime-owned application code did not yet
@@ -502,12 +515,13 @@ ansiversa-api/app/modules/astra_ai/activation.py
 Current state:
 
 ```text
-ASTRA-RUNTIME-ACT-001        Implemented / Changes Required
+ASTRA-RUNTIME-ACT-001        Certified / Approved
 Implementation Scope         Governed Non-Production Runtime Activation
 Initial App                  Subscription Manager only
 Initial Capability Scope     subscription_manager:private_read
 Initial Backend Commit        fd61ee1071227549500785e0c8a663cf5e2f8082
 Correction Backend Commit     f1af573917b93f0ebe15e133a46f49a33cf1541f
+Final Certified Commit        a15b3192572cd5a1f3e265652e4778967755b787
 ```
 
 The activation layer preserves Stage-0 `feature_enabled=False` semantics and
@@ -528,9 +542,9 @@ production approval, chat, provider/model integration, memory, adaptation,
 writes, general tool execution, frontend behavior, persistence, migration, or
 deployment.
 
-ASTRA-READ-AUTH-BIND-001 remains paused pending this activation review and
-certification. ASTRA-CHAT-001 remains authorized / paused. Production
-authorization remains not approved.
+ASTRA-READ-AUTH-BIND-001 may now resume from the preserved stash but remains
+paused until explicitly resumed. ASTRA-CHAT-001 remains authorized / paused.
+Production authorization remains not approved.
 
 ## Other Newer Repository Memory
 

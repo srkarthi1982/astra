@@ -11,7 +11,7 @@ Backend Implementation Commit:
 b9dfceefc3352233e474eb91a04861431b4e5731.
 
 Backend Correction Commit:
-9659d49ab9b0d7c8d4271968e163b04f1e400888.
+6bf9e9e983711dbe65b18c98e6c47a45e117b02c.
 
 ## Purpose
 
@@ -131,9 +131,17 @@ owner_authority_status = verified
 ```
 
 The binding requires a sealed backend-auth-owned `AuthenticatedUserContext`
-issued by the existing auth service for the persistent DB-loaded user returned
-from `get_current_user`. Transient caller-created `User(...)` objects cannot
-establish principal/user authority.
+issued only by the existing authenticated backend request boundary. The issuer
+requires bearer token or auth cookie resolution, access-token decoding, token
+expiration binding, existing DB user lookup by token subject/email,
+login-status validation, auth-owned SQLAlchemy persistence validation, timing
+user binding, and a module-private authenticated-request-boundary authority.
+Persistent users obtained directly from `db.get(...)`, transient
+caller-created `User(...)` objects, caller-constructed contexts,
+copied/tampered/foreign contexts, expired/stale contexts, and
+disabled/inactive/suspended users cannot establish or preserve principal/user
+read authority. The auth-owned context registry is bounded and removes expired
+contexts during issuance and expiration validation.
 
 Subscription Manager has no tenant or organization authority model in this
 repository. Read capability tenant scope is therefore represented explicitly as
@@ -167,23 +175,23 @@ Production authorization remains not approved. Production remains unchanged.
 ## Validation Evidence
 
 Latest backend validation for correction commit
-`9659d49ab9b0d7c8d4271968e163b04f1e400888`:
+`6bf9e9e983711dbe65b18c98e6c47a45e117b02c`:
 
 ```text
 .venv/bin/python -m pytest tests/test_astra_read_authority_binding.py -q
-20 passed
+23 passed
 
 .venv/bin/python -m pytest tests/test_subscription_manager_astra_read_capabilities.py -q
 20 passed
 
 .venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_read_execution_bridge.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_configuration_foundation.py tests/test_astra_evidence_sink.py tests/test_astra_conversation_context_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_planning_engine.py -q
-256 passed, 25 subtests passed
+259 passed, 25 subtests passed
 
 .venv/bin/python -m compileall app/modules/auth app/modules/astra_ai app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_read_authority_binding.py tests/test_astra_runtime_activation.py tests/test_astra_read_execution_bridge.py tests/test_subscription_manager_astra_read_capabilities.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-402 passed, 147 warnings, 33 subtests passed
+405 passed, 147 warnings, 33 subtests passed
 ```
 
 ASTRA-READ-AUTH-BIND-001 remains pending Astra source/security/architecture

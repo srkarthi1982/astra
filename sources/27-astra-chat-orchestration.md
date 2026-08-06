@@ -32,6 +32,11 @@ Reconciled Backend Implementation Commit:
 Backend Documentation Head:
 6e674b652a2354176020b5ebdcbb8d000260c33d.
 
+PR #3 State:
+Open, draft, unmerged; base `feature/astra-meta-act-bind-001`; head
+`feature/astra-chat-001` at
+`6e674b652a2354176020b5ebdcbb8d000260c33d`.
+
 Certification:
 Pending Astra re-review.
 
@@ -270,5 +275,5 @@ passed
 ```
 
 ASTRA-CHAT-001 is Implemented / Pending Astra Re-Review. Frontend work has not
-started. PR #3 remains open, draft, and unmerged. Production authorization
-remains not approved.
+started. PR #3 remains open, draft, retargeted to the certified metadata
+prerequisite branch, and unmerged. Production authorization remains not approved.

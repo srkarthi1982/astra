@@ -121,6 +121,29 @@ read_authority_binding.py
 
 ## ASTRA-CHAT-001, Read Authority Binding, And Metadata Activation Binding Update
 
+On 2026-08-06, Product Owner/Astra explicitly resumed ASTRA-CHAT-001 for
+controlled non-production development and QA. The preserved chat history at
+`681878d048c4b3229c312abfcaaa45b5e6a44459` was reconciled non-destructively
+onto certified metadata prerequisite branch head
+`06de785da513e04c19f1c59c1ec4a72ac0d42d28` in backend merge commit
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Parent conflicts were resolved in
+favor of the certified metadata prerequisite, so the old chat-owned Capability
+Discovery, Intent Resolution, Read Authority Binding, and fixture workarounds
+do not survive. Chat now consumes
+`runtime.issue_subscription_manager_governed_metadata_context(...)` and passes
+the same exact context object through conversation-bound discovery and Intent
+Resolution before certified read authority and execution.
+
+The authenticated HTTP database-provenance test receives
+`Subscriptions: 2.`, commits a third owner-scoped Subscription Manager row,
+repeats the same governed request, and receives `Subscriptions: 3.`. Validation
+passed with 27 chat tests, 264 focused tests plus 11 subtests, 450 full Astra
+tests plus 33 subtests, compileall, and `git diff --check`. ASTRA-CHAT-001 is
+Implemented / Pending Astra Re-Review. Frontend work has not started. PR #3 is
+not merged, backend documentation head is
+`6e674b652a2354176020b5ebdcbb8d000260c33d`, and production authorization
+remains not approved.
+
 On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
 `d5c4c127c7c2fed254f7ee5463331306ca4d413b` after Product Owner/Astra
 authorization to resume chat on top of the certified prerequisite chain. The
@@ -263,10 +286,10 @@ deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
 ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-META-ACT-BIND-001 is
-Certified / Approved and frozen. ASTRA-CHAT-001 is Changes Required / paused
-pending explicit Product Owner/Astra resume and branch reconciliation onto the
-certified metadata activation binding prerequisite. Production authorization
-remains not approved and production remains unchanged.
+Certified / Approved and frozen. ASTRA-CHAT-001 is Implemented / Pending Astra
+Re-Review at backend reconciliation commit
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Production authorization remains
+not approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -450,7 +473,7 @@ Frontend / Chat             Not authorized
 Provider / Model            Not authorized
 ASTRA-APP-VAL-001           Certified / Approved
 ASTRA-READ-EXEC-001         Certified / Approved
-ASTRA-CHAT-001              Changes Required / pending Astra re-review
+ASTRA-CHAT-001              Implemented / Pending Astra Re-Review
 Production Authorization    Not approved
 Production                  Unchanged
 ```
@@ -755,9 +778,10 @@ deployment.
 
 ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-META-ACT-BIND-001 is
 Certified / Approved and frozen at backend implementation
-`0715483147d5a1a0ba6180d5a63e489f3b6fd982`. ASTRA-CHAT-001 is Changes Required /
-paused pending explicit Product Owner/Astra resume and branch reconciliation
-onto this certified prerequisite. Production authorization remains not approved.
+`0715483147d5a1a0ba6180d5a63e489f3b6fd982`. ASTRA-CHAT-001 is Implemented /
+Pending Astra Re-Review at reconciled backend commit
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Production authorization remains
+not approved.
 
 ## Other Newer Repository Memory
 
@@ -810,6 +834,8 @@ astra/sources/23-astra-read-execution.md
 astra/sources/24-astra-app-validation.md
 astra/sources/25-astra-read-authority-binding.md
 astra/sources/26-astra-runtime-activation.md
+astra/sources/27-astra-chat-orchestration.md
+astra/sources/28-astra-metadata-activation-binding.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

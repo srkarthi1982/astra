@@ -4,7 +4,9 @@ Document Status: Durable memory supplement.
 
 Created: 2026-08-02.
 
-Implementation State: ASTRA-CHAT-001 Changes Required / Paused On Prerequisite.
+Last Updated: 2026-08-06.
+
+Implementation State: ASTRA-CHAT-001 Implemented / Pending Astra Re-Review.
 
 Backend Implementation Commit:
 d5c4c127c7c2fed254f7ee5463331306ca4d413b.
@@ -18,9 +20,20 @@ Astra Re-Review:
 Second Astra Re-Review:
 4838708303.
 
+Product Owner/Astra Resume Authorization:
+Approved on 2026-08-06 for controlled non-production development and QA only.
+
+Certified Metadata Prerequisite Branch Head:
+06de785da513e04c19f1c59c1ec4a72ac0d42d28.
+
+Reconciled Backend Implementation Commit:
+4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646.
+
+Backend Documentation Head:
+6e674b652a2354176020b5ebdcbb8d000260c33d.
+
 Certification:
-Paused pending explicit Product Owner/Astra resume and branch reconciliation
-onto certified ASTRA-META-ACT-BIND-001.
+Pending Astra re-review.
 
 Production Authorization:
 Not approved.
@@ -28,8 +41,8 @@ Not approved.
 ## Purpose
 
 ASTRA-CHAT-001 adds the first backend-only governed chat orchestration path.
-It remains paused pending explicit Product Owner/Astra resume and branch
-reconciliation onto certified ASTRA-META-ACT-BIND-001:
+The preserved chat branch history is reconciled non-destructively onto certified
+ASTRA-META-ACT-BIND-001:
 
 ```text
 ASTRA-RUNTIME-ACT-001
@@ -123,8 +136,10 @@ The positive path is:
 get_authenticated_user_context
     -> AstraChatGateway
     -> AstraConversationContextEngine
+    -> runtime.issue_subscription_manager_governed_metadata_context(...)
+    -> same exact Runtime-issued metadata context
     -> AstraIntentResolutionEngine
-    -> AstraCapabilityDiscoveryEngine metadata-only governance
+    -> AstraCapabilityDiscoveryEngine discover_for_conversation(...)
     -> runtime.read_authority.authorize_subscription_manager_read(...)
     -> ASTRA-IMP-010 Read Access Authorization
     -> app-owned Subscription Manager read grant
@@ -141,28 +156,31 @@ plan_reference = None
 plan = None
 ```
 
-Capability Discovery remains metadata-only. It does not receive executable app
-read capabilities. Astra re-review found that exact per-request app, scope, and
-capability metadata activation context must be certified as a separate
-prerequisite rather than hidden inside ASTRA-CHAT-001. That prerequisite is
-ASTRA-META-ACT-BIND-001.
+Capability Discovery remains metadata-only and Intent Resolution remains
+declared-intent only. Chat validates the declared capability against the
+app-owned certified catalog, asks Runtime to issue the exact governed metadata
+context for the current active conversation turn, and passes that same object
+to the intent request and conversation-bound discovery requester context.
 
-Intent Resolution remains declared-intent only. It must not infer Subscription
-Manager activation from `get_information` plus subscription-looking subject
-strings. Exact resolved capability lineage is paused pending the certified
-ASTRA-META-ACT-BIND-001 context contract. The intended chat chain will bind the
-declared Subscription Manager capability into:
+The reconciled lineage is:
 
 ```text
 declared-intent binding target
 AstraIntentRequest declared_target
-AstraIntentRequest declared_capability_ids
+Runtime-issued governed metadata context capability
 AstraIntentResolution.resolved_capability_ids
 Read Authority adapter_capability_id
 Read Execution adapter_capability_id
 ```
 
 Mismatched, changed, or reused capability lineage fails closed.
+
+The old chat-owned parent workarounds do not survive reconciliation. There is no
+chat-owned `declared_capability_ids` trust, no ambient/private metadata activation
+inside generic Capability Discovery or Intent Resolution, no
+`_validate_resolved_capability_lineage(...)` change in Read Authority Binding,
+and no chat modification to its certified fixtures. Parent source matches the
+certified prerequisite branch.
 
 ## Security Boundary
 
@@ -184,12 +202,35 @@ remain returnable when the governed capability authorizes those fields.
 Projection failures return bounded non-success chat responses rather than
 unhandled server errors.
 
+## Database Provenance Proof
+
+The real authenticated HTTP integration test seeds two owner-scoped
+Subscription Manager rows and calls `POST /api/v1/astra/chat` with
+`subscription.count_all`. The governed response is `Subscriptions: 2.`. The
+test then commits a third row to the Subscription Manager test database and
+repeats the same HTTP request; the governed response becomes
+`Subscriptions: 3.`.
+
+The answer path crosses the existing token/auth database boundary, chat gateway,
+Conversation Context, certified metadata context, Intent Resolution,
+conversation-bound Capability Discovery, Read Authority, Read Access
+Authorization, Read Execution, the registered app-owned adapter, and database.
+The gateway itself imports no SQLAlchemy API and executes no SQL.
+
+## Test Clock Correction
+
+One activation lifecycle test loaded Runtime configuration from the real wall
+clock while evaluating fixed August 2/3 timestamps. The test now freezes Runtime
+configuration loading to the same scenario clock. Production activation
+semantics are unchanged. Existing expired and stale governed metadata context
+tests continue to fail closed.
+
 ## Explicit Non-Goals
 
 ASTRA-CHAT-001 does not implement:
 
 ```text
-frontend chat UI
+frontend integration with this governed endpoint
 provider/model/OpenAI integration
 LLM calls
 natural-language inference
@@ -203,34 +244,31 @@ migrations
 production configuration
 deployment
 production authorization
-merge
+merge to main
 ```
 
 ## Validation Evidence
 
-Latest backend validation for correction commit
-`681878d048c4b3229c312abfcaaa45b5e6a44459`:
+Latest backend validation for reconciliation commit
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`:
 
 ```text
-.venv/bin/python -m compileall app/modules/astra_ai/chat_gateway.py app/modules/astra_ai/api/chat.py app/main.py
-passed
-
 .venv/bin/python -m pytest tests/test_astra_chat_gateway.py -q
-21 passed, 1 warning
+27 passed, 1 warning
 
-.venv/bin/python -m pytest tests/test_astra_intent_resolution_engine.py tests/test_astra_capability_discovery_engine.py -q
-48 passed
-
-.venv/bin/python -m pytest tests/test_astra_runtime_activation.py tests/test_astra_read_authority_binding.py tests/test_astra_read_execution_bridge.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py tests/test_astra_conversation_context_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_capability_discovery_engine.py tests/test_astra_planning_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_chat_gateway.py -q
-270 passed, 1 warning, 11 subtests passed
+.venv/bin/python -m pytest tests/test_astra_chat_gateway.py tests/test_astra_metadata_activation_binding.py tests/test_astra_runtime_activation.py tests/test_astra_capability_discovery_engine.py tests/test_astra_intent_resolution_engine.py tests/test_astra_conversation_context_engine.py tests/test_astra_governance_kernel.py tests/test_astra_runtime_core.py tests/test_astra_read_authority_binding.py tests/test_astra_read_access_authorization_engine.py tests/test_astra_read_execution_bridge.py tests/test_astra_app_val_001_read_execution_validation.py tests/test_subscription_manager_astra_read_capabilities.py -q
+264 passed, 1 warning, 11 subtests passed in 53.90s
 
 .venv/bin/python -m compileall app/modules/astra_ai app/modules/auth app/modules/subscription_manager validation/astra_app_001 validation/astra_app_val_001 tests/test_astra_chat_gateway.py
 passed
 
 .venv/bin/python -m pytest tests/test_astra*.py -q
-426 passed, 147 warnings, 33 subtests passed in 463.16s
+450 passed, 147 warnings, 33 subtests passed in 427.11s
+
+git diff --check
+passed
 ```
 
-ASTRA-CHAT-001 remains Changes Required / paused pending explicit Product
-Owner/Astra resume and branch reconciliation onto certified
-ASTRA-META-ACT-BIND-001. Production authorization remains not approved.
+ASTRA-CHAT-001 is Implemented / Pending Astra Re-Review. Frontend work has not
+started. PR #3 remains open, draft, and unmerged. Production authorization
+remains not approved.

@@ -276,7 +276,8 @@ passed
 ```
 
 ASTRA-CHAT-001 is Certified / Approved through Astra review `4876497721` at
-executable commit `4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Frontend
-integration has not started. PR #3 remains open, draft, retargeted to the
-certified metadata prerequisite branch, and unmerged. Production authorization
-remains not approved.
+executable commit `4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`.
+ASTRA-FE-CHAT-001 now consumes this contract from the existing Astra frontend
+panel and is Implemented / Pending Astra Review at frontend commit
+`90c9a71581ec9145dc99363f12e276f5fbd227bf`. Backend PR #3 and frontend PR #1
+remain open, draft, and unmerged. Production authorization remains not approved.

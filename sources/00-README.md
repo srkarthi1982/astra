@@ -30,6 +30,11 @@ Generated or refreshed: 2026-07-18
 - `22-current-repository-checkpoint.md`: recovery checkpoint for repository facts newer than the original source pack, including the certified Astra backend/API/UI stack and current catalog delta.
 - `23-astra-read-execution.md`: ASTRA-READ-EXEC-001 governed read execution bridge memory, current boundaries, adapter contract, validation evidence, and unresolved authorization boundaries.
 - `24-astra-app-validation.md`: ASTRA-APP-VAL-001 Subscription Manager governed read execution validation memory, scenario coverage, database-session proof, and unresolved authorization boundaries.
+- `25-astra-read-authority-binding.md`: certified Subscription Manager read authority and capability binding memory.
+- `26-astra-runtime-activation.md`: certified governed non-production Runtime activation memory.
+- `27-astra-chat-orchestration.md`: certified governed backend chat orchestration memory.
+- `28-astra-metadata-activation-binding.md`: certified governed metadata activation and capability-context binding memory.
+- `29-astra-frontend-governed-subscription-chat.md`: ASTRA-FE-CHAT-001 frontend implementation, review state, and isolated browser evidence.
 
 ## Exclusions
 

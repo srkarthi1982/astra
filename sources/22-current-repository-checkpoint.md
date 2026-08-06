@@ -18,10 +18,10 @@ Verified local repository heads:
 
 ```text
 Frontend repository         ansiversa
-Frontend HEAD               8786453d9d67416669d149614df0e179e47b88b2
+Frontend HEAD               90c9a71581ec9145dc99363f12e276f5fbd227bf
 
 Backend repository          ansiversa-api
-Backend HEAD                06de785da513e04c19f1c59c1ec4a72ac0d42d28
+Backend HEAD                615ef1b3ec375aacca9a9a9cb564832688a0d34c
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -141,11 +141,45 @@ passed with 27 chat tests, 264 focused tests plus 11 subtests, 450 full Astra
 tests plus 33 subtests, compileall, and `git diff --check`. Astra certification
 review `4876497721` approved ASTRA-CHAT-001 at certified executable
 `4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. ASTRA-CHAT-001 is Certified /
-Approved. Frontend integration has not started. PR #3 remains open, draft,
-unmerged, and based on certified ASTRA-META-ACT-BIND-001. The backend
-certification-record commit is
+Approved. PR #3 remains open, draft, unmerged, and based on certified
+ASTRA-META-ACT-BIND-001. The backend certification-record commit is
 `615ef1b3ec375aacca9a9a9cb564832688a0d34c`, and production authorization
 remains not approved.
+
+## ASTRA-FE-CHAT-001 Frontend Update
+
+On 2026-08-06, the approved governed Subscription Manager chat frontend was
+implemented from exact frontend `main` base
+`4681a23cc08240db8595941a2fee80989ad24825` on branch
+`feature/astra-governed-subscription-chat`. The implementation commit is
+`90c9a71581ec9145dc99363f12e276f5fbd227bf`. It reuses the existing shared
+Astra panel and the existing authenticated frontend API boundary.
+
+The panel provides a sealed deterministic mapping for the nine certified
+Subscription Manager read capabilities and an explicit 1-366 day control for
+`subscription.renewing_within_days`. Governed requests call only
+`POST /api/v1/astra/chat`; unsupported input makes no request, and governed
+failures never fall back to `/api/v1/assistant/query`. Requests use cookie
+authentication, carry no user identity or authority fields, and keep the
+backend conversation identifier only in component memory. Responses are
+capability-checked and rendered as structured user-facing results without raw
+JSON or backend internals. The feature is explicitly gated to recognized
+non-production environments.
+
+Validation passed with frontend lint, typecheck, build, and 14 focused governed
+chat Playwright tests across Chromium and mobile Chromium. The existing Astra
+assistant suite passed 12 tests with one credential-gated skip. Isolated live
+browser QA used temporary migrated SQLite copies and the certified backend
+branch: a primary user created two subscriptions through the normal UI and
+received `Subscriptions: 2.`, created a third and received
+`Subscriptions: 3.`, while a secondary user received `Subscriptions: 0.`.
+Both governed calls used `/api/v1/astra/chat`, with zero legacy assistant-query
+calls.
+
+ASTRA-FE-CHAT-001 is Implemented / Pending Astra Review. Frontend PR #1 is
+open, draft, based on `main`, and unmerged. Backend PRs #3 and #4 remain open,
+draft, and unmerged. No production configuration, deployment, authorization,
+or merge has occurred.
 
 On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
 `d5c4c127c7c2fed254f7ee5463331306ca4d413b` after Product Owner/Astra
@@ -839,6 +873,7 @@ astra/sources/25-astra-read-authority-binding.md
 astra/sources/26-astra-runtime-activation.md
 astra/sources/27-astra-chat-orchestration.md
 astra/sources/28-astra-metadata-activation-binding.md
+astra/sources/29-astra-frontend-governed-subscription-chat.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

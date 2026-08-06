@@ -138,10 +138,13 @@ The authenticated HTTP database-provenance test receives
 `Subscriptions: 2.`, commits a third owner-scoped Subscription Manager row,
 repeats the same governed request, and receives `Subscriptions: 3.`. Validation
 passed with 27 chat tests, 264 focused tests plus 11 subtests, 450 full Astra
-tests plus 33 subtests, compileall, and `git diff --check`. ASTRA-CHAT-001 is
-Implemented / Pending Astra Re-Review. Frontend work has not started. PR #3 is
-not merged, backend documentation head is
-`6e674b652a2354176020b5ebdcbb8d000260c33d`, and production authorization
+tests plus 33 subtests, compileall, and `git diff --check`. Astra certification
+review `4876497721` approved ASTRA-CHAT-001 at certified executable
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. ASTRA-CHAT-001 is Certified /
+Approved. Frontend integration has not started. PR #3 remains open, draft,
+unmerged, and based on certified ASTRA-META-ACT-BIND-001. The backend
+certification-record commit is
+`615ef1b3ec375aacca9a9a9cb564832688a0d34c`, and production authorization
 remains not approved.
 
 On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
@@ -286,10 +289,10 @@ deployment.
 
 Capability Discovery remains metadata-only. Planning remains metadata-only.
 ASTRA-READ-EXEC-001 behavior remains unchanged. ASTRA-META-ACT-BIND-001 is
-Certified / Approved and frozen. ASTRA-CHAT-001 is Implemented / Pending Astra
-Re-Review at backend reconciliation commit
-`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Production authorization remains
-not approved and production remains unchanged.
+Certified / Approved and frozen. ASTRA-CHAT-001 is Certified / Approved at
+executable backend commit `4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`
+through Astra certification review `4876497721`. Production authorization
+remains not approved and production remains unchanged.
 
 The diagnostics API is under:
 
@@ -469,11 +472,11 @@ subscription.group_by_category
 ASTRA-APP-001 boundaries:
 
 ```text
-Frontend / Chat             Not authorized
+Frontend governed chat      Authorized for non-production implementation
 Provider / Model            Not authorized
 ASTRA-APP-VAL-001           Certified / Approved
 ASTRA-READ-EXEC-001         Certified / Approved
-ASTRA-CHAT-001              Implemented / Pending Astra Re-Review
+ASTRA-CHAT-001              Certified / Approved
 Production Authorization    Not approved
 Production                  Unchanged
 ```
@@ -778,10 +781,10 @@ deployment.
 
 ASTRA-READ-AUTH-BIND-001 is Certified / Approved. ASTRA-META-ACT-BIND-001 is
 Certified / Approved and frozen at backend implementation
-`0715483147d5a1a0ba6180d5a63e489f3b6fd982`. ASTRA-CHAT-001 is Implemented /
-Pending Astra Re-Review at reconciled backend commit
-`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646`. Production authorization remains
-not approved.
+`0715483147d5a1a0ba6180d5a63e489f3b6fd982`. ASTRA-CHAT-001 is Certified /
+Approved at executable backend commit
+`4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646` through Astra certification review
+`4876497721`. Production authorization remains not approved.
 
 ## Other Newer Repository Memory
 

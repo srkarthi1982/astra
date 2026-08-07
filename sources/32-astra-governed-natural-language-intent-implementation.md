@@ -1,6 +1,6 @@
 # Astra Governed Natural-Language Intent Implementation
 
-Document Status: Implemented / Pending Astra Review.
+Document Status: Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review.
 
 Created: 2026-08-07.
 
@@ -11,6 +11,10 @@ Certified architecture commit:
 
 Astra architecture review: `4881828844`.
 
+Astra implementation review: `4886169635`.
+
+Issue #8 correction gate: `5221470917`.
+
 Exact implementation base:
 `00102d6669ff9021e7301f689d74090d760a2a03`.
 
@@ -18,6 +22,9 @@ Implementation branch: `feature/astra-ai-intent-001`.
 
 Implementation commit:
 `e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b`.
+
+Acceptance-proof correction commit:
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531`.
 
 Backend PR #9: open, draft, unmerged, targeting
 `feature/astra-ai-intent-arch-001`.
@@ -45,6 +52,35 @@ tests/test_astra_natural_language_intent.py
 No certified Runtime, metadata binding, Read Authority, Read Access
 Authorization, Read Execution, chat, authentication, or Subscription Manager
 capability/adapter implementation changed.
+
+## Astra Review Correction
+
+Astra review `4886169635` found no architecture or runtime defect. It required
+four explicit acceptance-proof corrections. Correction commit
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531` changes only:
+
+```text
+AGENTS.md
+docs/iterations/2026-08-astra-ai-intent/tasks/astra-ai-intent-001-implementation.md
+tests/test_astra_natural_language_intent.py
+```
+
+The added tests prove:
+
+1. a genuinely foreign `app_id=expense_tracker` candidate fails before
+   certified chat execution;
+2. `subscription.count_active`, although catalog-valid, fails before
+   `AstraChatRequest` construction/chat execution when omitted from the exact
+   metadata projection supplied and validated for that request;
+3. authenticated requests with client-supplied app, capability, parameters,
+   user, authority, grant, Runtime, or Governance fields each return HTTP 422
+   before provider or chat execution; and
+4. an actual JSON array containing two resolved candidate objects fails closed
+   after exactly one bounded provider attempt with no chat execution.
+
+The correction exposed no behavioral defect. No runtime implementation,
+endpoint contract, provider behavior, certified prerequisite, or Subscription
+Manager source changed.
 
 ## Runtime Boundary
 
@@ -139,14 +175,14 @@ is disabled or unavailable, while the endpoint remains default-off.
 Focused intent/provider/agent validation:
 
 ```text
-91 passed
+101 passed
 1 skipped — real OpenAI smoke not run; credential gated
 ```
 
 Full Astra regression validation:
 
 ```text
-541 passed
+551 passed
 33 subtests passed
 1 skipped — same credential-gated real-provider smoke
 ```
@@ -164,11 +200,13 @@ and the second authenticated user saw only their own count of 1.
 
 Security coverage includes exact-path provider independence, multiple
 paraphrases for every certified read, strict day values, fresh catalog drift,
-hallucinated/foreign capabilities, extra identity/role/grant/activation/
-Runtime/Governance/SQL/DB/tool/confidence/explanation fields, multiple/malformed/
-empty/oversized provider output, timeout/unavailability with zero retries,
-prompt injection, write requests, auth negatives, blocked users, feature and
-environment gates, foreign conversations, and client authority-shaped fields.
+genuinely foreign app identity, a catalog-valid capability absent from the
+request projection, hallucinated/foreign capabilities, extra identity/role/
+grant/activation/Runtime/Governance/SQL/DB/tool/confidence/explanation fields,
+an actual two-candidate array, malformed/empty/oversized provider output,
+timeout/unavailability with zero retries, prompt injection, write requests,
+auth negatives, blocked users, feature and environment gates, foreign
+conversations, and authenticated HTTP client authority-shaped fields.
 
 ## Review Gate
 
@@ -177,7 +215,7 @@ the implementation and does not authorize frontend work, merge, deployment,
 production configuration, or production use.
 
 ```text
-ASTRA-AI-INTENT-001 — Implemented / Pending Astra Review
+ASTRA-AI-INTENT-001 — Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review
 Frontend agent integration — NOT AUTHORIZED
 Production — NOT APPROVED
 ```

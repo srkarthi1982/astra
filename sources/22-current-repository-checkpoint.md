@@ -12,7 +12,7 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
-## ASTRA-AI-INTENT-001 Implementation Pending Review
+## ASTRA-AI-INTENT-001 Implementation Pending Re-Review
 
 On 2026-08-07, Product Owner/Astra authorized GitHub issue
 `srkarthi1982/ansiversa-api#8` for backend implementation and controlled
@@ -35,19 +35,35 @@ parameter schema. It contains no records, identity, authorization, grants,
 Runtime/Governance objects, DB/SQL material, secrets, writes, or final-answer
 authority. Raw prompts and provider payloads are not persisted as evidence.
 
-Focused validation passed 91 tests with one credential-gated real-provider
-smoke skipped because `OPENAI_API_KEY` was absent. Full Astra validation passed
-541 tests plus 33 subtests, with that same single credential-gated skip.
+Initial focused validation passed 91 tests with one credential-gated
+real-provider smoke skipped because `OPENAI_API_KEY` was absent. Initial full
+Astra validation passed 541 tests plus 33 subtests, with that same single
+credential-gated skip.
 Authenticated agent HTTP provenance changed the primary owner's real DB-backed
 `subscription.count_all` answer from 2 to 3 after a committed owner-scoped row;
 a second authenticated user saw only their own count of 1. Compileall and
 `git diff --check` passed. Backend PR #9 is open, draft, and unmerged against
 `feature/astra-ai-intent-arch-001`.
 
-ASTRA-AI-INTENT-001 is Implemented / Pending Astra Review. It is not certified.
-Frontend agent integration is NOT AUTHORIZED. No merge, manual deployment,
-production configuration, or production authorization occurred. Production
-remains NOT APPROVED. Dedicated implementation memory is recorded in
+Astra PR #9 review `4886169635` found the runtime architecture compliant but
+required four narrower acceptance proofs under Issue #8 correction gate comment
+`5221470917`. Backend correction commit
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531` changes only the intent test file,
+backend task record, and backend AGENTS log. It explicitly proves foreign
+`app_id` rejection, rejection of a catalog-valid capability omitted from the
+exact supplied projection, authenticated HTTP 422 rejection of client-supplied
+app/capability/parameters/user/authority/grant/Runtime/Governance fields before
+provider/chat execution, and fail-closed handling of an actual two-candidate
+provider array after one attempt with no chat execution. Corrected focused
+validation passed 101 tests with one credential-gated skip; full Astra
+validation passed 551 tests plus 33 subtests with the same skip. Compileall,
+the committed-tree certification guard, and `git diff --check` passed. No
+runtime defect was exposed and no runtime source or behavior changed.
+
+ASTRA-AI-INTENT-001 is Changes Corrected / NOT CERTIFIED / Pending Astra
+Re-Review. Frontend agent integration is NOT AUTHORIZED. No merge, manual
+deployment, production configuration, or production authorization occurred.
+Production remains NOT APPROVED. Dedicated implementation memory is recorded in
 `sources/32-astra-governed-natural-language-intent-implementation.md`.
 
 ## ASTRA-AI-INTENT-ARCH-001 Architecture Certification
@@ -78,10 +94,10 @@ certification-record commit is
 `00102d6669ff9021e7301f689d74090d760a2a03`; it is not a new architecture
 target. PR #6 remains open, draft, and unmerged. Natural-language intent
 implementation was later authorized only by separate GitHub issue #8 and is now
-Implemented / Pending Astra Review at the commit recorded above. Architecture
-certification itself did not authorize implementation, frontend, merge,
-deployment, production configuration, or production action. Production remains
-NOT APPROVED.
+Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review at the correction
+commit recorded above. Architecture certification itself did not authorize
+implementation, frontend, merge, deployment, production configuration, or
+production action. Production remains NOT APPROVED.
 
 ## Repository Baseline
 

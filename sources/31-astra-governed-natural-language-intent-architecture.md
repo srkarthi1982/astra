@@ -1,6 +1,6 @@
 # Astra Governed Natural-Language Intent Architecture
 
-Document Status: Architecture proposed / pending Astra review.
+Document Status: Architecture Approved / Certified / Closed.
 
 Created: 2026-08-07.
 
@@ -12,11 +12,20 @@ Backend architecture base:
 Backend architecture commit:
 `cc65502990e69c39bc542933d6d8d28aac5b0291`.
 
+Astra architecture review: `4881828844`.
+
+Backend architecture certification-record commit:
+`00102d6669ff9021e7301f689d74090d760a2a03`.
+
+PR #6: open, draft, unmerged.
+
+Implementation: NOT AUTHORIZED.
+
 Production authorization: NOT APPROVED.
 
 ## Purpose
 
-ASTRA-AI-INTENT-ARCH-001 proposes an intent-only AI boundary for supported
+ASTRA-AI-INTENT-ARCH-001 certifies an intent-only AI boundary for supported
 Subscription Manager natural-language questions while preserving the certified
 governed execution chain.
 
@@ -106,7 +115,7 @@ authority assumptions must not be inherited. The governed intent client needs
 strict structured validation and redacted metadata-only observability. Initial
 retries are zero.
 
-## Frozen State And Stop Point
+## Frozen Certified State
 
 Certified Runtime activation, metadata activation, Read Authority, Read
 Execution, backend chat, frontend chat, authentication, and Subscription Manager
@@ -115,5 +124,11 @@ configuration, frontend, DB/schema, tool, write, deployment, merge, or productio
 action is authorized by this architecture.
 
 ```text
-ASTRA-AI-INTENT-ARCH-001 — Architecture Proposed / Pending Astra Review
+ASTRA-AI-INTENT-ARCH-001 — Architecture Approved / Certified / Closed
+ASTRA-AI-INTENT implementation — NOT AUTHORIZED
+Production — NOT APPROVED
 ```
+
+The certification-record commit is documentation-only and is not a new
+architecture target. A separate Product Owner/Astra-authorized GitHub issue is
+required before implementation.

@@ -12,7 +12,7 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
-## ASTRA-AI-INTENT-ARCH-001 Architecture Proposal
+## ASTRA-AI-INTENT-ARCH-001 Architecture Certification
 
 On 2026-08-07, GitHub issue `srkarthi1982/ansiversa-api#5` was released by
 Astra comment `5215395273` for architecture and documentation only. Codex
@@ -33,11 +33,15 @@ unchanged. The permanent GitHub-first delivery rule is in
 `sources/30-astra-governed-ai-capability-delivery-workflow.md`; intent memory is
 in `sources/31-astra-governed-natural-language-intent-architecture.md`.
 
-ASTRA-AI-INTENT-ARCH-001 is Architecture Proposed / Pending Astra Review.
-Production remains NOT APPROVED. Architecture does not authorize
-implementation, frontend, merge, deployment, or production action.
-The backend architecture commit is
-`cc65502990e69c39bc542933d6d8d28aac5b0291`.
+ASTRA-AI-INTENT-ARCH-001 is Architecture Approved / Certified / Closed at
+architecture commit `cc65502990e69c39bc542933d6d8d28aac5b0291` through Astra
+architecture review `4881828844`. The backend documentation-only architecture
+certification-record commit is
+`00102d6669ff9021e7301f689d74090d760a2a03`; it is not a new architecture
+target. PR #6 remains open, draft, and unmerged. Natural-language intent
+implementation remains NOT AUTHORIZED. Production remains NOT APPROVED.
+Architecture certification does not authorize implementation, frontend, merge,
+deployment, production configuration, or production action.
 
 ## Repository Baseline
 

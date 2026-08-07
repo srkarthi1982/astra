@@ -4,13 +4,16 @@
 
 ```text
 Work Item: ASTRA-FE-CHAT-001
-Status: Changes Required / Pending Astra Re-Review
+Status: Certified / Approved / Closed
 Date: 2026-08-07
 Frontend Repository: ansiversa
 Frontend Base: 4681a23cc08240db8595941a2fee80989ad24825
 Frontend Branch: feature/astra-governed-subscription-chat
-Frontend Commit: 32930b69e8d296f383e2c9846bf5e69c231589a1
+Certified Frontend Implementation: 32930b69e8d296f383e2c9846bf5e69c231589a1
+Frontend Certification Record: d6dc2b59a1dace03096d4359ededfbd1f082e9c5
 Frontend PR: #1, open, draft, unmerged
+Frontend Certification Review: 4881607386
+Product Owner Manual Verification: Approved
 Certified Backend Executable: 4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646
 Backend Certification Review: 4876497721
 Backend Certification Record: 615ef1b3ec375aacca9a9a9cb564832688a0d34c
@@ -149,9 +152,13 @@ owner isolation, and absence of legacy fallback.
 
 ## Current Boundary
 
-ASTRA-FE-CHAT-001 remains Changes Required / Pending Astra Re-Review and is not
-certified or approved. Frontend PR #1 and backend PRs #3 and #4 remain draft and
-unmerged. No manual production deployment was performed or authorized.
+ASTRA-FE-CHAT-001 is Certified / Approved / Closed at the immutable frontend
+implementation `32930b69e8d296f383e2c9846bf5e69c231589a1` under Astra
+certification review `4881607386`, with Product Owner manual browser/product
+verification approved. The frontend certification-record commit changes
+documentation only and is not the executable certification target. Frontend PR
+#1 and backend PRs #3 and #4 remain open, draft, and unmerged. No manual
+production deployment was performed or authorized.
 GitHub/Vercel automatically created the normal non-production PR preview for
 frontend PR #1. The preview does not authorize production; production remains
 NOT APPROVED, and no additional deployment action is authorized. No production

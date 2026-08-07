@@ -12,6 +12,33 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
+## ASTRA-AI-INTENT-ARCH-001 Architecture Proposal
+
+On 2026-08-07, GitHub issue `srkarthi1982/ansiversa-api#5` was released by
+Astra comment `5215395273` for architecture and documentation only. Codex
+proposed a separate default-off non-production natural-language boundary at
+`POST /api/v1/astra/agent/query`. Exact supported questions remain provider-
+independent; unmatched current-turn language may produce only an untrusted
+structured candidate from minimal app-owned certified capability metadata.
+Deterministic validation must resolve one exact eligible Subscription Manager
+capability and independently enforce parameters before constructing the
+unchanged certified `AstraChatRequest`.
+
+The provider is intent-only: no tools, DB access, writes, identity, authority,
+grants, Runtime/Governance material, private records, final-answer generation,
+persistent memory, or raw-prompt evidence persistence. Certified Runtime,
+metadata activation, Read Authority, Read Execution, backend chat, frontend
+chat, authentication, and Subscription Manager executable components remain
+unchanged. The permanent GitHub-first delivery rule is in
+`sources/30-astra-governed-ai-capability-delivery-workflow.md`; intent memory is
+in `sources/31-astra-governed-natural-language-intent-architecture.md`.
+
+ASTRA-AI-INTENT-ARCH-001 is Architecture Proposed / Pending Astra Review.
+Production remains NOT APPROVED. Architecture does not authorize
+implementation, frontend, merge, deployment, or production action.
+The backend architecture commit is
+`cc65502990e69c39bc542933d6d8d28aac5b0291`.
+
 ## Repository Baseline
 
 Verified local repository heads:

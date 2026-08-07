@@ -1,6 +1,6 @@
 # Astra Governed Natural-Language Intent Implementation
 
-Document Status: Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review.
+Document Status: Backend Approved / Certified / Closed.
 
 Created: 2026-08-07.
 
@@ -11,19 +11,21 @@ Certified architecture commit:
 
 Astra architecture review: `4881828844`.
 
-Astra implementation review: `4886169635`.
+Astra initial implementation review: `4886169635`.
 
 Issue #8 correction gate: `5221470917`.
+
+Astra certification review: `4886585552`.
 
 Exact implementation base:
 `00102d6669ff9021e7301f689d74090d760a2a03`.
 
 Implementation branch: `feature/astra-ai-intent-001`.
 
-Implementation commit:
+Initial implementation commit:
 `e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b`.
 
-Acceptance-proof correction commit:
+Certified executable target / acceptance-proof correction commit:
 `4f09bf3cfdf01decb4be1feca2dc79887da6e531`.
 
 Backend PR #9: open, draft, unmerged, targeting
@@ -35,7 +37,7 @@ Production authorization: NOT APPROVED.
 
 ## Implemented Surface
 
-Backend commit `e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b` changes exactly:
+Initial backend implementation commit `e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b` changes exactly:
 
 ```text
 .env.example
@@ -82,6 +84,22 @@ The correction exposed no behavioral defect. No runtime implementation,
 endpoint contract, provider behavior, certified prerequisite, or Subscription
 Manager source changed.
 
+## Certification Closure
+
+Astra live re-review `4886585552` independently verified the correction commit
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531` against Issue #8 and the prior
+review gate. All four mandatory proof blockers are closed in the committed tree.
+The correction is exactly one commit ahead of the initially reviewed executable
+implementation and contains tests plus evidence records only; runtime source is
+unchanged from the architecture-compliant implementation already reviewed.
+
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531` is the certified executable target
+for `ASTRA-AI-INTENT-001`.
+
+Certification does not authorize frontend integration, merge, manual
+deployment, production configuration, or production use. PR #9 remains open,
+draft, and unmerged. Production remains NOT APPROVED.
+
 ## Runtime Boundary
 
 The new authenticated endpoint is:
@@ -111,10 +129,10 @@ the intent provider, but unsupported or unavailable input never guesses.
 ## Provider And Privacy Boundary
 
 `AstraIntentProvider` is a narrow intent-only protocol.
-`OpenAIIntentProvider` uses the current OpenAI Responses API structured-output
-contract through strict `text.format` JSON Schema. It performs one bounded HTTP
-attempt with zero retries, bounded timeout/output/body sizes, `store=false`, and
-no tools or function definitions.
+`OpenAIIntentProvider` uses the OpenAI Responses API structured-output contract
+through strict `text.format` JSON Schema. It performs one bounded HTTP attempt
+with zero retries, bounded timeout/output/body sizes, `store=false`, and no
+tools or function definitions.
 
 Provider input is limited to:
 
@@ -172,11 +190,18 @@ is disabled or unavailable, while the endpoint remains default-off.
 
 ## Validation And Provenance
 
-Focused intent/provider/agent validation:
+Focused intent/provider/agent validation at the certified target:
 
 ```text
 101 passed
 1 skipped — real OpenAI smoke not run; credential gated
+```
+
+Committed-tree focused suite plus certification parent-source guard:
+
+```text
+102 passed
+1 skipped — same credential-gated smoke
 ```
 
 Full Astra regression validation:
@@ -187,8 +212,9 @@ Full Astra regression validation:
 1 skipped — same credential-gated real-provider smoke
 ```
 
-Compileall passed. `git diff --check` passed. The worktree was clean after the
-implementation commit.
+Compileall passed. `git diff --check` passed. GitHub's automatic Vercel PR
+status check succeeded at the certified commit. The real-provider smoke remained
+credential-gated and was not required for deterministic certification.
 
 Authenticated HTTP database provenance used a deterministic fake intent
 provider with the materially different natural-language question
@@ -208,14 +234,13 @@ timeout/unavailability with zero retries, prompt injection, write requests,
 auth negatives, blocked users, feature and environment gates, foreign
 conversations, and authenticated HTTP client authority-shaped fields.
 
-## Review Gate
-
-This source record describes implementation evidence only. It does not certify
-the implementation and does not authorize frontend work, merge, deployment,
-production configuration, or production use.
+## Final State
 
 ```text
-ASTRA-AI-INTENT-001 — Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review
+ASTRA-AI-INTENT-001 — Backend Approved / Certified / Closed
+Certified executable target — 4f09bf3cfdf01decb4be1feca2dc79887da6e531
+Astra certification review — 4886585552
 Frontend agent integration — NOT AUTHORIZED
+PR #9 — OPEN / DRAFT / UNMERGED
 Production — NOT APPROVED
 ```

@@ -4,12 +4,12 @@
 
 ```text
 Work Item: ASTRA-FE-CHAT-001
-Status: Implemented / Pending Astra Review
-Date: 2026-08-06
+Status: Changes Required / Pending Astra Re-Review
+Date: 2026-08-07
 Frontend Repository: ansiversa
 Frontend Base: 4681a23cc08240db8595941a2fee80989ad24825
 Frontend Branch: feature/astra-governed-subscription-chat
-Frontend Commit: 90c9a71581ec9145dc99363f12e276f5fbd227bf
+Frontend Commit: 32930b69e8d296f383e2c9846bf5e69c231589a1
 Frontend PR: #1, open, draft, unmerged
 Certified Backend Executable: 4d7d25fd1f95ef7fd3912a1cdc21ef43729e8646
 Backend Certification Review: 4876497721
@@ -81,14 +81,19 @@ exposing backend internals.
 ## Environment Boundary
 
 The governed frontend is disabled unless
-`VITE_ASTRA_GOVERNED_CHAT_ENABLED=true` and the frontend is running in a
-recognized non-production environment such as development, local, QA, staging,
-or test. Production enablement is not part of this work item.
+`VITE_ASTRA_GOVERNED_CHAT_ENABLED=true` and the application environment is one
+of the certified backend scopes: local, development, QA, or staging. An
+explicit QA/staging application environment remains supported when Vite runs in
+optimized production build mode. `test`, production, and a missing feature flag
+fail closed. The Playwright web server explicitly uses the supported
+development application environment; test convenience does not add another
+supported product environment. Production enablement is not part of this work
+item.
 
 ## Automated Evidence
 
-The following validation passed at frontend commit
-`90c9a71581ec9145dc99363f12e276f5fbd227bf`:
+The following validation passed at frontend correction commit
+`32930b69e8d296f383e2c9846bf5e69c231589a1`:
 
 ```text
 npm run lint
@@ -109,7 +114,8 @@ The focused suite covers question-to-capability mapping, exact endpoint and
 payload behavior, unsupported-input non-execution, structured rendering, day
 parameter validation, authentication and denial responses, absence of legacy
 fallback, endpoint/network/clarification/capability-unavailable handling,
-conversation reset, and the production gate.
+conversation reset, positives for local/development and optimized QA/staging,
+negatives for test/production/missing feature flag, and the production gate.
 
 ## Isolated Browser Proof
 
@@ -143,6 +149,10 @@ owner isolation, and absence of legacy fallback.
 
 ## Current Boundary
 
-ASTRA-FE-CHAT-001 is implemented but not certified or approved. Frontend PR #1
-and backend PRs #3 and #4 remain draft and unmerged. No production
-configuration, migration, deployment, authorization, or merge is included.
+ASTRA-FE-CHAT-001 remains Changes Required / Pending Astra Re-Review and is not
+certified or approved. Frontend PR #1 and backend PRs #3 and #4 remain draft and
+unmerged. No manual production deployment was performed or authorized.
+GitHub/Vercel automatically created the normal non-production PR preview for
+frontend PR #1. The preview does not authorize production; production remains
+NOT APPROVED, and no additional deployment action is authorized. No production
+configuration, migration, authorization, or merge is included.

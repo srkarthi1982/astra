@@ -18,7 +18,7 @@ Verified local repository heads:
 
 ```text
 Frontend repository         ansiversa
-Frontend HEAD               90c9a71581ec9145dc99363f12e276f5fbd227bf
+Frontend HEAD               32930b69e8d296f383e2c9846bf5e69c231589a1
 
 Backend repository          ansiversa-api
 Backend HEAD                615ef1b3ec375aacca9a9a9cb564832688a0d34c
@@ -166,9 +166,22 @@ capability-checked and rendered as structured user-facing results without raw
 JSON or backend internals. The feature is explicitly gated to recognized
 non-production environments.
 
-Validation passed with frontend lint, typecheck, build, and 14 focused governed
-chat Playwright tests across Chromium and mobile Chromium. The existing Astra
-assistant suite passed 12 tests with one credential-gated skip. Isolated live
+Astra review `4877041687` found that the frontend runtime allowlist included
+`test`, while the certified backend supports only `local`, `development`, `qa`,
+and `staging`, and that durable deployment language did not distinguish the
+automatic non-production Vercel PR preview from a production deployment. The
+narrow correction is frontend commit
+`32930b69e8d296f383e2c9846bf5e69c231589a1`. The runtime allowlist now mirrors
+the certified backend exactly. Tests prove local and development enablement,
+optimized QA/staging enablement with an explicit application environment, and
+fail-closed behavior for `test`, production, and a missing feature flag. The
+Playwright web server uses the supported `development` application environment;
+test convenience does not create another supported product environment.
+
+Correction validation passed with frontend lint, typecheck, build, 14 focused
+governed chat Playwright tests across Chromium and mobile Chromium, and
+`git diff --check`. The existing Astra assistant suite passed 12 tests with one
+credential-gated skip. Isolated live
 browser QA used temporary migrated SQLite copies and the certified backend
 branch: a primary user created two subscriptions through the normal UI and
 received `Subscriptions: 2.`, created a third and received
@@ -176,10 +189,13 @@ received `Subscriptions: 2.`, created a third and received
 Both governed calls used `/api/v1/astra/chat`, with zero legacy assistant-query
 calls.
 
-ASTRA-FE-CHAT-001 is Implemented / Pending Astra Review. Frontend PR #1 is
-open, draft, based on `main`, and unmerged. Backend PRs #3 and #4 remain open,
-draft, and unmerged. No production configuration, deployment, authorization,
-or merge has occurred.
+ASTRA-FE-CHAT-001 is Changes Required / Pending Astra Re-Review. Frontend PR #1
+is open, draft, based on `main`, and unmerged. Backend PRs #3 and #4 remain
+open, draft, and unmerged. No manual production deployment was performed or
+authorized. GitHub/Vercel automatically created the normal non-production PR
+preview for frontend PR #1. The preview does not authorize production;
+production remains NOT APPROVED, and no additional deployment action is
+authorized. No production configuration, authorization, or merge has occurred.
 
 On 2026-08-02, ASTRA-CHAT-001 was implemented at backend commit
 `d5c4c127c7c2fed254f7ee5463331306ca4d413b` after Product Owner/Astra

@@ -48,6 +48,51 @@ only a decision-summary and coordination surface.
 22. PR and issue metadata must remain accurate; automatic preview deployments
     must be recorded distinctly from manual or production deployment.
 
+## Repository Stewardship Authority
+
+On 2026-08-07, the Product Owner granted Astra broad standing authority to use
+available GitHub capabilities needed to keep the Ansiversa repositories properly
+maintained. The connected GitHub account was verified with `admin` permission on:
+
+- `srkarthi1982/ansiversa-api`;
+- `srkarthi1982/ansiversa`; and
+- `srkarthi1982/astra`.
+
+Astra may proactively perform governed repository-maintenance work when it
+materially improves correctness, security, auditability, or repository health,
+including:
+
+- create, update, coordinate, and close canonical GitHub issues;
+- maintain architecture, review, certification, dependency, and gate records;
+- inspect source, commits, branches, pull requests, diffs, reviews, CI status,
+  workflow runs, and available artifacts;
+- add review comments, inline findings, labels, assignees, reactions, and
+  accurate issue/PR metadata;
+- synchronize durable documentation and Astra source-pack governance records;
+- maintain non-production branch/PR hygiene and repository metadata;
+- investigate and, when appropriate and available, rerun failed CI jobs; and
+- use other connected GitHub maintenance capabilities when consistent with the
+  recorded architecture/security/release gates.
+
+Astra is responsible for keeping the GitHub technical/audit record accurate and
+should not require a separate Product Owner instruction for routine, reversible,
+non-production repository maintenance that is already within an authorized task
+or needed to preserve repository governance.
+
+This standing stewardship authority does not collapse release gates. In
+particular:
+
+- certification does not imply merge;
+- merge does not imply deployment;
+- deployment does not imply production authorization;
+- destructive or release-impacting actions must remain consistent with the
+  recorded task and Product Owner release decision; and
+- production remains NOT APPROVED unless the Product Owner explicitly authorizes
+  it.
+
+Canonical Product Owner governance record: `srkarthi1982/astra#1`, comment
+`5215979171`.
+
 ## Gate Semantics
 
 Each gate authorizes only its recorded scope. Architecture approval does not

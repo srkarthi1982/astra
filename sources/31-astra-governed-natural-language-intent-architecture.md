@@ -19,7 +19,8 @@ Backend architecture certification-record commit:
 
 PR #6: open, draft, unmerged.
 
-Implementation: NOT AUTHORIZED.
+Implementation: separately authorized by GitHub issue #8; Implemented / Pending
+Astra Review at `e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b`.
 
 Production authorization: NOT APPROVED.
 
@@ -130,5 +131,8 @@ Production — NOT APPROVED
 ```
 
 The certification-record commit is documentation-only and is not a new
-architecture target. A separate Product Owner/Astra-authorized GitHub issue is
-required before implementation.
+architecture target. A separate Product Owner/Astra-authorized GitHub issue was
+required before implementation. That gate was satisfied by
+`srkarthi1982/ansiversa-api#8`; the resulting implementation remains pending
+Astra review and is not certified. Its dedicated record is
+`sources/32-astra-governed-natural-language-intent-implementation.md`.

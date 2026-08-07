@@ -12,6 +12,44 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
+## ASTRA-AI-INTENT-001 Implementation Pending Review
+
+On 2026-08-07, Product Owner/Astra authorized GitHub issue
+`srkarthi1982/ansiversa-api#8` for backend implementation and controlled
+non-production QA only. Codex implemented the governed natural-language intent
+boundary from exact architecture certification-record base
+`00102d6669ff9021e7301f689d74090d760a2a03` on branch
+`feature/astra-ai-intent-001`. Backend implementation commit
+`e51943e932ffe3b1b71b3ecbbdcadb3c1616b57b` adds the authenticated,
+default-off, non-production-only `POST /api/v1/astra/agent/query` endpoint,
+provider-independent exact mapping for all ten certified Subscription Manager
+reads, a metadata-only projector over fresh app-owned `capability_catalog()`
+output, strict untrusted candidate validation, and in-process handoff to the
+unchanged certified `AstraChatGateway`.
+
+The separate `OpenAIIntentProvider` uses the Responses API structured-output
+mechanism with one bounded request, zero retries, no tools/functions, and
+server-owned model/settings. Provider input contains only the current question,
+allowed interpretation statuses, and eligible capability metadata with
+parameter schema. It contains no records, identity, authorization, grants,
+Runtime/Governance objects, DB/SQL material, secrets, writes, or final-answer
+authority. Raw prompts and provider payloads are not persisted as evidence.
+
+Focused validation passed 91 tests with one credential-gated real-provider
+smoke skipped because `OPENAI_API_KEY` was absent. Full Astra validation passed
+541 tests plus 33 subtests, with that same single credential-gated skip.
+Authenticated agent HTTP provenance changed the primary owner's real DB-backed
+`subscription.count_all` answer from 2 to 3 after a committed owner-scoped row;
+a second authenticated user saw only their own count of 1. Compileall and
+`git diff --check` passed. Backend PR #9 is open, draft, and unmerged against
+`feature/astra-ai-intent-arch-001`.
+
+ASTRA-AI-INTENT-001 is Implemented / Pending Astra Review. It is not certified.
+Frontend agent integration is NOT AUTHORIZED. No merge, manual deployment,
+production configuration, or production authorization occurred. Production
+remains NOT APPROVED. Dedicated implementation memory is recorded in
+`sources/32-astra-governed-natural-language-intent-implementation.md`.
+
 ## ASTRA-AI-INTENT-ARCH-001 Architecture Certification
 
 On 2026-08-07, GitHub issue `srkarthi1982/ansiversa-api#5` was released by
@@ -39,9 +77,11 @@ architecture review `4881828844`. The backend documentation-only architecture
 certification-record commit is
 `00102d6669ff9021e7301f689d74090d760a2a03`; it is not a new architecture
 target. PR #6 remains open, draft, and unmerged. Natural-language intent
-implementation remains NOT AUTHORIZED. Production remains NOT APPROVED.
-Architecture certification does not authorize implementation, frontend, merge,
-deployment, production configuration, or production action.
+implementation was later authorized only by separate GitHub issue #8 and is now
+Implemented / Pending Astra Review at the commit recorded above. Architecture
+certification itself did not authorize implementation, frontend, merge,
+deployment, production configuration, or production action. Production remains
+NOT APPROVED.
 
 ## Repository Baseline
 

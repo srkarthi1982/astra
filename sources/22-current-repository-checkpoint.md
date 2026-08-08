@@ -12,7 +12,7 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
-## ASTRA-AI-INTENT-001 Implementation Pending Re-Review
+## ASTRA-AI-INTENT-001 Certification And Frontend Agent Update
 
 On 2026-08-07, Product Owner/Astra authorized GitHub issue
 `srkarthi1982/ansiversa-api#8` for backend implementation and controlled
@@ -60,11 +60,51 @@ validation passed 551 tests plus 33 subtests with the same skip. Compileall,
 the committed-tree certification guard, and `git diff --check` passed. No
 runtime defect was exposed and no runtime source or behavior changed.
 
-ASTRA-AI-INTENT-001 is Changes Corrected / NOT CERTIFIED / Pending Astra
-Re-Review. Frontend agent integration is NOT AUTHORIZED. No merge, manual
-deployment, production configuration, or production authorization occurred.
-Production remains NOT APPROVED. Dedicated implementation memory is recorded in
+Astra certification review `4886585552` approved ASTRA-AI-INTENT-001 at
+certified backend executable
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531`. ASTRA-AI-INTENT-001 is Certified /
+Approved / Closed. Backend PR #9 remains open, draft, and unmerged. The
+certification authorized no merge, deployment, production configuration, or
+production use. Production remains NOT APPROVED. Dedicated backend
+implementation memory is recorded in
 `sources/32-astra-governed-natural-language-intent-implementation.md`.
+
+On 2026-08-08, Product Owner/Astra authorized frontend GitHub issue
+`srkarthi1982/ansiversa#4` for frontend implementation and controlled
+non-production QA only. Codex started from the exact certified frontend
+certification-record head `d6dc2b59a1dace03096d4359ededfbd1f082e9c5`,
+created `feature/astra-fe-agent-001`, and implemented frontend commit
+`eceab9c26516ff859c86899a23bd79a553304e2b`. Draft stacked frontend PR #5 is
+open and unmerged against `feature/astra-governed-subscription-chat`.
+
+The existing shared Astra panel now sends normal Subscription Manager language
+only to authenticated `POST /api/v1/astra/agent/query` when the certified
+governed-chat gate and the separate default-off
+`VITE_ASTRA_AI_INTENT_ENABLED` gate are both eligible in local, development,
+QA, or staging. Agent bodies contain only `question` and an optional
+server-issued `conversationId`. The browser sends no app/capability,
+parameters, identity, owner, role, permission, authority, grant, activation,
+Runtime/Governance, provider/model, DB, SQL, or tool field. The frontend
+strictly validates the certified camelCase response and requires
+`productionAuthorizationState=not_approved` before bounded rendering.
+
+Conversation continuation remains volatile and is cleared by reset,
+stale/invalid conversation, governed denial, principal change, and logout.
+Agent failures never fall back to `/api/v1/astra/chat` or
+`/api/v1/assistant/query`. When the new intent gate is disabled, the certified
+exact-chat frontend remains selected as the prior feature. Platform assistant
+mode remains on its existing route.
+
+Frontend validation passed lint, typecheck, build, and `git diff --check`.
+Deterministic agent Playwright coverage passed 18 desktop/mobile cases; the
+certified exact-chat regression passed 14 desktop/mobile cases; and the
+existing platform-assistant regression passed 24 cases with 2 established
+browser-specific skips. No real external provider call or secret was required.
+
+ASTRA-FE-AGENT-001 is Implemented / Pending Astra Review. Merge, manual
+deployment, production configuration, production use, and MCP work remain
+unauthorized. Production remains NOT APPROVED. Dedicated frontend memory is in
+`sources/33-astra-frontend-governed-natural-language-agent.md`.
 
 ## ASTRA-AI-INTENT-ARCH-001 Architecture Certification
 
@@ -93,9 +133,10 @@ architecture review `4881828844`. The backend documentation-only architecture
 certification-record commit is
 `00102d6669ff9021e7301f689d74090d760a2a03`; it is not a new architecture
 target. PR #6 remains open, draft, and unmerged. Natural-language intent
-implementation was later authorized only by separate GitHub issue #8 and is now
-Changes Corrected / NOT CERTIFIED / Pending Astra Re-Review at the correction
-commit recorded above. Architecture certification itself did not authorize
+implementation was later authorized only by separate GitHub issue #8 and is
+Certified / Approved / Closed at backend executable
+`4f09bf3cfdf01decb4be1feca2dc79887da6e531` through certification review
+`4886585552`. Architecture certification itself did not authorize
 implementation, frontend, merge, deployment, production configuration, or
 production action. Production remains NOT APPROVED.
 
@@ -105,10 +146,10 @@ Verified local repository heads:
 
 ```text
 Frontend repository         ansiversa
-Frontend HEAD               d6dc2b59a1dace03096d4359ededfbd1f082e9c5
+Frontend HEAD               eceab9c26516ff859c86899a23bd79a553304e2b
 
 Backend repository          ansiversa-api
-Backend HEAD                615ef1b3ec375aacca9a9a9cb564832688a0d34c
+Backend certified target    4f09bf3cfdf01decb4be1feca2dc79887da6e531
 ```
 
 The workspace root is not itself a Git repository. `ansiversa` and
@@ -934,6 +975,7 @@ The frontend repository contains post-source-pack platform work, including:
 
 ```text
 Astra AI Assistant naming and shell integration
+Astra governed natural-language Subscription Manager frontend
 Global Command Search
 Personal Dashboard updates
 Favorites and Recent Apps
@@ -982,6 +1024,10 @@ astra/sources/26-astra-runtime-activation.md
 astra/sources/27-astra-chat-orchestration.md
 astra/sources/28-astra-metadata-activation-binding.md
 astra/sources/29-astra-frontend-governed-subscription-chat.md
+astra/sources/30-astra-governed-ai-capability-delivery-workflow.md
+astra/sources/31-astra-governed-natural-language-intent-architecture.md
+astra/sources/32-astra-governed-natural-language-intent-implementation.md
+astra/sources/33-astra-frontend-governed-natural-language-agent.md
 ansiversa/AGENTS.md
 ansiversa-api/AGENTS.md
 ansiversa-api/docs/iterations/index.md

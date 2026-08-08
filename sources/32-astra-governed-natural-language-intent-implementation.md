@@ -13,9 +13,9 @@ Astra architecture review: `4881828844`.
 
 Astra initial implementation review: `4886169635`.
 
-Issue #8 correction gate: `5221470917`.
-
 Astra certification review: `4886585552`.
+
+Issue #8 correction gate: `5221470917`.
 
 Exact implementation base:
 `00102d6669ff9021e7301f689d74090d760a2a03`.
@@ -31,7 +31,8 @@ Certified executable target / acceptance-proof correction commit:
 Backend PR #9: open, draft, unmerged, targeting
 `feature/astra-ai-intent-arch-001`.
 
-Frontend agent integration: NOT AUTHORIZED.
+Frontend agent integration: separately authorized and implemented by
+`srkarthi1982/ansiversa#4`; pending Astra frontend review.
 
 Production authorization: NOT APPROVED.
 
@@ -234,13 +235,26 @@ timeout/unavailability with zero retries, prompt injection, write requests,
 auth negatives, blocked users, feature and environment gates, foreign
 conversations, and authenticated HTTP client authority-shaped fields.
 
-## Final State
+## Certification And Downstream Frontend
+
+Astra certification review `4886585552` approved ASTRA-AI-INTENT-001 at exact
+backend executable `4f09bf3cfdf01decb4be1feca2dc79887da6e531`.
+ASTRA-AI-INTENT-001 is Certified / Approved / Closed. Certification did not
+authorize merge, deployment, production configuration, or production use.
+
+Product Owner/Astra separately authorized the downstream frontend task through
+`srkarthi1982/ansiversa#4`. Frontend commit
+`eceab9c26516ff859c86899a23bd79a553304e2b` consumes this certified endpoint
+without changing the backend contract. Draft stacked frontend PR #5 remains
+open and unmerged. The frontend implementation is pending Astra review and is
+recorded in `sources/33-astra-frontend-governed-natural-language-agent.md`.
 
 ```text
 ASTRA-AI-INTENT-001 — Backend Approved / Certified / Closed
 Certified executable target — 4f09bf3cfdf01decb4be1feca2dc79887da6e531
 Astra certification review — 4886585552
-Frontend agent integration — NOT AUTHORIZED
-PR #9 — OPEN / DRAFT / UNMERGED
+ASTRA-FE-AGENT-001 — Implemented / Pending Astra Review
+Backend PR #9 — OPEN / DRAFT / UNMERGED
+Frontend PR #5 — OPEN / DRAFT / UNMERGED
 Production — NOT APPROVED
 ```

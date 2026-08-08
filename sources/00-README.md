@@ -35,6 +35,12 @@ Generated or refreshed: 2026-07-18
 - `27-astra-chat-orchestration.md`: certified governed backend chat orchestration memory.
 - `28-astra-metadata-activation-binding.md`: certified governed metadata activation and capability-context binding memory.
 - `29-astra-frontend-governed-subscription-chat.md`: ASTRA-FE-CHAT-001 frontend implementation, review state, and isolated browser evidence.
+- `30-astra-governed-ai-capability-delivery-workflow.md`: permanent GitHub-first governed Astra capability delivery workflow.
+- `31-astra-governed-natural-language-intent-architecture.md`: certified governed natural-language intent architecture.
+- `32-astra-governed-natural-language-intent-implementation.md`: certified backend governed intent implementation and evidence.
+- `33-astra-frontend-governed-natural-language-agent.md`: frontend governed Subscription Manager agent implementation evidence.
+- `34-astra-frontend-governed-natural-language-agent-certification.md`: certified frontend governed Subscription Manager agent boundary.
+- `35-astra-real-provider-qa-preparation.md`: ASTRA-FE-AGENT-QA-PREP-001 review, correction, and prepared/pending-review evidence.
 
 ## Exclusions
 

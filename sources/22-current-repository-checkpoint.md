@@ -12,6 +12,49 @@ This file is a source-pack supplement. It does not replace the generated JSON
 registries. Refresh generated registries separately when a task explicitly
 authorizes a registry sync.
 
+## ASTRA-FE-AGENT-QA-PREP-001 Corrected Preparation
+
+ASTRA-FE-AGENT-001 was certified at frontend executable
+`eceab9c26516ff859c86899a23bd79a553304e2b` through Astra review
+`4888398174`. Certification authorized no merge, deployment, production
+configuration, production use, real-provider smoke, or MCP work.
+
+On 2026-08-08, Issue `srkarthi1982/ansiversa#6` authorized preparation only for
+the later Partner-controlled real-provider Subscription Manager browser smoke.
+Astra review `4888630816` rejected historical draft PR #7 because it started
+from the wrong base and observed legacy `/api/v1/assistant/query`. Recovery
+comment `5225710139` created the correct branch directly from the certified
+frontend executable.
+
+Corrected frontend preparation commit
+`3ffd8c6cf07287d516de06989b601dc8f6e9f8a5` on branch
+`feature/astra-fe-agent-qa-prep-001` adds only the opt-in Playwright harness,
+operator runbook, QA target/test command configuration, test documentation, and
+frontend task record. Draft stacked PR #8 targets
+`feature/astra-fe-agent-001` and remains open, draft, and unmerged.
+
+The harness observes the existing Subscription Manager UI path through only
+`POST /api/v1/astra/agent/query`; it does not mock that response. It validates
+question/optional server-issued `conversationId` request keys, zero fallback to
+`/api/v1/astra/chat` or `/api/v1/assistant/query`, bounded successful rendering,
+server-issued continuation, and reset omission. It is disabled by default,
+refuses production before browser/API execution, requires local ignored
+authenticated storage state, and attaches metadata only. The runbook keeps the
+second-owner isolation stage separate and stores no credentials or user data.
+
+Lint, typecheck, build, and `git diff --check` passed. The deterministic agent
+regression passed 9 Chromium cases and the certified exact-chat regression
+passed 7 Chromium cases. The smoke listed one case and skipped it by default;
+the enabled production-target preflight refused execution. The real-provider
+smoke was not executed.
+
+```text
+ASTRA-FE-AGENT-QA-PREP-001 — QA Smoke Prepared / Pending Astra Re-Review
+Real-provider smoke — NOT YET AUTHORIZED / NOT YET EXECUTED
+Merge — NOT AUTHORIZED
+Production — NOT APPROVED
+```
+
 ## ASTRA-AI-INTENT-001 Certification And Frontend Agent Update
 
 On 2026-08-07, Product Owner/Astra authorized GitHub issue

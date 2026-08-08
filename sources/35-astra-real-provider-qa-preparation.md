@@ -1,6 +1,6 @@
 # Astra Real-Provider QA Preparation
 
-Document Status: Changes Required / Pending Astra Re-Review.
+Document Status: QA Smoke Prepared / Pending Astra Re-Review.
 
 Created: 2026-08-08.
 
@@ -19,6 +19,16 @@ Initial PR head reviewed:
 Astra initial QA-preparation review: `4888630816`.
 
 Issue #6 correction gate: `5225687507`.
+
+Branch-recovery comment: `5225710139`.
+
+Corrected frontend branch: `feature/astra-fe-agent-qa-prep-001`.
+
+Corrected frontend commit:
+`3ffd8c6cf07287d516de06989b601dc8f6e9f8a5`.
+
+Corrected draft stacked PR: `srkarthi1982/ansiversa#8`, targeting
+`feature/astra-fe-agent-001`.
 
 Production authorization: NOT APPROVED.
 
@@ -73,16 +83,49 @@ The corrected preparation must prove at minimum:
 5. reset causes the next request to omit the prior conversation ID;
 6. the runbook contains a controlled later second-owner isolation stage without embedding credentials.
 
-## Current Gate
+## Corrected Preparation Evidence
 
-Astra converted PR #7 back to draft. It remains open and unmerged.
+Astra converted PR #7 back to draft. It remains open, unmerged historical
+wrong-base evidence and was not modified by the correction.
 
-Codex must correct the lineage and smoke target, rerun required validation, synchronize Astra evidence as Prepared / Pending Astra Re-Review, post the corrected completion report to Issue #6, and stop for Astra live re-review.
+The corrected branch starts exactly from certified frontend executable
+`eceab9c26516ff859c86899a23bd79a553304e2b`. Its six-file preparation scope adds
+an operator runbook, explicit opt-in Playwright harness, QA target/test command,
+test documentation, and the required frontend task record. No product runtime
+source changed.
+
+The harness opens the existing Astra panel, selects Subscription Manager, and
+observes the real `POST /api/v1/astra/agent/query` response without interception
+or mocking. It checks only `question` plus optional server-issued
+`conversationId`, bounded successful rendering, server-issued continuation,
+reset omission, and zero calls to `/api/v1/astra/chat` or
+`/api/v1/assistant/query`. It is disabled by default, accepts only local/QA
+targets and approved hostnames, refuses production in preflight, requires a
+local gitignored authenticated storage-state file, and attaches metadata only.
+The runbook keeps second-owner isolation as a separate controlled stage and
+records no credentials or user data.
+
+Validation passed:
 
 ```text
-ASTRA-FE-AGENT-QA-PREP-001 — CHANGES REQUIRED / NOT CERTIFIED
-PR #7 — OPEN / DRAFT / UNMERGED
-Real-provider smoke execution — NOT AUTHORIZED / NOT EXECUTED
+npm run lint                                      passed
+npm run typecheck                                 passed
+npm run build                                     passed
+focused agent Chromium regression                  9 passed
+certified exact-chat Chromium regression            7 passed
+smoke list/default invocation                      1 listed / 1 skipped
+enabled production-target invocation               refused in preflight
+git diff --check                                  passed
+```
+
+The real-provider smoke was not executed. The corrected preparation is ready
+only for Astra live re-review.
+
+```text
+ASTRA-FE-AGENT-QA-PREP-001 — QA SMOKE PREPARED / PENDING ASTRA RE-REVIEW
+PR #8 — OPEN / DRAFT / UNMERGED / STACKED ON CERTIFIED FRONTEND
+PR #7 — HISTORICAL WRONG-BASE REFERENCE / OPEN / DRAFT / UNMERGED
+Real-provider smoke execution — NOT YET AUTHORIZED / NOT YET EXECUTED
 Merge — NOT AUTHORIZED
 MCP work — NOT STARTED
 Production — NOT APPROVED

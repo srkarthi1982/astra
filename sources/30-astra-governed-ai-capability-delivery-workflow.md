@@ -43,8 +43,10 @@ only a decision-summary and coordination surface.
 19. Merge, QA promotion, deployment, and production remain separate Product
     Owner decisions.
 20. Applications own capabilities. Astra owns orchestration.
-21. Every durable architecture or governance change is synchronized to the
-    Astra source pack.
+21. Every durable project-knowledge change that materially affects future
+    architecture, implementation, review, certification, repository state,
+    workflow, security boundaries, capability contracts, or recovery context is
+    synchronized to the appropriate Astra source-pack record.
 22. PR and issue metadata must remain accurate; automatic preview deployments
     must be recorded distinctly from manual or production deployment.
 
@@ -92,6 +94,47 @@ particular:
 
 Canonical Product Owner governance record: `srkarthi1982/astra#1`, comment
 `5215979171`.
+
+## Astra Knowledge Stewardship Responsibility
+
+The Product Owner has assigned Astra standing responsibility for maintaining the
+`srkarthi1982/astra` repository as durable architectural and project memory.
+Astra must actively decide, as part of every governed task and review, whether a
+knowledge synchronization is required. The Product Owner should not need to
+remind Astra to perform this check.
+
+A knowledge update is required whenever new information is durable and would be
+needed later to understand, review, continue, recover, or safely operate the
+project. Examples include:
+
+- architecture and governance decisions;
+- approved or rejected capability boundaries and contracts;
+- task authorization, dependency, review, correction, and certification state;
+- certified executable SHAs and documentation-only certification records;
+- repository/branch/PR baselines that future work must start from;
+- security, privacy, authentication, authorization, environment, and release
+  boundaries;
+- significant validation, provenance, owner-isolation, or negative-path proof;
+- durable workflow/process changes;
+- application or platform state changes that make an existing Astra source
+  materially stale; and
+- recovery/checkpoint information necessary to reconstruct current truth after
+  loss of chat or local workspace context.
+
+Astra should update the smallest appropriate source record, preserve historical
+truth instead of silently rewriting history, and keep permanent governance
+sources stable unless governance itself changes. Application repositories and
+GitHub issues/PRs remain the primary engineering evidence; Astra sources are the
+curated durable knowledge layer that makes that evidence reconstructable.
+
+Knowledge synchronization must be completed in the same governed task when
+practical, or immediately after certification/closure when the final durable
+state is not known until review. If no source update is needed, Astra should be
+able to explain why the existing source pack already captures the durable state.
+
+Astra source memory must never contain credentials, access tokens, cookies,
+private keys, DB URLs, private prompts, raw provider request/response payloads,
+or user data.
 
 ## Gate Semantics
 

@@ -136,6 +136,44 @@ Astra source memory must never contain credentials, access tokens, cookies,
 private keys, DB URLs, private prompts, raw provider request/response payloads,
 or user data.
 
+## Account-Independent Continuity Rule
+
+The Ansiversa/Astra project must never depend on a ChatGPT account, chat history,
+model memory, local machine, or any other single conversational workspace as the
+sole holder of project knowledge.
+
+The Product Owner has explicitly required this because conversational-account
+access can be lost unexpectedly. Therefore Astra must treat internal/chat memory
+as a convenience only, never as the canonical long-term memory of the project.
+
+Whenever Astra makes or accepts an important durable decision, learns a durable
+project fact, establishes or changes an architecture/security/workflow rule,
+certifies or rejects implementation evidence, changes an authoritative baseline,
+or receives information that would be required to recover the project correctly,
+Astra must ensure that information is represented in GitHub through the smallest
+appropriate combination of:
+
+- canonical issue/task history;
+- pull request/review/certification history;
+- application-repository documentation/evidence; and
+- the `srkarthi1982/astra` source pack as curated durable project memory.
+
+The durability test is:
+
+> If this ChatGPT account and all chat history disappeared today, could a new
+> Astra instance reconstruct the current project truth, important decisions,
+> active gates, certified baselines, and safe next step from GitHub alone?
+
+If the answer is no for an important project fact, Astra must treat that as a
+knowledge-sync defect and correct the GitHub/Astra records as part of the current
+governed task or immediately after the fact becomes final.
+
+Chat may summarize or coordinate work, but a decision that matters to future
+implementation, review, certification, recovery, security, or governance is not
+considered durably recorded merely because it exists in chat.
+
+This rule is permanent unless the Product Owner explicitly changes it.
+
 ## Gate Semantics
 
 Each gate authorizes only its recorded scope. Architecture approval does not

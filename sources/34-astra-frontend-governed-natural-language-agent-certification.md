@@ -149,8 +149,19 @@ This certification is deterministic frontend implementation certification. It
 does not claim completion of the separately planned real secret-backed OpenAI
 provider + controlled QA/browser smoke.
 
-That end-to-end product proof requires a separate authorization/gate before the
-Subscription Manager Astra AI flow is declared fully complete.
+On 2026-08-08, Product Owner/Astra authorized only the **preparation** phase for
+that final smoke through `srkarthi1982/ansiversa#6`:
+`ASTRA-FE-AGENT-QA-PREP-001`.
+
+That preparation may add a safe operator runbook and an explicit opt-in,
+non-production Playwright smoke harness based on the certified frontend head. It
+must not perform a real OpenAI/provider call from Codex Cloud, persist any
+credential/session/provider secret, change production configuration, merge, or
+start MCP work.
+
+The actual real-provider/browser execution remains a separate gate and will be
+performed later from the Product Owner's controlled Mac/browser environment
+after the preparation itself passes Astra live review.
 
 ## Superseded Pending-Review Records
 
@@ -176,8 +187,10 @@ ASTRA-FE-AGENT-001 — Frontend Approved / Certified / Closed
 Certified frontend executable — eceab9c26516ff859c86899a23bd79a553304e2b
 Astra frontend certification review — 4888398174
 Frontend PR #5 — OPEN / DRAFT / UNMERGED
+ASTRA-FE-AGENT-QA-PREP-001 — AUTHORIZED / PREPARATION ONLY
+Canonical QA-prep task — srkarthi1982/ansiversa#6
+Real provider QA/browser smoke execution — NOT YET AUTHORIZED / NOT YET COMPLETED
 Merge — NOT AUTHORIZED
-Real provider QA/browser smoke — NOT YET AUTHORIZED / NOT YET COMPLETED
 MCP work — NOT STARTED
 Production — NOT APPROVED
 ```

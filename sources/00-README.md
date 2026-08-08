@@ -40,7 +40,8 @@ Generated or refreshed: 2026-07-18
 - `32-astra-governed-natural-language-intent-implementation.md`: certified backend governed intent implementation and evidence.
 - `33-astra-frontend-governed-natural-language-agent.md`: frontend governed Subscription Manager agent implementation evidence.
 - `34-astra-frontend-governed-natural-language-agent-certification.md`: certified frontend governed Subscription Manager agent boundary.
-- `35-astra-real-provider-qa-preparation.md`: ASTRA-FE-AGENT-QA-PREP-001 review, correction, and prepared/pending-review evidence.
+- `35-astra-real-provider-qa-preparation.md`: certified QA-preparation boundary and evidence for the controlled real-provider browser smoke.
+- `36-astra-real-provider-qa-smoke-execution.md`: authorized controlled non-production real-provider Subscription Manager browser-smoke execution gate and evidence requirements.
 
 ## Exclusions
 
